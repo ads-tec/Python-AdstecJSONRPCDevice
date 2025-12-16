@@ -64,9 +64,14 @@ class AdstecJSONRPCDevice:
             ],
         }
         response = self.send_request(auth_payload)
-        self.sid = response.get("result", [{}])[1].get("sid")
-        if not self.sid:
+        try:
+            self.sid = response.get("result", [{}])[1].get("sid")
+            if not self.sid:
+                raise Exception("Failed to acquire SID. Check username/password.")
+        except:
             raise Exception("Failed to acquire SID. Check username/password.")
+
+
 
     def call(self, obj, method, **params):
         """
@@ -106,7 +111,7 @@ class AdstecJSONRPCDevice:
         """
         Start a configuration session.
         """
-        return self.call("config", "sess_start")
+        return self.call("config", "sess_start")["cfg_session_id"]
 
     def sess_commit(self, cfg_session_id):
         """
@@ -222,3 +227,9 @@ class AdstecJSONRPCDevice:
         )
         return response.get(property, None)
 
+    def logout(self):
+        response = self.call(
+            "session",
+            "destroy",
+        )
+        return response
