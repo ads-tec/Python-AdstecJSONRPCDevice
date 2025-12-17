@@ -36,8 +36,9 @@
     Version: 1.0
     Date: 2024-11-29
 """
-
+import os
 import requests
+from urllib.parse import quote
 
 class AdstecJSONRPCDevice:
     def __init__(self, target, user, pw, timeout=120.0, verify=False):
@@ -47,6 +48,8 @@ class AdstecJSONRPCDevice:
         self.sid = None
         self.timeout = timeout
         self.verify = verify
+        self.upload_file_types = {"firmware", "bootlogo", "settings", "customer_settings", "cert", "wwan_update"}
+        self.download_file_types = {"diag.tar.gz", "settings.cf2"}
 
     def get_sid(self):
         """
@@ -106,6 +109,40 @@ class AdstecJSONRPCDevice:
         )
         response.raise_for_status()
         return response.json()
+
+    def upload_file(self, type, filename):
+        if type not in self.upload_file_types:
+            raise Exception(f"Invalid file type: {type}. Must be one of: {self.upload_file_types}.")
+
+        if not os.path.exists(filename):
+            raise Exception(f"Error: File '{filename}' does not exist.")
+
+        if not self.sid:
+            self.get_sid()
+        try:
+            url = f"https://{self.target}/priv/script/php_rpc/upload.php"
+            files = {type: open(filename, 'rb')}
+            cookies = {"ads_sid": self.sid}
+            response = requests.post(url, files=files, cookies=cookies, verify=self.verify)
+            return response.text
+        except Exception as e:
+            print(f"Error: {e}")
+        finally:
+            files[type].close()
+
+    def download_file(self, filename, output_filename):
+        if filename not in self.download_file_types:
+            raise Exception(f"Invalid file type: {filename}. Must be one of: {self.download_file_types}.")
+        if not self.sid:
+            self.get_sid()
+        url = f"https://{self.target}/priv/script/php_rpc/download.php?file={quote(filename)}"
+        cookies = {"ads_sid": self.sid}
+        response = requests.get(url, cookies=cookies, verify=self.verify, stream=True)
+        if not response.ok:
+            raise Exception(f"HTTP error! Status: {response.status_code}")
+        with open(output_filename, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
 
     def sess_start(self):
         """
@@ -192,6 +229,11 @@ class AdstecJSONRPCDevice:
             values=values,
             verbose=True
         )
+
+    def config_set_commit(self, values):
+        cfg_session_id = self.sess_start()
+        self.config_set(cfg_session_id, values)
+        self.sess_commit(cfg_session_id)
 
     def config_update(self, cfg_session_id, values, condition):
         """
