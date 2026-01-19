@@ -275,3 +275,23 @@ class AdstecJSONRPCDevice:
             "destroy",
         )
         return response
+
+    def convert_to_ifname(self, interfaces_arr):
+        """
+        Convert interface names to their corresponding ifname values.
+
+        :param interfaces_arr: List of interface names (e.g., ['wan', 'docker', 'vpn10'])
+        :return: Space-separated string of interface names (e.g., 'br1 lxcbr0 l3tap10')
+        """
+        if not interfaces_arr:
+            return ""
+        ifname_array = [f"{interface}_ifname" for interface in interfaces_arr]
+        try:
+            result = self.config_get(ifname_array)['result']
+        except KeyError:
+            raise ValueError("config_get did not return expected 'result' key")
+        interfaces_str = ' '.join(
+            str(list(d.values())[0]) for d in result if d.values()
+        )
+
+        return interfaces_str
