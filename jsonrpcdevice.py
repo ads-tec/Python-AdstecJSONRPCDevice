@@ -38,7 +38,11 @@
 """
 import os
 import requests
+import urllib3
+import time
 from urllib.parse import quote
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class AdstecJSONRPCDevice:
     def __init__(self, target, user, pw, timeout=120.0, verify=False):
@@ -74,7 +78,12 @@ class AdstecJSONRPCDevice:
         except:
             raise Exception("Failed to acquire SID. Check username/password.")
 
-
+    def set_target(self, target):
+        """
+        set the target device IP address
+        i.e., when changing the IP address of the device
+        """
+        self.target = target
 
     def call(self, obj, method, **params):
         """
@@ -235,6 +244,14 @@ class AdstecJSONRPCDevice:
         self.config_set(cfg_session_id, values)
         self.sess_commit(cfg_session_id)
 
+    def config_set_commit_with_ip_change(self, values, new_ip):
+        try:
+            self.config_set_commit(values)
+        except requests.exceptions.Timeout:
+            # we expect this exception because the ip change
+            wait_for_host_is_online(new_ip)
+            self.set_target(new_ip)
+
     def config_update(self, cfg_session_id, values, condition):
         """
         Update configuration variables based on a condition.
@@ -295,3 +312,84 @@ class AdstecJSONRPCDevice:
         )
 
         return interfaces_str
+
+def check_host(host, timeout=5):
+    """
+    Check if a host is online by making an HTTPS request.
+
+    :param host: Hostname or IP address.
+    :param timeout: Request timeout in seconds (default: 5).
+    :return: A tuple (is_online, info).
+             is_online: Boolean indicating if the host is reachable.
+             info: Status code if online, or error message if offline.
+    """
+    url = f"https://{host}/"
+    try:
+        # We use verify=False because the device might have a self-signed certificate
+        response = requests.get(url, timeout=timeout, verify=False)
+        return True, response.status_code
+    except requests.exceptions.RequestException as e:
+        return False, str(e)
+
+
+def wait_for_reboot(host, username, password, check_interval=3):
+    """
+    Wait for a device to reboot and finish its boot process.
+
+    :param host: Hostname or IP address of the device.
+    :param username: Username for authentication.
+    :param password: Password for authentication.
+    :param check_interval: Time to wait between checks in seconds (default: 3).
+    :return: An instance of AdstecJSONRPCDevice once the device is ready.
+    """
+    previous_state = None
+    while True:
+        is_online, info = check_host(host)
+        if previous_state is None:
+            status = "ONLINE" if is_online else "OFFLINE"
+            print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Initial state: {status}")
+            if is_online:
+                print(f"  Status code: {info}")
+            else:
+                print(f"  Error: {info}")
+        elif previous_state != is_online:
+            if is_online:
+                print(f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] ✓ Host came ONLINE")
+                while True:
+                    dev = AdstecJSONRPCDevice(host, username, password)
+                    try:
+                        boot_finished = dev.status("boot_finished")
+                        if boot_finished == "yes":
+                            return dev
+                        else:
+                            print("Boot in progress, waiting for boot_finished")
+                    except Exception as e:
+                        print(f"Error checking boot status: {e}")
+                    time.sleep(1)
+            else:
+                print(f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] ✗ Host went OFFLINE")
+
+        previous_state = is_online
+        time.sleep(check_interval)
+
+
+def wait_for_host_is_online(host, timeout=300, interval=5):
+    """
+    Wait for a host to become online by checking its HTTPS URL.
+
+    :param host: Hostname or IP address.
+    :param timeout: Maximum time to wait in seconds (default: 300).
+    :param interval: Time to wait between checks in seconds (default: 5).
+    """
+    start_time = time.time()
+    print(f"Waiting for {host} to be online...")
+
+    while time.time() - start_time < timeout:
+        is_online, info = check_host(host)
+        if is_online and info == 200:
+            print(f"Host {host} is online.")
+            return True
+
+        time.sleep(interval)
+
+    raise TimeoutError(f"Timed out waiting for {host} to come online.")
