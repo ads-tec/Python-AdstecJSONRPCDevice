@@ -1,0 +1,2939 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JSON-RPC API documentation for ads-tec Industrial IT devices">
+      
+      
+      
+        <link rel="canonical" href="https://ads-tec.github.io/Python-AdstecJSONRPCDevice/2.2.7/api-reference/config-variables/">
+      
+      
+        <link rel="prev" href="../jsonrpc-methods/">
+      
+      
+        <link rel="next" href="../status-properties/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Configuration Variables - ads-tec Industrial IT JSON-RPC API</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-variables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ads-tec Industrial IT JSON-RPC API" class="md-header__button md-logo" aria-label="ads-tec Industrial IT JSON-RPC API" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ads-tec Industrial IT JSON-RPC API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration Variables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ads-tec/Python-AdstecJSONRPCDevice" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ads-tec/Python-AdstecJSONRPCDevice
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ads-tec Industrial IT JSON-RPC API" class="md-nav__button md-logo" aria-label="ads-tec Industrial IT JSON-RPC API" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    ads-tec Industrial IT JSON-RPC API
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ads-tec/Python-AdstecJSONRPCDevice" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ads-tec/Python-AdstecJSONRPCDevice
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Devices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    All Devices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Reference Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jsonrpc-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON-RPC Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Variables
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reading-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operation Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pppoe-dsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PPPoE (DSL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#date-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date &amp; Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#password-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Password &amp; Authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewall-only-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firewall-Only Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-linx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Big-LinX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Big-LinX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approval-mode-4-eyes-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approval Mode (4-Eyes Principle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scep-certificate-enrollment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SCEP (Certificate Enrollment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-terminal-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Terminal Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-capture-rpcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Capture (rpcap)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-update-from-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware Update from Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-auto-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Background Auto-Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reboot-watchdog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reboot &amp; Watchdog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settings-backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Backup &amp; Restore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status & Diagnostics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/firmware-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking & IP Change
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/datetime/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Date & Time / NTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/user-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/password-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Password Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/vpn-approval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPN Approval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/settings-backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings Backup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/remote-capture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Capture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/password-strength/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Password Strength
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firewalls (IRF1000 / IRF2000 / IRF3000)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Firewalls (IRF1000 / IRF2000 / IRF3000)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewall/jsonrpc-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON-RPC Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewall/config-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewall/status-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Terminals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web Terminals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminal/config-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/web-panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reading-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operation Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pppoe-dsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PPPoE (DSL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#date-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date &amp; Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#password-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Password &amp; Authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewall-only-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firewall-Only Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-linx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Big-LinX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Big-LinX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approval-mode-4-eyes-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approval Mode (4-Eyes Principle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scep-certificate-enrollment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SCEP (Certificate Enrollment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-terminal-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Terminal Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-capture-rpcap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Capture (rpcap)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-update-from-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware Update from Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-auto-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Background Auto-Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reboot-watchdog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reboot &amp; Watchdog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settings-backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Backup &amp; Restore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="configuration-variables">Configuration Variables<a class="headerlink" href="#configuration-variables" title="Permanent link">&para;</a></h1>
+<p>Configuration variables are read with <code>config.get()</code> and written with <code>config.set()</code> within a configuration session.</p>
+<h2 id="reading-configuration">Reading Configuration<a class="headerlink" href="#reading-configuration" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">config_get</span><span class="p">([</span><span class="s2">&quot;lan_ipaddr&quot;</span><span class="p">,</span> <span class="s2">&quot;timezone&quot;</span><span class="p">,</span> <span class="s2">&quot;ntp_service&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="writing-configuration">Writing Configuration<a class="headerlink" href="#writing-configuration" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;Europe/Berlin&quot;</span><span class="p">,</span> <span class="s2">&quot;ntp_service&quot;</span><span class="p">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">})</span>
+</code></pre></div>
+<hr />
+<h2 id="operation-mode">Operation Mode<a class="headerlink" href="#operation-mode" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>opmode</code></td>
+<td><code>"transbridge"</code> / <code>"iprouter"</code> / <code>"iprouter5port"</code></td>
+<td>Device operation mode. <code>transbridge</code> = Layer 2 managed switch; <code>iprouter</code> = Layer 3 LAN/WAN; <code>iprouter5port</code> = Layer 3 all ports with independent IPs</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing <code>opmode</code> has side effects on filter rules and static routes.</p>
+</div>
+<hr />
+<h2 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
+<h3 id="interface-configuration">Interface Configuration<a class="headerlink" href="#interface-configuration" title="Permanent link">&para;</a></h3>
+<p>Interface variables use a prefix pattern: <code>(wan|lan|lan_port1|lan_port2|lan_port3|lan_port4)_&lt;variable&gt;</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-4])_proto</code></td>
+<td><code>"static"</code> / <code>"dhcp"</code> / <code>"dhcpstatic"</code> / <code>"dhcpovpn"</code> / <code>"pppoedyn"</code></td>
+<td>Interface protocol. <code>static</code> = manual config; <code>dhcp</code> = dynamic; <code>dhcpstatic</code> = DHCP with static fallback; <code>dhcpovpn</code> = IP via OpenVPN tunnel; <code>pppoedyn</code> = PPPoE for DSL</td>
+</tr>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-4])_ipaddr</code></td>
+<td>IP address</td>
+<td>Interface IP address (e.g., <code>"192.168.0.254"</code>)</td>
+</tr>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-4])_netmask</code></td>
+<td>Netmask</td>
+<td>Interface subnet mask (e.g., <code>"255.255.255.0"</code>)</td>
+</tr>
+<tr>
+<td><code>lan_gateway</code></td>
+<td>IP address</td>
+<td>Default gateway (applies to all interfaces despite the <code>lan_</code> prefix)</td>
+</tr>
+<tr>
+<td><code>splitbridge_port[1-4]</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>In <code>iprouter5port</code> mode: whether LAN-out port forms a bridge with LAN-in</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">IP Address Changes</p>
+<p>When changing <code>lan_ipaddr</code>, use <code>config_set_commit_with_ip_change()</code> in the Python reference implementation. The device becomes unreachable at the old IP after the change. See <a href="../../guides/networking/">Networking Guide</a>.</p>
+</div>
+<h3 id="dns">DNS<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dns1</code></td>
+<td>IP address</td>
+<td>Primary DNS server</td>
+</tr>
+<tr>
+<td><code>dns2</code></td>
+<td>IP address</td>
+<td>Secondary DNS server</td>
+</tr>
+<tr>
+<td><code>dns3</code></td>
+<td>IP address</td>
+<td>Tertiary DNS server</td>
+</tr>
+<tr>
+<td><code>dns_domain</code></td>
+<td>string</td>
+<td>Local network subdomain (e.g., <code>"intranet.company.de"</code>). Auto-appended to bare hostname DNS queries</td>
+</tr>
+<tr>
+<td><code>dns_request_all</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Query all DNS servers simultaneously (otherwise sequential with timeout fallover)</td>
+</tr>
+<tr>
+<td><code>dns_proxy</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Activate DNS relay service on device</td>
+</tr>
+<tr>
+<td><code>gw_dhcp_interface</code></td>
+<td>interface name or <code>""</code></td>
+<td>Which DHCP interface provides the default gateway</td>
+</tr>
+<tr>
+<td><code>dns_dhcp_interface</code></td>
+<td>interface name or <code>""</code></td>
+<td>Which DHCP interface provides DNS settings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pppoe-dsl">PPPoE (DSL)<a class="headerlink" href="#pppoe-dsl" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wan_pppoe_userid</code></td>
+<td>string</td>
+<td>DSL user ID</td>
+</tr>
+<tr>
+<td><code>wan_pppoe_password</code></td>
+<td>string</td>
+<td>DSL password</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="date-time">Date &amp; Time<a class="headerlink" href="#date-time" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timezone</code></td>
+<td>string</td>
+<td>Timezone (e.g., <code>"Europe/Berlin"</code>). Query <code>timezone_list</code> status for available values</td>
+</tr>
+<tr>
+<td><code>ntp_service</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable NTP time synchronization</td>
+</tr>
+<tr>
+<td><code>ntp_relay</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable NTP relay (device acts as NTP server)</td>
+</tr>
+<tr>
+<td><code>ntp_server</code></td>
+<td>string</td>
+<td>Primary NTP server</td>
+</tr>
+<tr>
+<td><code>ntp_server2</code></td>
+<td>string</td>
+<td>Secondary NTP server</td>
+</tr>
+<tr>
+<td><code>ntp_server3</code></td>
+<td>string</td>
+<td>Tertiary NTP server</td>
+</tr>
+<tr>
+<td><code>day</code></td>
+<td>string</td>
+<td>Day of month, zero-padded (e.g., <code>"01"</code>) — only when NTP is disabled</td>
+</tr>
+<tr>
+<td><code>month</code></td>
+<td>string</td>
+<td>Month, zero-padded (e.g., <code>"01"</code>)</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>string</td>
+<td>Year (e.g., <code>"2026"</code>)</td>
+</tr>
+<tr>
+<td><code>hour</code></td>
+<td>string</td>
+<td>Hour, zero-padded (e.g., <code>"00"</code>)</td>
+</tr>
+<tr>
+<td><code>minute</code></td>
+<td>string</td>
+<td>Minute, zero-padded (e.g., <code>"00"</code>)</td>
+</tr>
+<tr>
+<td><code>second</code></td>
+<td>string</td>
+<td>Second, zero-padded (e.g., <code>"00"</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="password-authentication">Password &amp; Authentication<a class="headerlink" href="#password-authentication" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>webpwd_user</code></td>
+<td>string</td>
+<td>Username for the password change operation</td>
+</tr>
+<tr>
+<td><code>webpwd_user_old</code></td>
+<td>string</td>
+<td>Current password (required when changing own password)</td>
+</tr>
+<tr>
+<td><code>webpwd_user_new</code></td>
+<td>string</td>
+<td>New password</td>
+</tr>
+<tr>
+<td><code>webpwd_user_checked</code></td>
+<td>string</td>
+<td>New password confirmation (must match <code>webpwd_user_new</code>)</td>
+</tr>
+<tr>
+<td><code>password_mode</code></td>
+<td>string</td>
+<td>Password hashing mode (e.g., <code>"argon2"</code>)</td>
+</tr>
+<tr>
+<td><code>password_policy</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable password policy enforcement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="firewall-only-variables">Firewall-Only Variables<a class="headerlink" href="#firewall-only-variables" title="Permanent link">&para;</a></h2>
+<p>OpenVPN, CUT &amp; ALARM, GPIO Automatic Control, and 3G/4G UMTS/LTE variables are available on firewall models only. See <a href="../firewall/config-variables/">Configuration Variables (Firewalls)</a>.</p>
+<hr />
+<h2 id="big-linx">Big-LinX<a class="headerlink" href="#big-linx" title="Permanent link">&para;</a></h2>
+<h3 id="connection-configuration">Connection Configuration<a class="headerlink" href="#connection-configuration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vpn_list_10</code></td>
+<td>slash-separated string</td>
+<td>Big-LinX VPN connection. Last field: <code>"active"</code> (permanent) or <code>"switched"</code> (triggered remotely)</td>
+</tr>
+<tr>
+<td><code>vpn_ida_proxy</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>HTTP proxy for Big-LinX</td>
+</tr>
+<tr>
+<td><code>vpn_ida_proxyip</code></td>
+<td>IP or hostname</td>
+<td>Proxy address</td>
+</tr>
+<tr>
+<td><code>vpn_ida_proxyport</code></td>
+<td>TCP port</td>
+<td>Proxy port</td>
+</tr>
+<tr>
+<td><code>vpn_ida_proxyauth</code></td>
+<td><code>"ntlm"</code> / <code>"basic"</code> / <code>"none"</code></td>
+<td>Proxy auth method</td>
+</tr>
+<tr>
+<td><code>vpn_ida_proxyuser</code></td>
+<td>string</td>
+<td>Proxy username</td>
+</tr>
+<tr>
+<td><code>vpn_ida_proxypass</code></td>
+<td>string</td>
+<td>Proxy password</td>
+</tr>
+</tbody>
+</table>
+<h3 id="smart-card">Smart Card<a class="headerlink" href="#smart-card" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sc_autopin</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Autopin for smart cards</td>
+</tr>
+<tr>
+<td><code>sc_savepin</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Must be <code>"enabled"</code> for cards without autopin</td>
+</tr>
+<tr>
+<td><code>sc_pin</code></td>
+<td>string</td>
+<td>Big-LinX smart card PIN</td>
+</tr>
+</tbody>
+</table>
+<h3 id="approval-mode-4-eyes-principle">Approval Mode (4-Eyes Principle)<a class="headerlink" href="#approval-mode-4-eyes-principle" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vpn_approval_mode</code></td>
+<td><code>"disabled"</code> / <code>"vpnswitch"</code> / <code>"api"</code></td>
+<td><code>"vpnswitch"</code> = physical key switch required; <code>"api"</code> = remote acknowledgement via API</td>
+</tr>
+<tr>
+<td><code>vpn_approve_now</code></td>
+<td>any</td>
+<td>Trigger: approve a pending VPN connection</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="scep-certificate-enrollment">SCEP (Certificate Enrollment)<a class="headerlink" href="#scep-certificate-enrollment" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scep_service</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Activate SCEP service</td>
+</tr>
+<tr>
+<td><code>scep_url</code></td>
+<td>URL</td>
+<td>SCEP server API URL</td>
+</tr>
+<tr>
+<td><code>scep_sncn</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Include device serial number in certificate CN</td>
+</tr>
+<tr>
+<td><code>scep_subject</code></td>
+<td>formatted string</td>
+<td>Format: <code>"dns:NAME/C=DE, O=ads-tec"</code></td>
+</tr>
+<tr>
+<td><code>scep_autocrl</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Automatic CRL retrieval from SCEP server</td>
+</tr>
+<tr>
+<td><code>scep_autorenew</code></td>
+<td>number of days</td>
+<td>Auto-renew certificate N days before expiry</td>
+</tr>
+<tr>
+<td><code>scep_keybits</code></td>
+<td><code>"1024"</code> / <code>"2048"</code> / <code>"3072"</code> / <code>"4096"</code></td>
+<td>Key length for certificate</td>
+</tr>
+<tr>
+<td><code>scep_challenge</code></td>
+<td>string</td>
+<td>One-time challenge password for SCEP server</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="certificates">Certificates<a class="headerlink" href="#certificates" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_be_deleted</code></td>
+<td>string</td>
+<td>Path of certificate to delete (e.g., <code>"ca/cert.pem"</code>)</td>
+</tr>
+<tr>
+<td><code>cert_delete</code></td>
+<td><code>"1"</code></td>
+<td>Trigger certificate deletion</td>
+</tr>
+<tr>
+<td><code>upload_cert_file_now</code></td>
+<td>any</td>
+<td>Trigger: process an uploaded certificate file</td>
+</tr>
+<tr>
+<td><code>upload_cert_file_sha256</code></td>
+<td>SHA256 hex string</td>
+<td>SHA256 checksum of the uploaded certificate file</td>
+</tr>
+<tr>
+<td><code>filename_password</code></td>
+<td>string</td>
+<td>Passphrase for password-protected p12/pem files</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="web-terminal-variables">Web Terminal Variables<a class="headerlink" href="#web-terminal-variables" title="Permanent link">&para;</a></h2>
+<p>Web Panel configuration variables are available on web terminals only. See <a href="../terminal/config-variables/">Configuration Variables (Web Terminals)</a>.</p>
+<hr />
+<h2 id="remote-capture-rpcap">Remote Capture (rpcap)<a class="headerlink" href="#remote-capture-rpcap" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rpcap_status</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable remote packet capture</td>
+</tr>
+<tr>
+<td><code>rpcap_hostlist</code></td>
+<td>string</td>
+<td>Comma-separated list of allowed capture hosts</td>
+</tr>
+<tr>
+<td><code>rpcap_access</code></td>
+<td>string</td>
+<td>Space-separated native interface names to block from capture</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="web-server">Web Server<a class="headerlink" href="#web-server" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service_https</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>HTTPS access on port 443</td>
+</tr>
+<tr>
+<td><code>service_http</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>If disabled, both HTTPS (443) and HTTP (80) are disabled</td>
+</tr>
+<tr>
+<td><code>service_http_port</code></td>
+<td>TCP port</td>
+<td>HTTP port (default: <code>"80"</code>). HTTPS 443 is unaffected</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="system">System<a class="headerlink" href="#system" title="Permanent link">&para;</a></h2>
+<h3 id="general">General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>system_name</code></td>
+<td>string</td>
+<td>Device system name (default: product name)</td>
+</tr>
+<tr>
+<td><code>system_contact</code></td>
+<td>string</td>
+<td>Contact information</td>
+</tr>
+<tr>
+<td><code>systemname_sndyn</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Use serial number as system name</td>
+</tr>
+<tr>
+<td><code>hostname</code></td>
+<td>string</td>
+<td>Network hostname (default: product name)</td>
+</tr>
+<tr>
+<td><code>hostname_sndyn</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Use serial number as hostname</td>
+</tr>
+<tr>
+<td><code>nvram_mode</code></td>
+<td><code>"save"</code> / <code>"commit"</code></td>
+<td><code>"save"</code> = changes saved persistently, applied after reboot; <code>"commit"</code> = changes applied immediately, saved only after <code>save_now</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="firmware-update-from-server">Firmware Update from Server<a class="headerlink" href="#firmware-update-from-server" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>update_proto</code></td>
+<td><code>"http"</code> / <code>"ftp"</code> / <code>"tftp"</code></td>
+<td>Protocol for firmware download</td>
+</tr>
+<tr>
+<td><code>update_server</code></td>
+<td>IP address</td>
+<td>Server providing the firmware</td>
+</tr>
+<tr>
+<td><code>update_restoredefaults</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Reset to factory defaults after firmware install</td>
+</tr>
+<tr>
+<td><code>fw_update_now</code></td>
+<td>any</td>
+<td>Trigger: start firmware update</td>
+</tr>
+</tbody>
+</table>
+<h3 id="background-auto-update">Background Auto-Update<a class="headerlink" href="#background-auto-update" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fw_auto_download</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable daily automatic firmware check/download</td>
+</tr>
+<tr>
+<td><code>fw_update_url</code></td>
+<td>URL</td>
+<td>URL for Firmware Description File</td>
+</tr>
+<tr>
+<td><code>fw_update_url_bx</code></td>
+<td>URL</td>
+<td>Firmware Description File URL when Big-LinX VPN is active</td>
+</tr>
+<tr>
+<td><code>fw_force_update</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Debug: force firmware download even if already current</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reboot-watchdog">Reboot &amp; Watchdog<a class="headerlink" href="#reboot-watchdog" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reboot_now</code></td>
+<td>any</td>
+<td>Trigger: system reboot (immediately, or after <code>reboot_wait</code> minutes)</td>
+</tr>
+<tr>
+<td><code>reboot_wait</code></td>
+<td>minutes</td>
+<td>Wait time before reboot. Set to <code>"0"</code> to cancel a running timer</td>
+</tr>
+<tr>
+<td><code>firmware_switch_now</code></td>
+<td>any</td>
+<td>Trigger: activate switchover to alternative firmware on next reboot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="settings-backup-restore">Settings Backup &amp; Restore<a class="headerlink" href="#settings-backup-restore" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>save_now</code></td>
+<td>any</td>
+<td>Trigger: save running config to NVRAM</td>
+</tr>
+<tr>
+<td><code>save_settings_now</code></td>
+<td>any</td>
+<td>Trigger: prepare settings.cf2 for download</td>
+</tr>
+<tr>
+<td><code>restore_settings_now</code></td>
+<td>any</td>
+<td>Trigger: parse an uploaded .cf2 settings file</td>
+</tr>
+<tr>
+<td><code>restore_settings_sha256</code></td>
+<td>SHA256 hex string</td>
+<td>SHA256 checksum of the uploaded .cf2 file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>generate_diag_now</code></td>
+<td><code>"1"</code></td>
+<td>Trigger: generate diagnostic archive for download</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "content.code.annotate", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
