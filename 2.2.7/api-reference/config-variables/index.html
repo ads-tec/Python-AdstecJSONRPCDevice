@@ -790,17 +790,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#background-chunk-update" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Background Chunk Update
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#reboot-watchdog" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1255,34 +1244,6 @@
     
   
     Remote Capture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/password-strength/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Password Strength
   
 
     
@@ -2107,17 +2068,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#background-chunk-update" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Background Chunk Update
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#reboot-watchdog" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2514,7 +2464,7 @@
 <tr>
 <td><code>sc_pin</code></td>
 <td>string</td>
-<td>Big-LinX smart card PIN</td>
+<td>Big-LinX smart card PIN. <strong>Legacy only</strong> — older cards required a manually configured PIN. Current cards use auto-PIN and do not need this variable</td>
 </tr>
 </tbody>
 </table>
@@ -2766,48 +2716,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="background-chunk-update">Background Chunk Update<a class="headerlink" href="#background-chunk-update" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Values</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>fw_update_url</code></td>
-<td>URL</td>
-<td>URL for <a href="../../guides/firmware-update/#the-firmware-location-description-file-fldftxt">Firmware Location Description File</a> (fldf.txt). Default: <code>https://www.ads-tec.de/.../fldf-v2.txt</code></td>
-</tr>
-<tr>
-<td><code>fw_update_url_blx</code></td>
-<td>URL</td>
-<td>Same as <code>fw_update_url</code>, but used when Big-LinX VPN is active (can point to a service on the private Big-LinX VPN segment)</td>
-</tr>
-<tr>
-<td><code>fw_auto_download</code></td>
-<td><code>"enabled"</code> / <code>"disabled"</code></td>
-<td>Enable daily automatic firmware check/download</td>
-</tr>
-<tr>
-<td><code>fw_auto_download_now</code></td>
-<td>any</td>
-<td>Trigger: immediately check and download chunk files to second partition</td>
-</tr>
-<tr>
-<td><code>activate_update_now</code></td>
-<td>any</td>
-<td>Trigger: reboot into new firmware on second partition (if available)</td>
-</tr>
-<tr>
-<td><code>fw_force_update</code></td>
-<td><code>"enabled"</code> / <code>"disabled"</code></td>
-<td>Debug: force firmware download even if already current</td>
-</tr>
-</tbody>
-</table>
 <h3 id="reboot-watchdog">Reboot &amp; Watchdog<a class="headerlink" href="#reboot-watchdog" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2917,6 +2825,10 @@
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 ads-tec Industrial IT GmbH
+    </div>
   
   
     Made with
