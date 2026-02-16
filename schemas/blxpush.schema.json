@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "blxpush.schema.json",
+  "title": "blxpush — Big-LinX IIoT Data Push",
+  "description": "Push measurement data to the Big-LinX IIoT dashboard. Requires Big-LinX connection configured and Big-LinX IoT feature enabled.",
+  "definitions": {
+    "status": {
+      "title": "blxpush.status",
+      "description": "Get the Big-LinX push connection state and buffer status.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Connection state and buffer information"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "blxpush", "status", {}]
+      }
+    },
+    "push": {
+      "title": "blxpush.push",
+      "description": "Push measurement data to the Big-LinX database. Values must include a 'ts' key with millisecond-resolution Unix timestamp.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "measurement": {
+            "type": "string",
+            "description": "Measurement name in the Big-LinX database",
+            "examples": ["temperature", "pressure", "humidity"]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Additional tags for the data point",
+            "examples": [["sensor1"], ["line-A", "station-3"]]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ts": {
+                  "type": "integer",
+                  "description": "Unix timestamp in milliseconds"
+                }
+              },
+              "required": ["ts"],
+              "additionalProperties": {
+                "type": "number",
+                "description": "Integer or float measurement value"
+              }
+            },
+            "description": "Array of data points. Each must include 'ts' (millisecond timestamp) plus key-value pairs of measurement data."
+          }
+        },
+        "required": ["measurement", "tags", "values"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "blxpush", "push", {
+          "measurement": "temperature",
+          "tags": ["sensor1"],
+          "values": [{"ts": 1708099200000, "temp_celsius": 23.5}]
+        }]
+      }
+    }
+  }
+}

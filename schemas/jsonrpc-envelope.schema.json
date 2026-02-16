@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jsonrpc-envelope.schema.json",
+  "title": "ads-tec JSON-RPC 2.0 Envelope",
+  "description": "Base request and response envelope for all ads-tec JSON-RPC calls. All API calls use the top-level method 'call' with params [session_id, object, method, parameters]. Use 'list' instead of 'call' to get a description of an object and its available methods.",
+  "definitions": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Request identifier, e.g. 'req-1'",
+          "examples": ["req-1"]
+        },
+        "jsonrpc": {
+          "type": "string",
+          "const": "2.0",
+          "description": "JSON-RPC protocol version"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["call", "list"],
+          "description": "'call' to invoke a method, 'list' to describe an object and its available methods"
+        },
+        "params": {
+          "type": "array",
+          "description": "Parameters: [session_id, object, method, parameters]",
+          "prefixItems": [
+            {
+              "type": "string",
+              "description": "Session ID (SID). Use '00000000000000000000000000000000' for session.create"
+            },
+            {
+              "type": "string",
+              "description": "API object name",
+              "examples": ["session", "config", "status", "gpio", "zxcvbn", "network.ipsec.control", "statusd", "blxpush", "file"]
+            },
+            {
+              "type": "string",
+              "description": "Method name on the object"
+            },
+            {
+              "type": "object",
+              "description": "Method-specific parameters"
+            }
+          ],
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": ["id", "jsonrpc", "method", "params"]
+    },
+    "response_success": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Matches the request id"
+        },
+        "jsonrpc": {
+          "type": "string",
+          "const": "2.0"
+        },
+        "result": {
+          "type": "array",
+          "description": "Result array: [return_code, result_data]. Return code 0 indicates success.",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "description": "Return code. 0 = success, non-zero = error"
+            },
+            {
+              "type": "object",
+              "description": "Method-specific result data"
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": ["id", "jsonrpc", "result"]
+    },
+    "response_error": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Matches the request id"
+        },
+        "jsonrpc": {
+          "type": "string",
+          "const": "2.0"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "integer",
+              "description": "Error code (e.g. -32000)"
+            },
+            "message": {
+              "type": "string",
+              "description": "Human-readable error description"
+            }
+          },
+          "required": ["code", "message"]
+        }
+      },
+      "required": ["id", "jsonrpc", "error"]
+    }
+  }
+}

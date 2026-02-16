@@ -1,0 +1,103 @@
+site_name: ads-tec Industrial IT JSON-RPC API
+site_description: JSON-RPC API documentation for ads-tec Industrial IT devices
+site_url: https://ads-tec.github.io/Python-AdstecJSONRPCDevice/
+repo_url: https://github.com/ads-tec/Python-AdstecJSONRPCDevice
+repo_name: ads-tec/Python-AdstecJSONRPCDevice
+copyright: Copyright &copy; 2026 ads-tec Industrial IT GmbH
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  font: false
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - search.highlight
+    - toc.follow
+
+extra:
+  version:
+    provider: mike
+    alias: true
+    default:
+      - latest
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+            show_root_heading: true
+            heading_level: 2
+            members_order: source
+            docstring_style: sphinx
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - All Devices:
+      - API Reference:
+          - Python Reference Implementation: api-reference/python-client.md
+          - JSON-RPC Methods: api-reference/jsonrpc-methods.md
+          - Configuration Variables: api-reference/config-variables.md
+          - Status Properties: api-reference/status-properties.md
+          - Tables: api-reference/tables.md
+          - JSON Schemas: api-reference/schemas.md
+      - Guides:
+          - Status & Diagnostics: guides/diagnostics.md
+          - Firmware Update: guides/firmware-update.md
+          - Networking & IP Change: guides/networking.md
+          - Date & Time / NTP: guides/datetime.md
+          - User Management: guides/user-management.md
+          - Password Management: guides/password-management.md
+          - Certificates: guides/certificates.md
+          - VPN Approval: guides/vpn-approval.md
+          - Settings Backup: guides/settings-backup.md
+          - Remote Capture: guides/remote-capture.md
+  - Firewalls (IRF1000 / IRF2000 / IRF3000):
+      - API Reference:
+          - JSON-RPC Methods: api-reference/firewall/jsonrpc-methods.md
+          - Configuration Variables: api-reference/firewall/config-variables.md
+          - Status Properties: api-reference/firewall/status-properties.md
+      - Guides:
+          - GPIO: guides/gpio.md
+  - Web Terminals:
+      - API Reference:
+          - Configuration Variables: api-reference/terminal/config-variables.md
+      - Guides:
+          - Web Panel: guides/web-panel.md

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file-rpc.schema.json",
+  "title": "file — Base64 File Transfer (JSON-RPC)",
+  "description": "Upload and download files via JSON-RPC using Base64 encoding. Alternative to the HTTP upload/download endpoints.",
+  "definitions": {
+    "write": {
+      "title": "file.write",
+      "description": "Upload a Base64-encoded file to the device.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Destination path on the device",
+            "enum": ["/tmp/upsettigs", "/tmp/upcerts"],
+            "examples": ["/tmp/upsettigs", "/tmp/upcerts"]
+          },
+          "data": {
+            "type": "string",
+            "description": "Base64-encoded file content"
+          }
+        },
+        "required": ["path", "data"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "file", "write", {
+          "path": "/tmp/upcerts",
+          "data": "<base64-encoded-content>"
+        }]
+      }
+    },
+    "read": {
+      "title": "file.read",
+      "description": "Download a file from the device as Base64-encoded content.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path of the file to read",
+            "enum": ["/tmp/root/settings.cf2"],
+            "examples": ["/tmp/root/settings.cf2"]
+          }
+        },
+        "required": ["path"]
+      },
+      "response_result": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "description": "Base64-encoded file content"
+          }
+        },
+        "required": ["data"]
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "file", "read", {"path": "/tmp/root/settings.cf2"}]
+      },
+      "example_response": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "result": [0, {"data": "<base64-encoded-content>"}]
+      }
+    },
+    "delete": {
+      "title": "file.delete",
+      "description": "Delete a file from the device to free RAM.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path of the file to delete",
+            "enum": ["/tmp/root/settings.cf2"],
+            "examples": ["/tmp/root/settings.cf2"]
+          }
+        },
+        "required": ["path"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "file", "delete", {"path": "/tmp/root/settings.cf2"}]
+      }
+    }
+  },
+  "allowed_paths": {
+    "/tmp/upsettigs": {"operations": ["write"], "purpose": "Settings (.cf2) upload"},
+    "/tmp/upcerts": {"operations": ["write"], "purpose": "Certificate upload"},
+    "/tmp/root/settings.cf2": {"operations": ["read", "delete"], "purpose": "Settings download"}
+  }
+}

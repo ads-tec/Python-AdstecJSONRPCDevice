@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "status.schema.json",
+  "title": "status — Device Status",
+  "description": "Query read-only device status properties.",
+  "definitions": {
+    "get": {
+      "title": "status.get",
+      "description": "Query a status property with optional parameters.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "function": {
+            "type": "string",
+            "description": "Status property name to query",
+            "examples": [
+              "system_name",
+              "imageversion",
+              "second_imageversion",
+              "firmwareupdate_prepared",
+              "redbootserial",
+              "redbootproduct",
+              "realproduct",
+              "product_alias",
+              "versionbuild",
+              "boot_finished",
+              "uptime",
+              "uptimesec",
+              "cpustat",
+              "memstat",
+              "meminfo",
+              "simstate",
+              "eventlog",
+              "reboot_timer",
+              "customersettings_size",
+              "customersettings_timestamp",
+              "if_status",
+              "if_mac",
+              "if_ip",
+              "if_rxb",
+              "if_txb",
+              "symbolic_ifnames_with_umts_with_ipsec",
+              "ping4",
+              "traceroute4",
+              "nslookup4",
+              "arping",
+              "tcpping",
+              "routes",
+              "nameserver",
+              "dhcp_gateway",
+              "date",
+              "timezone_list",
+              "ntpstat_sources",
+              "vpnconnstat",
+              "vpnclients",
+              "blxstat_vpnstate",
+              "blxstat",
+              "wwh_status",
+              "pintries",
+              "alarm",
+              "intcut",
+              "extcut",
+              "cacerts",
+              "clcerts",
+              "print_cacert",
+              "print_cert",
+              "scep",
+              "umts_multistat",
+              "umts_iccid",
+              "umts_pinstate",
+              "umts_signal",
+              "umts_regstate",
+              "umts_localip",
+              "umts_remoteip",
+              "umts_operator",
+              "umts_stat",
+              "umts_serving_system",
+              "umts_supported_bands_json",
+              "gnss_devices",
+              "gnss_tpv",
+              "gnss_sky"
+            ]
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional parameters for the status query. Most properties take no parameters (empty strings). Some like 'ping4' take [host, count].",
+            "default": ["", ""],
+            "examples": [
+              ["", ""],
+              ["127.0.0.1", "3"],
+              ["8.8.8.8", ""],
+              ["eth0", ""],
+              ["tap0", ""],
+              ["ca-cert.pem", ""]
+            ]
+          }
+        },
+        "required": ["function"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Object with the property name as key and its value as a string (or JSON object for blxstat, gnss_tpv, etc.)",
+        "examples": [
+          {"imageversion": "Ads-tec/IRF2xxx/2.6.5/SVN-R13781.B-69636"},
+          {"system_name": "IRF3000-Office"},
+          {"boot_finished": "yes"},
+          {"if_status": "1000 Mbit/s Full Duplex"},
+          {"blxstat_vpnstate": "CONNECTED"},
+          {"alarm": "off"},
+          {"umts_stat": "connected"}
+        ]
+      },
+      "example_request_simple": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "status", "get", {"function": "imageversion", "parameters": ["", ""]}]
+      },
+      "example_response_simple": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "result": [0, {"imageversion": "Ads-tec/IRF2xxx/2.6.5/SVN-R13781.B-69636"}]
+      },
+      "example_request_with_params": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "status", "get", {"function": "ping4", "parameters": ["127.0.0.1", "3"]}]
+      },
+      "example_request_interface": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "status", "get", {"function": "if_status", "parameters": ["eth0", ""]}]
+      }
+    }
+  }
+}

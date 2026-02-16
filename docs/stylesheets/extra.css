@@ -1,0 +1,30 @@
+/* ads-tec Industrial IT Corporate Identity */
+
+:root {
+  /* Primary: royal blue */
+  --md-primary-fg-color: #064d90;
+  --md-primary-fg-color--light: #00b8ff;
+  --md-primary-fg-color--dark: #00345e;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffff;
+
+  /* Accent: ads-tec red */
+  --md-accent-fg-color: #EA332B;
+  --md-accent-fg-color--transparent: rgba(234, 51, 43, 0.1);
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: #ffffff;
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #064d90;
+  --md-primary-fg-color--light: #00b8ff;
+  --md-primary-fg-color--dark: #00345e;
+  --md-accent-fg-color: #00b8ff;
+}
+
+/* Typography: Akkurat Pro with system fallbacks */
+:root {
+  --md-text-font: "Akkurat Pro", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --md-code-font: "Roboto Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}

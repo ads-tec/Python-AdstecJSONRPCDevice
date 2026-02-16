@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file-transfer.schema.json",
+  "title": "File Transfer",
+  "description": "File upload and download use separate HTTP endpoints (not JSON-RPC). Authentication is via the ads_sid session cookie.",
+  "definitions": {
+    "upload": {
+      "title": "File Upload",
+      "description": "Upload a file to the device via multipart/form-data POST.",
+      "endpoint": "POST https://<device-ip>/priv/script/php_rpc/upload.php",
+      "authentication": {
+        "type": "cookie",
+        "name": "ads_sid",
+        "description": "Session ID obtained from session.create"
+      },
+      "request": {
+        "content_type": "multipart/form-data",
+        "fields": {
+          "type": "object",
+          "description": "Single field where the key is the file type and the value is the file binary",
+          "properties": {
+            "<file_type>": {
+              "type": "string",
+              "format": "binary",
+              "description": "The file content. Field name must be one of the valid file types."
+            }
+          }
+        }
+      },
+      "valid_file_types": {
+        "type": "string",
+        "enum": ["firmware", "bootlogo", "settings", "customer_settings", "cert", "wwan_update"],
+        "descriptions": {
+          "firmware": "Firmware binary (.bin) — triggers reboot after upload",
+          "bootlogo": "Custom boot logo image",
+          "settings": "Settings backup file (.cf2)",
+          "customer_settings": "Customer-specific settings",
+          "cert": "Certificate file (CA, server, or client PEM)",
+          "wwan_update": "WWAN modem firmware update"
+        }
+      }
+    },
+    "download": {
+      "title": "File Download",
+      "description": "Download a file from the device via GET request.",
+      "endpoint": "GET https://<device-ip>/priv/script/php_rpc/download.php?file=<filename>",
+      "authentication": {
+        "type": "cookie",
+        "name": "ads_sid",
+        "description": "Session ID obtained from session.create"
+      },
+      "valid_files": {
+        "type": "string",
+        "enum": ["diag.tar.gz", "settings.cf2"],
+        "descriptions": {
+          "diag.tar.gz": "Diagnostic archive — call config.set with generate_diag_now=1 first",
+          "settings.cf2": "Settings backup — call config.set with save_settings_now=1 first"
+        }
+      }
+    }
+  }
+}

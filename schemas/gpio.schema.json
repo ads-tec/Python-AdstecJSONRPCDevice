@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gpio.schema.json",
+  "title": "gpio — GPIO Control",
+  "description": "Read digital inputs and control LEDs. Available on firewall models (IRF1000, IRF2000, IRF3000) only.",
+  "definitions": {
+    "list": {
+      "title": "gpio.list",
+      "description": "List all available GPIO signals on the device.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object",
+        "properties": {
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "GPIO signal descriptor"
+            },
+            "description": "Array of all GPIO signals (digital inputs, LEDs, etc.)"
+          }
+        },
+        "required": ["signals"]
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "gpio", "list", {}]
+      }
+    },
+    "get": {
+      "title": "gpio.get",
+      "description": "Get the current value of a GPIO signal.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "signal": {
+            "type": "string",
+            "description": "Signal name (e.g. 'DI1', 'DI2', 'LED2_RED', 'alarm', 'cut')",
+            "examples": ["DI2", "LED2_RED", "alarm"]
+          }
+        },
+        "required": ["signal"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Signal value"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "gpio", "get", {"signal": "LED2_RED"}]
+      }
+    },
+    "get_bool": {
+      "title": "gpio.get_bool",
+      "description": "Get the boolean state of a GPIO signal (typically for digital inputs).",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "signal": {
+            "type": "string",
+            "description": "Signal name (e.g. 'DI1', 'DI2', 'cut', 'vpnkey', 'button')",
+            "examples": ["DI2", "cut"]
+          }
+        },
+        "required": ["signal"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Boolean signal state"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "gpio", "get_bool", {"signal": "DI2"}]
+      }
+    },
+    "get_pulses": {
+      "title": "gpio.get_pulses",
+      "description": "Get the pulse count of a GPIO signal. Counts both rising and falling edges, so one button press equals 2 pulses.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "signal": {
+            "type": "string",
+            "description": "Signal name (e.g. 'button')",
+            "examples": ["button"]
+          }
+        },
+        "required": ["signal"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Pulse count value"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "gpio", "get_pulses", {"signal": "button"}]
+      }
+    },
+    "on": {
+      "title": "gpio.on",
+      "description": "Turn a GPIO output signal on (e.g. activate an LED or alarm output).",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "signal": {
+            "type": "string",
+            "description": "Signal name (e.g. 'LED2_RED', 'alarm', 'vpnled')",
+            "examples": ["LED2_RED", "alarm"]
+          }
+        },
+        "required": ["signal"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "gpio", "on", {"signal": "LED2_RED"}]
+      }
+    },
+    "off": {
+      "title": "gpio.off",
+      "description": "Turn a GPIO output signal off (e.g. deactivate an LED or alarm output).",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "signal": {
+            "type": "string",
+            "description": "Signal name (e.g. 'LED2_RED', 'alarm', 'vpnled')",
+            "examples": ["LED2_RED", "alarm"]
+          }
+        },
+        "required": ["signal"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "gpio", "off", {"signal": "LED2_RED"}]
+      }
+    }
+  }
+}

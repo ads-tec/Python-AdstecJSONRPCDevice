@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "statusd.schema.json",
+  "title": "statusd — Big-LinX VPN Control",
+  "description": "Control the Big-LinX VPN connection and query its diagnostic status.",
+  "definitions": {
+    "blx_status": {
+      "title": "statusd.blx_status",
+      "description": "Get the full Big-LinX diagnostic status including VPN state, smart card info, and WWH service state.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object",
+        "properties": {
+          "cardstate": {
+            "type": "string",
+            "description": "Smart card state. 'VPNSC_CS_READY' means VPN can be activated."
+          },
+          "tokenlabel": {
+            "type": "string",
+            "description": "Common Name of the Big-LinX X.509 VPN certificate"
+          },
+          "vpn_state_name": {
+            "type": "string",
+            "description": "Current OpenVPN state (e.g. CONNECTED, OFF, CONNECTING)"
+          },
+          "vpn_ip": {
+            "type": "string",
+            "description": "VPN interface IP address (empty if VPN is down)"
+          },
+          "vpn_server_ip": {
+            "type": "string",
+            "description": "VPN server public IP and port"
+          },
+          "vpn_ctrl_state": {
+            "type": "integer",
+            "description": "Target VPN state: 1 = should be up, 0 = should be down",
+            "enum": [0, 1]
+          }
+        }
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "statusd", "blx_status", {}]
+      },
+      "example_response": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "result": [0, {
+          "cardstate": "VPNSC_CS_READY",
+          "tokenlabel": "device-001.biglinx.cloud",
+          "vpn_state_name": "CONNECTED",
+          "vpn_ip": "10.8.0.5",
+          "vpn_server_ip": "203.0.113.1:1194",
+          "vpn_ctrl_state": 1
+        }]
+      }
+    },
+    "blx_vpn_up": {
+      "title": "statusd.blx_vpn_up",
+      "description": "Start the Big-LinX VPN connection.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "statusd", "blx_vpn_up", {}]
+      }
+    },
+    "vpn_down": {
+      "title": "statusd.vpn_down",
+      "description": "Stop the Big-LinX VPN connection.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "statusd", "vpn_down", {}]
+      }
+    }
+  }
+}

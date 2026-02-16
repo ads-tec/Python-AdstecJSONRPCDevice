@@ -1,0 +1,469 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "config.schema.json",
+  "title": "config — Configuration",
+  "description": "Read and write device configuration. Changes require a configuration session (sess_start → set → sess_commit). On conflict, sess_commit discards the entire config set.",
+  "definitions": {
+    "sess_start": {
+      "title": "config.sess_start",
+      "description": "Start a configuration session. Must be called before config.set, table_up, table_set, or table_del.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object",
+        "properties": {
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Configuration session ID. Pass this to config.set and config.sess_commit."
+          }
+        },
+        "required": ["cfg_session_id"]
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "sess_start", {}]
+      }
+    },
+    "sess_commit": {
+      "title": "config.sess_commit",
+      "description": "Commit a configuration session, applying all changes atomically. On conflict (e.g., invalid combination of settings), the entire config set is discarded and an error is returned.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Configuration session ID from sess_start"
+          }
+        },
+        "required": ["cfg_session_id"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "sess_commit", {"cfg_session_id": "<cfg_session_id>"}]
+      }
+    },
+    "sess_abort": {
+      "title": "config.sess_abort",
+      "description": "Cancel a configuration session and discard all pending changes.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Configuration session ID from sess_start"
+          }
+        },
+        "required": ["cfg_session_id"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "sess_abort", {"cfg_session_id": "<cfg_session_id>"}]
+      }
+    },
+    "get": {
+      "title": "config.get",
+      "description": "Read current values of one or more configuration variables. Non-existing variables return empty string.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of configuration variable names to read",
+            "examples": [["lan_ipaddr", "timezone", "ntp_service"]]
+          }
+        },
+        "required": ["keys"]
+      },
+      "response_result": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Each item is a single-key object: {variable_name: value}"
+            },
+            "description": "Array of key-value objects, one per requested key"
+          }
+        }
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "get", {"keys": ["lan_ipaddr", "timezone"]}]
+      },
+      "example_response": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "result": [0, {"result": [{"lan_ipaddr": "192.168.0.254"}, {"timezone": "Europe/Berlin"}]}]
+      }
+    },
+    "get_values": {
+      "title": "config.get_values",
+      "description": "Extended read: returns default value, permissions, JSON-interpreted value, and raw string for each configuration variable.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of configuration variable names to read"
+          }
+        },
+        "required": ["keys"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Extended variable information including defaults, permissions, and both raw and JSON-interpreted values"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "get_values", {"keys": ["lan_ipaddr"]}]
+      }
+    },
+    "get_default": {
+      "title": "config.get_default",
+      "description": "Get the default value for each configuration variable. Defaults are firmware and product-specific.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of configuration variable names"
+          }
+        },
+        "required": ["keys"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Default values for each requested key"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "get_default", {"keys": ["lan_ipaddr", "timezone"]}]
+      }
+    },
+    "export_pages": {
+      "title": "config.export_pages",
+      "description": "Export all settings for given page IDs. Output can be fed to import_config.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of page IDs to export"
+          }
+        },
+        "required": ["pages"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Exported configuration data suitable for import_config"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "export_pages", {"pages": ["network", "system"]}]
+      }
+    },
+    "import_config": {
+      "title": "config.import_config",
+      "description": "Bulk import configuration. Does NOT require a config session. All-or-nothing — aborts on any error. Supports configdata (flat key-value), tableinsert, tableupdate, and tabledelete operations.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "jsondata": {
+            "type": "object",
+            "description": "Import payload with configdata and/or table operations",
+            "properties": {
+              "configdata": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Key-value pairs of configuration variables"
+              },
+              "tableinsert": {
+                "type": "object",
+                "description": "Table insert operations"
+              },
+              "tableupdate": {
+                "type": "object",
+                "description": "Table update operations"
+              },
+              "tabledelete": {
+                "type": "object",
+                "description": "Table delete operations"
+              }
+            }
+          }
+        },
+        "required": ["jsondata"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "import_config", {
+          "jsondata": {
+            "configdata": {"timezone": "Europe/Berlin", "ntp_service": "enabled"},
+            "tableinsert": {},
+            "tableupdate": {},
+            "tabledelete": {}
+          }
+        }]
+      }
+    },
+    "set": {
+      "title": "config.set",
+      "description": "Write one or more configuration variables within an active session. Values are regex-validated; on failure the entire call is aborted.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Active configuration session ID"
+          },
+          "values": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Key-value pairs of configuration variables to set",
+            "examples": [{"ntp_service": "enabled", "ntp_server": "pool.ntp.org"}]
+          },
+          "verbose": {
+            "type": "boolean",
+            "description": "With verbose=true, returns all validation errors instead of just the first",
+            "default": true
+          }
+        },
+        "required": ["cfg_session_id", "values"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "<sid>",
+          "config",
+          "set",
+          {
+            "cfg_session_id": "<cfg_session_id>",
+            "values": {"timezone": "Europe/Berlin", "ntp_service": "enabled"},
+            "verbose": true
+          }
+        ]
+      }
+    },
+    "table_get": {
+      "title": "config.table_get",
+      "description": "Read rows from a device table matching a condition. Condition supports up to 2 key-value pairs (AND logic).",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Name of the table (e.g. 'users', 'ipgroups', 'macgroups', 'permissions')"
+          },
+          "condition": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Condition to match (max 2 keys, AND logic). E.g. {\"username\": \"admin\"}",
+            "maxProperties": 2
+          }
+        },
+        "required": ["tablename", "condition"]
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Matching row data"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "config", "table_get", {"tablename": "users", "condition": {"username": "admin"}}]
+      }
+    },
+    "table_set": {
+      "title": "config.table_set",
+      "description": "Insert a new row into a device table. All columns are required.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Name of the table"
+          },
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Active configuration session ID"
+          },
+          "row": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Row data as an ordered array of field values (all columns required)"
+          }
+        },
+        "required": ["tablename", "cfg_session_id", "row"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "<sid>",
+          "config",
+          "table_set",
+          {
+            "tablename": "users",
+            "cfg_session_id": "<cfg_session_id>",
+            "row": ["testuser", "", "", "1", "", "1970-01-01", "1970-01-01"]
+          }
+        ]
+      }
+    },
+    "table_up": {
+      "title": "config.table_up",
+      "description": "Update existing rows in a device table matching a condition.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Name of the table"
+          },
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Active configuration session ID"
+          },
+          "condition": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Condition to identify rows to update (max 2 keys)",
+            "maxProperties": 2
+          },
+          "values": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Key-value pairs to update on matched rows"
+          }
+        },
+        "required": ["tablename", "cfg_session_id", "condition", "values"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "<sid>",
+          "config",
+          "table_up",
+          {
+            "tablename": "users",
+            "cfg_session_id": "<cfg_session_id>",
+            "condition": {"username": "testuser"},
+            "values": {"enabled": "1"}
+          }
+        ]
+      }
+    },
+    "table_del": {
+      "title": "config.table_del",
+      "description": "Delete rows from a device table matching a condition.",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "tablename": {
+            "type": "string",
+            "description": "Name of the table"
+          },
+          "cfg_session_id": {
+            "type": "string",
+            "description": "Active configuration session ID"
+          },
+          "condition": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Condition to identify rows to delete (max 2 keys)",
+            "maxProperties": 2
+          }
+        },
+        "required": ["tablename", "cfg_session_id", "condition"]
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "<sid>",
+          "config",
+          "table_del",
+          {
+            "tablename": "users",
+            "cfg_session_id": "<cfg_session_id>",
+            "condition": {"username": "testuser"}
+          }
+        ]
+      }
+    }
+  }
+}

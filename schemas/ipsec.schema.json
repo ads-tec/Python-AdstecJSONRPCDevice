@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ipsec.schema.json",
+  "title": "network.ipsec.control — IPsec VPN",
+  "description": "Control IPsec VPN policies configured as 'Active (Switched)' in the web interface.",
+  "definitions": {
+    "up": {
+      "title": "network.ipsec.control.up",
+      "description": "Activate an IPsec policy. The policy must be configured as 'Active (Switched)' before it can be controlled via API.",
+      "request_params": {
+        "type": "object",
+        "description": "Policy identifier parameters",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "network.ipsec.control", "up", {}]
+      }
+    },
+    "down": {
+      "title": "network.ipsec.control.down",
+      "description": "Deactivate an IPsec policy.",
+      "request_params": {
+        "type": "object",
+        "description": "Policy identifier parameters",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": ["<sid>", "network.ipsec.control", "down", {}]
+      }
+    }
+  }
+}

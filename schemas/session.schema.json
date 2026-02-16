@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session.schema.json",
+  "title": "session — Authentication",
+  "description": "Session management: authenticate and acquire/destroy session IDs.",
+  "definitions": {
+    "create": {
+      "title": "session.create",
+      "description": "Authenticate with username and password. Returns a session ID (SID) used for all subsequent calls. This is the only call that may use the null SID (00000000000000000000000000000000).",
+      "request_params": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "Login username",
+            "examples": ["admin"]
+          },
+          "password": {
+            "type": "string",
+            "description": "Login password"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Session timeout in seconds. The session expires after this period of inactivity.",
+            "default": 600,
+            "minimum": 1
+          }
+        },
+        "required": ["user", "password"]
+      },
+      "response_result": {
+        "type": "object",
+        "properties": {
+          "sid": {
+            "type": "string",
+            "description": "Session ID (32-character hex string). Use this in all subsequent API calls.",
+            "pattern": "^[0-9a-f]{32}$"
+          },
+          "acls": {
+            "type": "object",
+            "description": "Access control list — permissions granted to this user session"
+          }
+        },
+        "required": ["sid"]
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "00000000000000000000000000000000",
+          "session",
+          "create",
+          {"user": "admin", "password": "admin", "timeout": 600}
+        ]
+      },
+      "example_response": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "result": [0, {"sid": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4", "acls": {}}]
+      }
+    },
+    "list": {
+      "title": "session.list",
+      "description": "List all active sessions on the device.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object",
+        "description": "Object containing active session information"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "<sid>",
+          "session",
+          "list",
+          {}
+        ]
+      }
+    },
+    "destroy": {
+      "title": "session.destroy",
+      "description": "Destroy the current session (logout). Invalidates the SID.",
+      "request_params": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_result": {
+        "type": "object"
+      },
+      "example_request": {
+        "id": "req-1",
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": [
+          "<sid>",
+          "session",
+          "destroy",
+          {}
+        ]
+      }
+    }
+  }
+}
