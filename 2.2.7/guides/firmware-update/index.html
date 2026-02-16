@@ -765,17 +765,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#valid-upload-file-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Valid Upload File Types
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -809,34 +798,6 @@
     <span class="md-ellipsis">
       
         Example
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring Status
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#additional-useful-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Additional Useful Properties
       
     </span>
   </a>
@@ -1681,17 +1642,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#valid-upload-file-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Valid Upload File Types
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1725,34 +1675,6 @@
     <span class="md-ellipsis">
       
         Example
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring Status
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#additional-useful-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Additional Useful Properties
       
     </span>
   </a>
@@ -1859,41 +1781,6 @@
 <li>Polls <code>boot_finished</code> status until it returns <code>"yes"</code></li>
 <li>Returns a new authenticated <code>AdstecJSONRPCDevice</code> instance</li>
 </ol>
-<h3 id="valid-upload-file-types">Valid Upload File Types<a class="headerlink" href="#valid-upload-file-types" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>firmware</code></td>
-<td>Firmware binary (<code>.bin</code>)</td>
-</tr>
-<tr>
-<td><code>bootlogo</code></td>
-<td>Custom boot logo</td>
-</tr>
-<tr>
-<td><code>settings</code></td>
-<td>Settings backup (<code>.cf2</code>)</td>
-</tr>
-<tr>
-<td><code>customer_settings</code></td>
-<td>Customer-specific settings</td>
-</tr>
-<tr>
-<td><code>cert</code></td>
-<td>Certificates (CA, server, client)</td>
-</tr>
-<tr>
-<td><code>wwan_update</code></td>
-<td>WWAN modem firmware update</td>
-</tr>
-</tbody>
-</table>
 <hr />
 <h2 id="method-2-server-pull-via-json-rpc">Method 2: Server Pull via JSON-RPC<a class="headerlink" href="#method-2-server-pull-via-json-rpc" title="Permanent link">&para;</a></h2>
 <p>The device pulls a firmware image from an FTP, TFTP, or HTTP server that you control. Available on all IRF1000, IRF3000, and IRF2000 (firmware &gt;= 2.5.0).</p>
@@ -1957,129 +1844,6 @@
 <p>Which user accounts are allowed to trigger this method can be configured via the Permissions feature.</p>
 </div>
 <hr />
-<h2 id="monitoring-status">Monitoring Status<a class="headerlink" href="#monitoring-status" title="Permanent link">&para;</a></h2>
-<p>These status properties are useful across all update methods:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Parameters</th>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>firmwareupdate_prepared</code></td>
-<td>—</td>
-<td><code>"yes"</code> / <code>"no"</code></td>
-<td>Whether a valid firmware is ready on the second partition</td>
-</tr>
-<tr>
-<td><code>firmwareupdate_progress</code></td>
-<td>—</td>
-<td><code>-1</code> or <code>0</code>–<code>100</code></td>
-<td>Percent complete, or <code>-1</code> if no flashing is active</td>
-</tr>
-<tr>
-<td><code>firmwareupdate_inprogress</code></td>
-<td>—</td>
-<td><code>"yes"</code> / <code>"no"</code></td>
-<td>Whether an update is currently in progress</td>
-</tr>
-<tr>
-<td><code>firmware_version_downgrade_check</code></td>
-<td>version (e.g., <code>"1.5.0"</code>)</td>
-<td><code>"yes"</code> / <code>"no"</code></td>
-<td>Whether a downgrade to the given version is possible</td>
-</tr>
-<tr>
-<td><code>diag_log</code></td>
-<td><code>"fw_update"</code></td>
-<td>string</td>
-<td>Internal error messages during update (for debugging, format may change)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="additional-useful-properties">Additional Useful Properties<a class="headerlink" href="#additional-useful-properties" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Parameters</th>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>imageversion</code></td>
-<td>—</td>
-<td>string</td>
-<td>Current firmware version</td>
-</tr>
-<tr>
-<td><code>second_imageversion</code></td>
-<td>—</td>
-<td>string</td>
-<td>Firmware on the second (inactive) partition</td>
-</tr>
-<tr>
-<td><code>product</code></td>
-<td>—</td>
-<td>string</td>
-<td>Device family (e.g., <code>"IRF2xxx"</code>)</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td>—</td>
-<td>string</td>
-<td>Main version string (e.g., <code>"1.5.0"</code>)</td>
-</tr>
-<tr>
-<td><code>buildno</code></td>
-<td>—</td>
-<td>string</td>
-<td>Detailed revision and build number</td>
-</tr>
-<tr>
-<td><code>configstate</code></td>
-<td>—</td>
-<td>string</td>
-<td>Configuration state (e.g., <code>"notsaved"</code>) — check for unsaved changes before update</td>
-</tr>
-<tr>
-<td><code>uptime</code></td>
-<td>—</td>
-<td>string</td>
-<td>System uptime — useful for detecting reboots</td>
-</tr>
-<tr>
-<td><code>boot_finished</code></td>
-<td>—</td>
-<td><code>"yes"</code> / <code>"no"</code></td>
-<td>Whether the device has completed booting</td>
-</tr>
-<tr>
-<td><code>meminfo</code></td>
-<td><code>"netflash"</code></td>
-<td>string</td>
-<td>RAM usage and PID of the flasher process (e.g., <code>"1234: 1000 kB"</code>, empty if not running). Useful for server pull method only</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Check if a downgrade is possible before updating</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">can_downgrade</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;firmware_version_downgrade_check&quot;</span><span class="p">,</span> <span class="s2">&quot;1.5.0&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downgrade to 1.5.0 possible: </span><span class="si">{</span><span class="n">can_downgrade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Monitor flasher process (server pull method)</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">meminfo</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;meminfo&quot;</span><span class="p">,</span> <span class="s2">&quot;netflash&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">if</span> <span class="n">meminfo</span><span class="p">:</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flasher running: </span><span class="si">{</span><span class="n">meminfo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Flasher not running&quot;</span><span class="p">)</span>
-</code></pre></div>
-<hr />
 <h2 id="legacy-http-post-to-netflash">Legacy: HTTP POST to netflash<a class="headerlink" href="#legacy-http-post-to-netflash" title="Permanent link">&para;</a></h2>
 <p>For older devices or special cases, the firmware can be sent as an HTTP POST directly to the device's <code>netflash</code> CGI endpoint. This is the underlying mechanism behind <code>upload_file("firmware", ...)</code> in the Python reference implementation.</p>
 <ul>
@@ -2087,9 +1851,9 @@
 <li>HTTP Digest authentication only</li>
 <li>Will be disabled by default in future firmware versions</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-v<span class="w"> </span>--digest<span class="w"> </span>-u<span class="w"> </span>admin:<span class="nv">$password</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>https://<span class="nv">$ip</span>//cgi-bin/netflash?cgi://file,<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>-F<span class="w"> </span><span class="nv">file</span><span class="o">=</span><span class="s2">&quot;@</span><span class="nv">$filename</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-v<span class="w"> </span>--digest<span class="w"> </span>-u<span class="w"> </span>admin:<span class="nv">$password</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>https://<span class="nv">$ip</span>//cgi-bin/netflash?cgi://file,<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-F<span class="w"> </span><span class="nv">file</span><span class="o">=</span><span class="s2">&quot;@</span><span class="nv">$filename</span><span class="s2">&quot;</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
