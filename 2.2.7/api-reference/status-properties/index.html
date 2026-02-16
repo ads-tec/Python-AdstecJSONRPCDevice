@@ -1898,7 +1898,49 @@
 <td><code>firmwareupdate_prepared</code></td>
 <td>—</td>
 <td><code>"yes"</code> / <code>"no"</code></td>
-<td>Whether second partition has a new firmware ready</td>
+<td>Whether second partition has a valid firmware ready to activate</td>
+</tr>
+<tr>
+<td><code>firmwareupdate_progress</code></td>
+<td>—</td>
+<td><code>-1</code> or <code>0</code>–<code>100</code></td>
+<td>Flashing percent complete, or <code>-1</code> if no flashing is active</td>
+</tr>
+<tr>
+<td><code>firmwareupdate_inprogress</code></td>
+<td>—</td>
+<td><code>"yes"</code> / <code>"no"</code></td>
+<td>Whether a firmware update is currently in progress</td>
+</tr>
+<tr>
+<td><code>firmware_version_downgrade_check</code></td>
+<td>version string</td>
+<td><code>"yes"</code> / <code>"no"</code></td>
+<td>Whether a downgrade to the given version is possible (e.g., <code>dev.status("firmware_version_downgrade_check", "1.5.0")</code>)</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td>—</td>
+<td>string</td>
+<td>Device family identifier (e.g., <code>"IRF2xxx"</code>) — used for firmware file matching</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>—</td>
+<td>string</td>
+<td>Running firmware main version (e.g., <code>"1.5.0"</code>)</td>
+</tr>
+<tr>
+<td><code>buildno</code></td>
+<td>—</td>
+<td>string</td>
+<td>Detailed revision and build number</td>
+</tr>
+<tr>
+<td><code>configstate</code></td>
+<td>—</td>
+<td>string</td>
+<td>Configuration state (e.g., <code>"notsaved"</code> if unsaved changes exist)</td>
 </tr>
 <tr>
 <td><code>redbootserial</code></td>
@@ -1971,6 +2013,12 @@
 <td>—</td>
 <td><code>"no sim"</code> / <code>"synced"</code> / <code>"not synced"</code></td>
 <td>Memory card state</td>
+</tr>
+<tr>
+<td><code>diag_log</code></td>
+<td>category string</td>
+<td>string</td>
+<td>Internal diagnostic log for a subsystem (e.g., <code>dev.status("diag_log", "fw_update")</code> for firmware update errors). Format may change between versions</td>
 </tr>
 <tr>
 <td><code>eventlog</code></td>
