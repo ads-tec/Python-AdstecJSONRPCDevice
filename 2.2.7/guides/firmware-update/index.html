@@ -1845,20 +1845,19 @@
 </div>
 <hr />
 <h2 id="legacy-http-post-to-netflash">Legacy: HTTP POST to netflash<a class="headerlink" href="#legacy-http-post-to-netflash" title="Permanent link">&para;</a></h2>
-<p>For older devices or special cases, the firmware can be sent as an HTTP POST directly to the device's <code>netflash</code> CGI endpoint. This is the underlying mechanism behind <code>upload_file("firmware", ...)</code> in the Python reference implementation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint only exists on IRF firmware versions &lt; 2.0.0 that do not yet have the newer <code>upload.php</code>. Firmware versions &gt;= 2.0.0 no longer provide this endpoint — use <a href="#method-1-http-post-upload">Method 1</a> instead.</p>
+</div>
+<p>For devices running firmware &lt; 2.0.0, the firmware can be sent as an HTTP POST directly to the device's <code>netflash</code> CGI endpoint.</p>
 <ul>
 <li>Only the <code>admin</code> user account is allowed</li>
 <li>HTTP Digest authentication only</li>
-<li>Will be disabled by default in future firmware versions</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-v<span class="w"> </span>--digest<span class="w"> </span>-u<span class="w"> </span>admin:<span class="nv">$password</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>https://<span class="nv">$ip</span>//cgi-bin/netflash?cgi://file,<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-F<span class="w"> </span><span class="nv">file</span><span class="o">=</span><span class="s2">&quot;@</span><span class="nv">$filename</span><span class="s2">&quot;</span>
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This method uses legacy HTTP Digest authentication and is being phased out. Prefer <a href="#method-1-http-post-upload">Method 1</a> (Python upload) or <a href="#method-2-server-pull-via-json-rpc">Method 2</a> for new integrations.</p>
-</div>
 
 
 
