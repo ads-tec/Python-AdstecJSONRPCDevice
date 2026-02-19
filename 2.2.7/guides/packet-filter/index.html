@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://ads-tec.github.io/Python-AdstecJSONRPCDevice/2.2.7/guides/gpio/">
+        <link rel="canonical" href="https://ads-tec.github.io/Python-AdstecJSONRPCDevice/2.2.7/guides/packet-filter/">
       
       
-        <link rel="prev" href="../../api-reference/firewall/tables/">
+        <link rel="prev" href="../gpio/">
       
       
-        <link rel="next" href="../packet-filter/">
+        <link rel="next" href="rule-modes/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>GPIO - ads-tec Industrial IT JSON-RPC API</title>
+        <title>Overview - ads-tec Industrial IT JSON-RPC API</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gpio" class="md-skip">
+        <a href="#packet-filter" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GPIO
+              Overview
             
           </span>
         </div>
@@ -1206,6 +1206,85 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packet Filter
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Packet Filter
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
     
   
   
@@ -1225,7 +1304,7 @@
   <span class="md-ellipsis">
     
   
-    GPIO
+    Overview
   
 
     
@@ -1243,7 +1322,7 @@
   <span class="md-ellipsis">
     
   
-    GPIO
+    Overview
   
 
     
@@ -1269,10 +1348,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#listing-available-signals" class="md-nav__link">
+  <a href="#data-model-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Listing Available Signals
+        Data Model Overview
       
     </span>
   </a>
@@ -1280,10 +1359,99 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-digital-inputs" class="md-nav__link">
+  <a href="#scope-and-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading Digital Inputs
+        Scope and Interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scope and Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#irf1000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRF1000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irf2000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRF2000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irf3000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRF3000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-name-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Name Aliases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interface Name Aliases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discovering-available-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discovering Available Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applying Changes
       
     </span>
   </a>
@@ -1291,10 +1459,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#controlling-leds" class="md-nav__link">
+  <a href="#key-behaviors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Controlling LEDs
+        Key Behaviors
       
     </span>
   </a>
@@ -1302,21 +1470,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gpio-methods" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GPIO Methods
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#signal-naming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signal Naming
+        Next Steps
       
     </span>
   </a>
@@ -1338,85 +1495,8 @@
   
   
   
-    
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Packet Filter
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Packet Filter
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../packet-filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../packet-filter/rule-modes/" class="md-nav__link">
+      <a href="rule-modes/" class="md-nav__link">
         
   
   
@@ -1444,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../packet-filter/tables/" class="md-nav__link">
+      <a href="tables/" class="md-nav__link">
         
   
   
@@ -1472,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../packet-filter/examples/" class="md-nav__link">
+      <a href="examples/" class="md-nav__link">
         
   
   
@@ -1772,10 +1852,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#listing-available-signals" class="md-nav__link">
+  <a href="#data-model-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Listing Available Signals
+        Data Model Overview
       
     </span>
   </a>
@@ -1783,10 +1863,99 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-digital-inputs" class="md-nav__link">
+  <a href="#scope-and-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading Digital Inputs
+        Scope and Interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scope and Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#irf1000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRF1000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irf2000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRF2000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irf3000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRF3000
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-name-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface Name Aliases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interface Name Aliases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discovering-available-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discovering Available Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applying Changes
       
     </span>
   </a>
@@ -1794,10 +1963,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#controlling-leds" class="md-nav__link">
+  <a href="#key-behaviors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Controlling LEDs
+        Key Behaviors
       
     </span>
   </a>
@@ -1805,21 +1974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gpio-methods" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GPIO Methods
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#signal-naming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signal Naming
+        Next Steps
       
     </span>
   </a>
@@ -1846,100 +2004,336 @@
   
 
 
-<h1 id="gpio">GPIO<a class="headerlink" href="#gpio" title="Permanent link">&para;</a></h1>
+<h1 id="packet-filter">Packet Filter<a class="headerlink" href="#packet-filter" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Firewall models only</p>
-<p>GPIO functionality is available on IRF1000, IRF2000, and IRF3000 firewalls.</p>
+<p>Packet filter configuration is available on IRF1000, IRF2000, and IRF3000 firewalls.</p>
 </div>
-<h2 id="listing-available-signals">Listing Available Signals<a class="headerlink" href="#listing-available-signals" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jsonrpcdevice</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">dev</span> <span class="o">=</span> <span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">AdstecJSONRPCDevice</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">signals</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gpio&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">for</span> <span class="n">signal</span> <span class="ow">in</span> <span class="n">signals</span><span class="p">[</span><span class="s2">&quot;signals&quot;</span><span class="p">]:</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">dev</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-</code></pre></div>
-<h2 id="reading-digital-inputs">Reading Digital Inputs<a class="headerlink" href="#reading-digital-inputs" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Get boolean state of digital input 2</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">di2_state</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gpio&quot;</span><span class="p">,</span> <span class="s2">&quot;get_bool&quot;</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="s2">&quot;DI2&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DI2: </span><span class="si">{</span><span class="n">di2_state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="controlling-leds">Controlling LEDs<a class="headerlink" href="#controlling-leds" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Turn on the red LED on LED2</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">dev</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gpio&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="s2">&quot;LED2_RED&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Check the state</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">state</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gpio&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="s2">&quot;LED2_RED&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LED2_RED: </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Wait, then turn off</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">dev</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;gpio&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="s2">&quot;LED2_RED&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="gpio-methods">GPIO Methods<a class="headerlink" href="#gpio-methods" title="Permanent link">&para;</a></h2>
+<p>The packet filter controls forwarded traffic through the firewall. It uses three interrelated tables that define rulesets, individual rules, and which rulesets are active.</p>
+<h2 id="data-model-overview">Data Model Overview<a class="headerlink" href="#data-model-overview" title="Permanent link">&para;</a></h2>
+<p>The packet filter uses a 3-tier table architecture:</p>
+<pre class="mermaid"><code>erDiagram
+    services ||--o{ serv_Protocols : "contains"
+    services ||--o{ selected_services : "activated by"
+
+    services {
+        int id PK
+        string name
+        string description
+        smallint layer_id "1=L2  2=L3"
+        smallint def_serv "0=custom  1=factory"
+        string src_interf_name
+        string des_interf_name
+        int fac_def_pos
+    }
+
+    serv_Protocols {
+        int id PK
+        int service_id FK
+        string protocol "TCP  UDP  ICMP  etc"
+        smallint action_id FK "1=ACCEPT  2=DROP  etc"
+        string src_ip_add
+        string des_ip_add
+        string src_port
+        string des_port
+        int position "rule order"
+    }
+
+    selected_services {
+        int id PK
+        int serv_id FK
+        string days "Mon  Tue  etc"
+        smallint time_active "0=off  1=on"
+        string time_start "HH:MM"
+        string time_stop "HH:MM"
+        int position "ruleset order"
+    }</code></pre>
+<ul>
+<li><strong><a href="tables/#services"><code>services</code></a></strong> — Rulesets (groups of rules). Each ruleset operates at either Layer 2 (ebtables) or Layer 3 (iptables).</li>
+<li><strong><a href="tables/#serv_protocols"><code>serv_Protocols</code></a></strong> — Individual filter rules within a ruleset. Each rule specifies match criteria (protocol, addresses, ports) and an action.</li>
+<li><strong><a href="tables/#selected_services"><code>selected_services</code></a></strong> — Activates a ruleset with an optional time-based schedule.</li>
+</ul>
+<p>Two read-only lookup tables provide reference data:</p>
+<ul>
+<li><strong><code>protocols</code></strong> — Maps protocol names (<code>TCP</code>, <code>UDP</code>, <code>ICMP</code>) to numeric values for iptables</li>
+<li><strong><code>actions</code></strong> — Maps action IDs to names (<code>ACCEPT</code>, <code>DROP</code>, etc.)</li>
+</ul>
+<p>Address groups from the <a href="../../api-reference/firewall/tables/#ipgroups-network-groups"><code>ipgroups</code> and <code>macgroups</code></a> tables can be referenced in rules using the <code>@groupname</code> syntax.</p>
+<h2 id="scope-and-interfaces">Scope and Interfaces<a class="headerlink" href="#scope-and-interfaces" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">FORWARD chain only — traffic <em>to</em> the device is not filtered</p>
+<p>The packet filter applies exclusively to the <strong>iptables/ebtables FORWARD chain</strong> — only packets that pass <em>through</em> the device from one interface to another. Traffic addressed <strong>to the device itself</strong> (e.g. management access, web UI, SSH, ping to the device's own IP) uses the INPUT chain and is <strong>not</strong> subject to packet filter rules. You cannot use the packet filter to log or block traffic destined for the device's own IP addresses.</p>
+</div>
+<p>The available interfaces depend on the device model, the operating mode, and the filter layer:</p>
+<ul>
+<li><strong>Layer 2</strong> (ebtables) operates on bridge member ports — only interfaces that are part of a bridge (<code>br0</code>, <code>br1</code>) can be filtered at L2.</li>
+<li><strong>Layer 3</strong> (iptables) operates on standalone interfaces that are not part of a bridge (e.g. routed interfaces, VPN tunnels).</li>
+</ul>
+<h3 id="irf1000">IRF1000<a class="headerlink" href="#irf1000" title="Permanent link">&para;</a></h3>
+<p>The IRF1000 has 3 LAN ports and 1 WAN port. The 3 LAN ports are connected through a <strong>hardware switch</strong> and appear as a single interface (<code>eth0</code>) to the operating system — traffic between the LAN ports cannot be filtered.</p>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Parameters</th>
+<th>Operating Mode</th>
+<th><code>eth0</code> (LAN)</th>
+<th><code>eth1</code> (WAN)</th>
+<th>Bridges</th>
+<th>L2 Filtering</th>
+<th>L3 Filtering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transparent Bridge</strong></td>
+<td>member of <code>br0</code></td>
+<td>member of <code>br0</code></td>
+<td><code>br0</code> = eth0 + eth1</td>
+<td>Yes, between eth0 and eth1</td>
+<td>Not available</td>
+</tr>
+<tr>
+<td><strong>IP-Router</strong></td>
+<td>standalone</td>
+<td>standalone</td>
+<td>none</td>
+<td>Not available</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>In <strong>Transparent Bridge</strong> mode, both interfaces are members of <code>br0</code>. Traffic flowing between the LAN ports (<code>eth0</code>) and the WAN port (<code>eth1</code>) passes through the bridge and can be filtered at L2. L3 filtering is not available since there are no standalone interfaces.</p>
+<p>In <strong>IP-Router</strong> mode, <code>eth0</code> and <code>eth1</code> are separate routed interfaces. Only L3 filtering is available.</p>
+<h3 id="irf2000">IRF2000<a class="headerlink" href="#irf2000" title="Permanent link">&para;</a></h3>
+<p>The IRF2000 comes in two hardware variants: <strong>IRF22xx</strong> (2 Ethernet ports: 1 LAN, 1 WAN) and <strong>IRF26xx</strong> (6 Ethernet ports). The IRF2000 has separate LAN and WAN bridges, enabling L2 filtering between the two segments.</p>
+<table>
+<thead>
+<tr>
+<th>Operating Mode</th>
+<th>LAN</th>
+<th>WAN</th>
+<th>Bridges</th>
+<th>L2 Filtering</th>
+<th>L3 Filtering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transparent Bridge</strong></td>
+<td>members of <code>br0</code></td>
+<td>members of <code>br1</code></td>
+<td><code>br0</code> (LAN), <code>br1</code> (WAN)</td>
+<td>Yes, between <code>br0</code> and <code>br1</code></td>
+<td>Not available</td>
+</tr>
+<tr>
+<td><strong>IP-Router</strong></td>
+<td>members of <code>br0</code></td>
+<td>standalone</td>
+<td><code>br0</code> (LAN)</td>
+<td>Between <code>br0</code> members only</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>IP-Router Extended</strong></td>
+<td>all standalone by default</td>
+<td><code>br1</code> available, empty by default</td>
+<td><code>br1</code> (optional)</td>
+<td>Between <code>br1</code> members (if configured)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>In <strong>IP-Router Extended</strong> mode, all interfaces are standalone routed interfaces by default. The <code>br1</code> bridge is available but not started — the user can optionally assign interfaces to it. L3 filtering works on standalone interfaces; L2 filtering is available between <code>br1</code> members if any are configured.</p>
+<h3 id="irf3000">IRF3000<a class="headerlink" href="#irf3000" title="Permanent link">&para;</a></h3>
+<p>The IRF3000 comes in two hardware variants: <strong>IRF34xx</strong> (4 Ethernet ports) and <strong>IRF38xx</strong> (8 Ethernet ports). Interface names are uppercase (<code>ETH1</code>, <code>ETH2</code>, ..., <code>ETH8</code>), matching the labels printed on the device hardware.</p>
+<p>The IRF3000 supports three operating modes:</p>
+<table>
+<thead>
+<tr>
+<th>Operating Mode</th>
+<th>LAN Interfaces</th>
+<th>WAN Interfaces</th>
+<th>Bridges</th>
+<th>L2 Filtering</th>
+<th>L3 Filtering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transparent Bridge</strong></td>
+<td>members of <code>br0</code></td>
+<td>members of <code>br1</code></td>
+<td><code>br0</code> (LAN), <code>br1</code> (WAN)</td>
+<td>Yes, between <code>br0</code> and <code>br1</code></td>
+<td>Not available</td>
+</tr>
+<tr>
+<td><strong>IP-Router</strong></td>
+<td><code>ETH1</code>–<code>ETH4</code> (or <code>ETH8</code>) on <code>br0</code></td>
+<td><code>br1</code> freely configurable</td>
+<td><code>br0</code> (LAN), <code>br1</code> (WAN)</td>
+<td>Between bridge members</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>IP-Router Extended</strong></td>
+<td>all standalone by default</td>
+<td><code>br1</code> available, empty by default</td>
+<td><code>br1</code> (optional)</td>
+<td>Between <code>br1</code> members (if configured)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>In <strong>IP-Router</strong> mode, the LAN bridge (<code>br0</code>) contains <code>ETH1</code> through <code>ETH4</code> (IRF34xx) or <code>ETH8</code> (IRF38xx). The WAN bridge (<code>br1</code>) can be freely configured with any remaining interfaces. L2 filtering operates between bridge members, L3 filtering on standalone interfaces.</p>
+<p>In <strong>IP-Router Extended</strong> mode, all interfaces are standalone routed interfaces by default. The <code>br1</code> bridge is available but not started — the user can optionally assign interfaces to it. L3 filtering works on standalone interfaces; L2 filtering is available between <code>br1</code> members if any are configured.</p>
+<div class="admonition tip">
+<p class="admonition-title">IP-Router Extended for maximum filter granularity</p>
+<p>IP-Router Extended mode (available on IRF2000 and IRF3000) gives the most control — each physical port is a separate L3 interface that can be used in directional rulesets. This is the recommended mode when per-port filtering is required.</p>
+</div>
+<h3 id="additional-interfaces">Additional Interfaces<a class="headerlink" href="#additional-interfaces" title="Permanent link">&para;</a></h3>
+<p>Beyond the physical Ethernet ports, the following virtual interfaces can appear in filter rules when their respective features are enabled:</p>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>gpio.list</code></td>
-<td>—</td>
-<td>List all available GPIO signals</td>
+<td><code>wwan1</code></td>
+<td>L3 standalone</td>
+<td>Mobile network (cellular modem)</td>
 </tr>
 <tr>
-<td><code>gpio.get</code></td>
-<td><code>signal</code></td>
-<td>Get current value of a signal</td>
+<td><code>l3tap0</code>–<code>l3tap9</code></td>
+<td>L3 standalone</td>
+<td>OpenVPN tunnels in Layer 3 (TAP) mode</td>
 </tr>
 <tr>
-<td><code>gpio.get_bool</code></td>
-<td><code>signal</code></td>
-<td>Get boolean state of a signal</td>
+<td><code>l3tap10</code></td>
+<td>L3 standalone</td>
+<td>Big-LinX VPN tunnel</td>
 </tr>
 <tr>
-<td><code>gpio.on</code></td>
-<td><code>signal</code></td>
-<td>Turn a signal on</td>
+<td><code>ipsec0</code></td>
+<td>L3 standalone</td>
+<td>Virtual interface for all IPsec traffic</td>
 </tr>
 <tr>
-<td><code>gpio.off</code></td>
-<td><code>signal</code></td>
-<td>Turn a signal off</td>
+<td><code>docker0</code></td>
+<td>L3 standalone</td>
+<td>Bridge to the device's Docker engine</td>
+</tr>
+<tr>
+<td><code>l2tap0</code>–<code>l2tap9</code></td>
+<td>L2 bridged to <code>br0</code></td>
+<td>OpenVPN tunnels in Layer 2 mode</td>
 </tr>
 </tbody>
 </table>
-<h2 id="signal-naming">Signal Naming<a class="headerlink" href="#signal-naming" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Pattern</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Digital Inputs</td>
-<td><code>DI&lt;n&gt;</code></td>
-<td><code>DI1</code>, <code>DI2</code></td>
-</tr>
-<tr>
-<td>LEDs</td>
-<td><code>LED&lt;n&gt;_&lt;color&gt;</code></td>
-<td><code>LED2_RED</code></td>
-</tr>
-</tbody>
-</table>
+<p>L3 standalone interfaces can be used in L3 filter rules like any physical port. The L2 OpenVPN tunnels (<code>l2tap0</code>–<code>l2tap9</code>) are always bridged to <code>br0</code> and can be filtered at L2 as bridge members.</p>
+<div class="admonition warning">
+<p class="admonition-title">No interface validation</p>
+<p>The packet filter accepts <strong>any</strong> interface name in <code>src_interf_name</code> and <code>des_interf_name</code> — including interfaces that do not exist on the current device model or are not valid for the active operating mode. Rules referencing non-existent interfaces are silently ignored. It is the user's responsibility to ensure that the interface names used in rulesets match the actual device configuration.</p>
+</div>
+<h3 id="interface-name-aliases">Interface Name Aliases<a class="headerlink" href="#interface-name-aliases" title="Permanent link">&para;</a></h3>
+<p>The web UI displays user-friendly aliases (e.g., "LAN", "WAN", "WWAN") instead of the Linux interface names (e.g., <code>br0</code>, <code>br1</code>, <code>wwan1</code>). The packet filter tables and the <a href="../diagnostics/#packet-filter-log-entries">event log</a> both use the <strong>alias names</strong> — so <code>IN=ETH7</code> in a log line matches the label you see in the web UI.</p>
+<p>On IRF3000 devices, the physical port names (<code>ETH1</code>–<code>ETH8</code>) are the same in both the UI and Linux, so no translation is needed. For other interfaces, the mapping is stored in <code>{interface}_name</code> configuration variables:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Query interface alias mappings</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">aliases</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;br0_name&quot;</span><span class="p">,</span> <span class="s2">&quot;br1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;bond0_name&quot;</span><span class="p">,</span> <span class="s2">&quot;wwan1_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">&quot;l3tap0_name&quot;</span><span class="p">,</span> <span class="s2">&quot;l3tap10_name&quot;</span><span class="p">,</span> <span class="s2">&quot;ipsec0_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s2">&quot;docker_name&quot;</span><span class="p">,</span> <span class="s2">&quot;ppp0_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s2">&quot;lan_port1_name&quot;</span><span class="p">,</span> <span class="s2">&quot;lan_port2_name&quot;</span><span class="p">,</span> <span class="s2">&quot;lan_port3_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="s2">&quot;lan_port4_name&quot;</span><span class="p">,</span> <span class="s2">&quot;lan_port5_name&quot;</span><span class="p">,</span> <span class="s2">&quot;lan_port6_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="s2">&quot;lan_port7_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">]</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">aliases</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">config_get</span><span class="p">([</span><span class="n">name</span><span class="p">])</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="p">[{}])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="n">iface</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iface</span><span class="si">:</span><span class="s2">15s</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Example output on an IRF3851 (8-port):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>br0             -&gt; LAN (int.)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>br1             -&gt; WAN
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>bond0           -&gt; WAN
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>wwan1           -&gt; WWAN
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>l3tap0          -&gt; L3-VPN1
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>l3tap10         -&gt; BLX-VPN
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>ipsec0          -&gt; IPsec
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>docker          -&gt; DOCKER
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>ppp0            -&gt; WAN (DSL)
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>lan_port1       -&gt; ETH2
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>lan_port2       -&gt; ETH3
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>lan_port3       -&gt; ETH4
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>lan_port4       -&gt; ETH5
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>lan_port5       -&gt; ETH6
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>lan_port6       -&gt; ETH7
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>lan_port7       -&gt; ETH8
+</code></pre></div>
+<h4 id="discovering-available-interfaces">Discovering Available Interfaces<a class="headerlink" href="#discovering-available-interfaces" title="Permanent link">&para;</a></h4>
+<p>The <code>interfaces</code> status property returns all interface names currently available on the device based on its configuration. Interfaces appear even if they are currently down (e.g., <code>wwan1</code> is listed when mobile networking is configured but not connected, <code>ipsec0</code> when IPsec is configured but the tunnel is down):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">ifaces</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;interfaces&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">iface</span> <span class="ow">in</span> <span class="n">ifaces</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">alias</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">config_get</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iface</span><span class="si">}</span><span class="s2">_name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="p">[{}])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iface</span><span class="si">}</span><span class="s2">_name&quot;</span><span class="p">,</span> <span class="n">iface</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iface</span><span class="si">:</span><span class="s2">15s</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">alias</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Example output on an IRF3851:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>br1             -&gt; WAN
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ETH2            -&gt; ETH2
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ETH3            -&gt; ETH3
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>ETH4            -&gt; ETH4
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ETH5            -&gt; ETH5
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>ETH6            -&gt; ETH6
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>ETH7            -&gt; ETH7
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>lxcbr0          -&gt; DOCKER
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>l3tap10         -&gt; BLX-VPN
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>wwan1           -&gt; WWAN
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Finding the correct interface names for filter rules</p>
+<p>To discover the exact names used in the packet filter tables, use the web UI to create a test rule referencing the interfaces of interest, then <a href="examples/#exporting-the-entire-packet-filter">export the configuration</a> and inspect the <code>src_interf_name</code> / <code>des_interf_name</code> values.</p>
+</div>
+<h2 id="applying-changes">Applying Changes<a class="headerlink" href="#applying-changes" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Table changes do not take effect automatically</p>
+<p>Modifying the packet filter tables (<code>services</code>, <code>serv_Protocols</code>, <code>selected_services</code>) does <strong>not</strong> reload the running filter. You must trigger a reload by writing to the <code>l3_forward</code> configuration variable:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;l3_forward&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))})</span>
+</code></pre></div>
+<p>The value itself is ignored — any change triggers the reload. Using the current timestamp is a convenient way to ensure a unique value. Without this step, the device continues using the previous filter rules.</p>
+<p>The same applies to L2 filter changes — use <code>l2_forward</code> instead of <code>l3_forward</code>.</p>
+</div>
+<h2 id="key-behaviors">Key Behaviors<a class="headerlink" href="#key-behaviors" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Default FORWARD policy is DROP</strong> — all forwarded traffic is blocked unless a rule explicitly allows it</li>
+<li><strong>Rule evaluation order</strong>: <code>selected_services.position</code> determines ruleset order; within each ruleset, <code>serv_Protocols.position</code> determines individual rule order (lowest value first)</li>
+<li><strong>Protocol resolution</strong>: string names like <code>"TCP"</code> are resolved via the <code>protocols</code> table; numeric values are used directly as fallback</li>
+<li><strong>IP groups</strong>: <code>@groupname</code> references are implemented as <code>ipset</code> sets internally</li>
+<li><strong>Directional rulesets</strong>: when <code>src_interf_name</code> or <code>des_interf_name</code> is not <code>*</code>, the firewall creates both forward and reverse chains</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Position determines evaluation order — first match wins</p>
+<p>Rulesets are evaluated in ascending <code>selected_services.position</code> order. A catch-all ruleset like <strong>Allow_L3</strong> (which accepts all traffic) will prevent any ruleset with a <strong>higher</strong> position number from ever seeing traffic. If you add a custom ruleset for logging or selective filtering, it must have a <strong>lower position</strong> than any catch-all ACCEPT ruleset, otherwise it will never match any packets.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Performance: use directional rulesets for high-throughput interfaces</p>
+<p>The primary filter criteria are the <strong>input and output interfaces</strong>. Rulesets bound to specific interfaces (e.g. <code>src_interf_name="eth0"</code>, <code>des_interf_name="eth1"</code>) create per-interface-pair chains in iptables/ebtables. Traffic on a given interface pair only enters the matching chains — all other rulesets are skipped entirely.</p>
+<p>Wildcard rulesets (<code>src_interf_name="*"</code>, <code>des_interf_name="*"</code>) are evaluated for <strong>every packet on every interface</strong>. On high-throughput links this means the kernel traverses all rules in those rulesets for each packet.</p>
+<p>For best performance, place high-volume traffic rules in directional rulesets with explicit interface names and reserve wildcard rulesets for catch-all policies.</p>
+</div>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="rule-modes/">Rule Modes</a> — L3 easy/stateful/stateless modes and L2 filtering specifics</li>
+<li><a href="tables/">Table Reference</a> — full column schemas for all three tables</li>
+<li><a href="examples/">Examples</a> — export, import, CRUD operations, IP groups, scheduling</li>
+<li><a href="examples/#monitoring-packet-filter-counters">Monitoring Counters</a> — verify rules are matching traffic using real-time byte counters</li>
+</ul>
 
 
 

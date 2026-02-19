@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://ads-tec.github.io/Python-AdstecJSONRPCDevice/2.2.7/guides/vpn-approval/">
+        <link rel="canonical" href="https://ads-tec.github.io/Python-AdstecJSONRPCDevice/2.2.7/guides/packet-filter/rule-modes/">
       
       
-        <link rel="prev" href="../certificates/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../settings-backup/">
+        <link rel="next" href="../tables/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/favicon.png">
+      <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>VPN Approval - ads-tec Industrial IT JSON-RPC API</title>
+        <title>Rule Modes - ads-tec Industrial IT JSON-RPC API</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,11 +47,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vpn-approval" class="md-skip">
+        <a href="#rule-modes" class="md-skip">
           Skip to content
         </a>
       
@@ -96,9 +96,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ads-tec Industrial IT JSON-RPC API" class="md-header__button md-logo" aria-label="ads-tec Industrial IT JSON-RPC API" data-md-component="logo">
+    <a href="../../.." title="ads-tec Industrial IT JSON-RPC API" class="md-header__button md-logo" aria-label="ads-tec Industrial IT JSON-RPC API" data-md-component="logo">
       
-  <img src="../../assets/logo.png" alt="logo">
+  <img src="../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VPN Approval
+              Rule Modes
             
           </span>
         </div>
@@ -231,9 +231,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ads-tec Industrial IT JSON-RPC API" class="md-nav__button md-logo" aria-label="ads-tec Industrial IT JSON-RPC API" data-md-component="logo">
+    <a href="../../.." title="ads-tec Industrial IT JSON-RPC API" class="md-nav__button md-logo" aria-label="ads-tec Industrial IT JSON-RPC API" data-md-component="logo">
       
-  <img src="../../assets/logo.png" alt="logo">
+  <img src="../../../assets/logo.png" alt="logo">
 
     </a>
     ads-tec Industrial IT JSON-RPC API
@@ -260,7 +260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -287,7 +287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   
@@ -311,8 +311,6 @@
       
   
   
-    
-  
   
   
     
@@ -325,11 +323,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -350,7 +348,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -417,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/python-client/" class="md-nav__link">
+      <a href="../../../api-reference/python-client/" class="md-nav__link">
         
   
   
@@ -445,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/jsonrpc-methods/" class="md-nav__link">
+      <a href="../../../api-reference/jsonrpc-methods/" class="md-nav__link">
         
   
   
@@ -473,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/config-variables/" class="md-nav__link">
+      <a href="../../../api-reference/config-variables/" class="md-nav__link">
         
   
   
@@ -501,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/status-properties/" class="md-nav__link">
+      <a href="../../../api-reference/status-properties/" class="md-nav__link">
         
   
   
@@ -529,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/tables/" class="md-nav__link">
+      <a href="../../../api-reference/tables/" class="md-nav__link">
         
   
   
@@ -557,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/schemas/" class="md-nav__link">
+      <a href="../../../api-reference/schemas/" class="md-nav__link">
         
   
   
@@ -590,8 +588,6 @@
                 
   
   
-    
-  
   
   
     
@@ -601,11 +597,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -626,7 +622,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -644,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../diagnostics/" class="md-nav__link">
+      <a href="../../diagnostics/" class="md-nav__link">
         
   
   
@@ -672,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../firmware-update/" class="md-nav__link">
+      <a href="../../firmware-update/" class="md-nav__link">
         
   
   
@@ -700,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/" class="md-nav__link">
+      <a href="../../networking/" class="md-nav__link">
         
   
   
@@ -728,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datetime/" class="md-nav__link">
+      <a href="../../datetime/" class="md-nav__link">
         
   
   
@@ -756,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-management/" class="md-nav__link">
+      <a href="../../user-management/" class="md-nav__link">
         
   
   
@@ -784,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../password-management/" class="md-nav__link">
+      <a href="../../password-management/" class="md-nav__link">
         
   
   
@@ -812,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../certificates/" class="md-nav__link">
+      <a href="../../certificates/" class="md-nav__link">
         
   
   
@@ -837,37 +833,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VPN Approval
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../vpn-approval/" class="md-nav__link">
         
   
   
@@ -883,59 +852,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vpn-states" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VPN States
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#automated-approval-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Automated Approval Workflow
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -948,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../settings-backup/" class="md-nav__link">
+      <a href="../../settings-backup/" class="md-nav__link">
         
   
   
@@ -976,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../remote-capture/" class="md-nav__link">
+      <a href="../../remote-capture/" class="md-nav__link">
         
   
   
@@ -1016,8 +932,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1028,11 +946,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -1053,7 +971,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1120,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/firewall/jsonrpc-methods/" class="md-nav__link">
+      <a href="../../../api-reference/firewall/jsonrpc-methods/" class="md-nav__link">
         
   
   
@@ -1148,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/firewall/config-variables/" class="md-nav__link">
+      <a href="../../../api-reference/firewall/config-variables/" class="md-nav__link">
         
   
   
@@ -1176,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/firewall/status-properties/" class="md-nav__link">
+      <a href="../../../api-reference/firewall/status-properties/" class="md-nav__link">
         
   
   
@@ -1204,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/firewall/tables/" class="md-nav__link">
+      <a href="../../../api-reference/firewall/tables/" class="md-nav__link">
         
   
   
@@ -1237,6 +1155,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1246,11 +1166,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -1271,7 +1191,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1289,7 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpio/" class="md-nav__link">
+      <a href="../../gpio/" class="md-nav__link">
         
   
   
@@ -1314,6 +1234,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1323,11 +1245,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
@@ -1348,7 +1270,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1366,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../packet-filter/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1391,10 +1313,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../packet-filter/rule-modes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rule Modes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1410,6 +1359,137 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#l3-rule-modes-easy-stateful-and-stateless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L3 Rule Modes: Easy, Stateful, and Stateless
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L3 Rule Modes: Easy, Stateful, and Stateless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-mode-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easy Mode (Default)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateful-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stateful Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateless-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stateless Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#l2-filtering-ebtables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L2 Filtering (ebtables)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L2 Filtering (ebtables)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-native-conntrack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Native Conntrack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-and-ip-groups-on-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAC and IP Groups on L2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1422,7 +1502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../packet-filter/tables/" class="md-nav__link">
+      <a href="../tables/" class="md-nav__link">
         
   
   
@@ -1450,7 +1530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../packet-filter/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1602,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-reference/terminal/config-variables/" class="md-nav__link">
+      <a href="../../../api-reference/terminal/config-variables/" class="md-nav__link">
         
   
   
@@ -1687,7 +1767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../web-panel/" class="md-nav__link">
+      <a href="../../web-panel/" class="md-nav__link">
         
   
   
@@ -1750,35 +1830,113 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#l3-rule-modes-easy-stateful-and-stateless" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        L3 Rule Modes: Easy, Stateful, and Stateless
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L3 Rule Modes: Easy, Stateful, and Stateless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-mode-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easy Mode (Default)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#vpn-states" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#stateful-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VPN States
+        Stateful Mode
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#automated-approval-workflow" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#stateless-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Automated Approval Workflow
+        Stateless Mode
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#l2-filtering-ebtables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L2 Filtering (ebtables)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L2 Filtering (ebtables)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-native-conntrack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Native Conntrack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-and-ip-groups-on-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MAC and IP Groups on L2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1802,59 +1960,214 @@
   
 
 
-<h1 id="vpn-approval">VPN Approval<a class="headerlink" href="#vpn-approval" title="Permanent link">&para;</a></h1>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>ads-tec firewalls support a VPN approval workflow where VPN connections must be explicitly approved before they are established. When set to <code>"api"</code> mode, this approval can be automated via the JSON-RPC API.</p>
-<h2 id="vpn-states">VPN States<a class="headerlink" href="#vpn-states" title="Permanent link">&para;</a></h2>
+<h1 id="rule-modes">Rule Modes<a class="headerlink" href="#rule-modes" title="Permanent link">&para;</a></h1>
+<p>The columns referenced below (<code>state_type_id</code>, <code>revert</code>, <code>states</code>, <code>statevalue</code>) are part of the <a href="../../../api-reference/firewall/tables/#serv_protocols-packet-filter-rules"><code>serv_Protocols</code></a> table. See the <a href="../tables/#serv_protocols">Table Reference</a> for full column schemas.</p>
+<h2 id="l3-rule-modes-easy-stateful-and-stateless">L3 Rule Modes: Easy, Stateful, and Stateless<a class="headerlink" href="#l3-rule-modes-easy-stateful-and-stateless" title="Permanent link">&para;</a></h2>
+<p>Layer 3 (iptables) rulesets support three distinct modes for handling connection state and return traffic. Each mode represents a different trade-off between simplicity, flexibility, and performance.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not mix modes within a ruleset</p>
+<p>All rules within a single ruleset should use the same mode. Mixing modes (e.g., a stateful rule and a stateless rule in the same ruleset) leads to unpredictable behavior because the return-traffic handling assumptions conflict. Create separate rulesets if you need different modes.</p>
+</div>
+<h3 id="easy-mode-default">Easy Mode (Default)<a class="headerlink" href="#easy-mode-default" title="Permanent link">&para;</a></h3>
+<p><strong>Fields</strong>: <code>revert="1"</code>, <code>state_type_id=""</code>, <code>states=""</code></p>
+<p>This is the default mode in the device web UI. The user defines a rule for one direction only, and the system automatically generates a hidden reverse rule using conntrack to allow the return traffic. The user never has to think about connection states or return packets.</p>
+<p><strong>How it works</strong>: When a rule has <code>revert="1"</code>, the device automatically creates a second iptables rule in a reverse chain that uses conntrack (<code>-m conntrack --ctstate RELATED,ESTABLISHED</code>) to match return traffic for connections allowed by the forward rule.</p>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>Simplest to configure — define one direction, return traffic is handled automatically</li>
+<li>Lowest risk of misconfiguration — no state or flag parameters to get wrong</li>
+<li>Default in the web UI, suitable for most use cases</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>Uses conntrack, which has a finite connection table (can overflow under very high connection rates)</li>
+<li>Less control — you cannot fine-tune which return traffic is allowed</li>
+<li>The hidden reverse rule is not visible in the table, which can be confusing when debugging via API</li>
+</ul>
+<p><strong>Example rule values</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>revert=&quot;1&quot;, state_type_id=&quot;&quot;, states=&quot;&quot;
+</code></pre></div></p>
+<h3 id="stateful-mode">Stateful Mode<a class="headerlink" href="#stateful-mode" title="Permanent link">&para;</a></h3>
+<p><strong>Fields</strong>: <code>revert="0"</code>, <code>state_type_id="1"</code> or <code>"3"</code>, <code>states="NEW,RELATED,ESTABLISHED"</code></p>
+<p>Classic iptables stateful filtering using the conntrack module. The user explicitly specifies which connection states to match (e.g., <code>NEW</code>, <code>ESTABLISHED</code>, <code>RELATED</code>, <code>INVALID</code>). The user is responsible for creating matching rules for both directions or using appropriate state combinations.</p>
+<p><strong>How it works</strong>: The rule translates directly to <code>-m conntrack --ctstate &lt;states&gt;</code> in iptables. <code>state_type_id="1"</code> and <code>"3"</code> both use conntrack; <code>"3"</code> additionally applies to auto-generated reverse chains for directional rulesets.</p>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>Full control over which connection states are matched</li>
+<li>Well-understood iptables paradigm — extensive documentation and tooling available</li>
+<li>Can create precise rules like "allow only established return traffic" or "block invalid packets"</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>More complex to configure correctly — the user must understand conntrack states</li>
+<li>Requires explicit rules for return traffic (or careful use of <code>ESTABLISHED,RELATED</code>)</li>
+<li>Still uses conntrack, so the same connection table limits apply as easy mode</li>
+</ul>
+<p><strong>Example rule values</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>revert=&quot;0&quot;, state_type_id=&quot;1&quot;, states=&quot;NEW,RELATED,ESTABLISHED&quot;
+</code></pre></div></p>
+<h3 id="stateless-mode">Stateless Mode<a class="headerlink" href="#stateless-mode" title="Permanent link">&para;</a></h3>
+<p><strong>Fields</strong>: <code>revert="0"</code>, <code>state_type_id="2"</code>, <code>states=&lt;tcp-flags&gt;</code></p>
+<p>Low-level stateless filtering using TCP flags only, bypassing the conntrack module entirely. Rules match individual packets based on their TCP flag combination (SYN, ACK, FIN, RST, etc.) without any connection tracking.</p>
+<p><strong>How it works</strong>: The rule translates to <code>--tcp-flags &lt;flags-to-check&gt; &lt;expected-flags&gt;</code> in iptables. The <code>states</code> field contains the flag specification (e.g., <code>SYN,ACK,FIN,RST SYN</code> to match SYN-only packets). On L2 (ebtables), the <code>statevalue</code> field encodes flags as a 12-bit integer instead.</p>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>Highest performance — no conntrack overhead, no connection table, no per-connection memory</li>
+<li>Ideal for high-throughput scenarios or DDoS mitigation where conntrack would be a bottleneck</li>
+<li>Deterministic — each packet is evaluated independently, no state table to overflow</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>Most complex to configure — requires deep understanding of TCP flag combinations</li>
+<li>The user must create explicit rules for every traffic direction and packet type (SYN, SYN+ACK, ACK, FIN, etc.)</li>
+<li>No automatic handling of related traffic (e.g., ICMP error messages for TCP connections)</li>
+<li>Easy to misconfigure — a missing flag combination silently drops legitimate traffic</li>
+</ul>
+<p><strong>Example rule values</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>revert=&quot;0&quot;, state_type_id=&quot;2&quot;, states=&quot;SYN,ACK,FIN,RST SYN&quot;
+</code></pre></div></p>
+<h3 id="mode-comparison">Mode Comparison<a class="headerlink" href="#mode-comparison" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>State</th>
-<th>Description</th>
+<th></th>
+<th>Easy</th>
+<th>Stateful</th>
+<th>Stateless</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>WAITINGFORAPPROVAL</code></td>
-<td>VPN connection is pending approval</td>
+<td><strong>Complexity</strong></td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
 </tr>
 <tr>
-<td><code>CONNECTED</code></td>
-<td>VPN tunnel is established</td>
+<td><strong>Performance</strong></td>
+<td>Good</td>
+<td>Good</td>
+<td>Best</td>
+</tr>
+<tr>
+<td><strong>Conntrack</strong></td>
+<td>Yes (hidden)</td>
+<td>Yes (explicit)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Return traffic</strong></td>
+<td>Automatic</td>
+<td>Manual (via states)</td>
+<td>Manual (via TCP flags)</td>
+</tr>
+<tr>
+<td><strong><code>revert</code></strong></td>
+<td><code>"1"</code></td>
+<td><code>"0"</code></td>
+<td><code>"0"</code></td>
+</tr>
+<tr>
+<td><strong><code>state_type_id</code></strong></td>
+<td><code>""</code></td>
+<td><code>"1"</code> or <code>"3"</code></td>
+<td><code>"2"</code></td>
+</tr>
+<tr>
+<td><strong><code>states</code></strong></td>
+<td><code>""</code></td>
+<td><code>NEW,RELATED,...</code></td>
+<td>TCP flag spec</td>
+</tr>
+<tr>
+<td><strong>Web UI default</strong></td>
+<td>Yes</td>
+<td>Selectable</td>
+<td>Selectable</td>
+</tr>
+<tr>
+<td><strong>Recommended for</strong></td>
+<td>General use</td>
+<td>Fine-grained control</td>
+<td>High-throughput, DDoS</td>
 </tr>
 </tbody>
 </table>
-<h2 id="automated-approval-workflow">Automated Approval Workflow<a class="headerlink" href="#automated-approval-workflow" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jsonrpcdevice</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">dev</span> <span class="o">=</span> <span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">AdstecJSONRPCDevice</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 1. Enable API-based approval (one-time setup)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;vpn_approval_mode&quot;</span><span class="p">:</span> <span class="s2">&quot;api&quot;</span><span class="p">})</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># 2. Wait for a VPN connection request</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">vpn_state</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">while</span> <span class="n">vpn_state</span> <span class="o">!=</span> <span class="s2">&quot;WAITINGFORAPPROVAL&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">vpn_state</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;blxstat_vpnstate&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VPN state: </span><span class="si">{</span><span class="n">vpn_state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># 3. Approve the connection</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;vpn_approve_now&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">})</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># 4. Wait for connection to establish</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">while</span> <span class="n">vpn_state</span> <span class="o">!=</span> <span class="s2">&quot;CONNECTED&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">vpn_state</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;blxstat_vpnstate&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VPN state: </span><span class="si">{</span><span class="n">vpn_state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VPN connected&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">dev</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-</code></pre></div>
+<hr />
+<h2 id="l2-filtering-ebtables">L2 Filtering (ebtables)<a class="headerlink" href="#l2-filtering-ebtables" title="Permanent link">&para;</a></h2>
+<p>Layer 2 rulesets (<code>layer_id="1"</code>) use ebtables instead of iptables and operate on Ethernet frames. L2 filtering has fundamental differences from L3 that affect how rules are constructed and how state is handled.</p>
+<h3 id="no-native-conntrack">No Native Conntrack<a class="headerlink" href="#no-native-conntrack" title="Permanent link">&para;</a></h3>
+<p>Ebtables has no conntrack module. The three L3 modes (easy, stateful, stateless) do not apply to L2 in the same way. On L2:</p>
+<ul>
+<li><strong>Easy mode</strong> (<code>revert="1"</code>) still works for directional rulesets — the reverse rule is placed in a separate chain. However, this is a simple directional reversal, not conntrack-based return traffic matching.</li>
+<li><strong>Stateful mode</strong> (<code>state_type_id="1"</code>) is <strong>not available</strong> on L2 — ebtables has no conntrack.</li>
+<li><strong>TCP flag matching</strong> is supported on L2 via the <code>states</code> and <code>statevalue</code> fields. Set <code>states</code> to the human-readable flag specification (e.g., <code>"SYN,ACK,FIN,RST SYN"</code>) and <code>statevalue</code> to the corresponding numeric encoding. The system handles the translation internally.</li>
+</ul>
+<h3 id="protocol-handling">Protocol Handling<a class="headerlink" href="#protocol-handling" title="Permanent link">&para;</a></h3>
+<p>L2 rules use the <code>protocol</code> field differently from L3:</p>
+<table>
+<thead>
+<tr>
+<th><code>protocol</code></th>
+<th><code>prot_transport</code></th>
+<th><code>prot_hex</code></th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"ARP"</code></td>
+<td>—</td>
+<td>opcode (e.g. <code>"10"</code> = any)</td>
+<td>ARP frames; <code>prot_hex</code> is the ARP opcode</td>
+</tr>
+<tr>
+<td><code>"IPV4"</code></td>
+<td><code>"6"</code></td>
+<td>—</td>
+<td>IPv4 + TCP (<code>--ip-protocol 6</code>)</td>
+</tr>
+<tr>
+<td><code>"IPV4"</code></td>
+<td><code>"17"</code></td>
+<td>—</td>
+<td>IPv4 + UDP (<code>--ip-protocol 17</code>)</td>
+</tr>
+<tr>
+<td><code>"IPV4"</code></td>
+<td><code>"1"</code></td>
+<td>—</td>
+<td>IPv4 + ICMP (<code>--ip-protocol 1</code>)</td>
+</tr>
+<tr>
+<td><code>"IPV4"</code></td>
+<td><code>"*"</code></td>
+<td>—</td>
+<td>IPv4 any transport</td>
+</tr>
+<tr>
+<td><code>"802_1Q"</code></td>
+<td>—</td>
+<td>—</td>
+<td>VLAN-tagged frames (uses <code>vlan_data</code> table for VLAN ID/priority)</td>
+</tr>
+<tr>
+<td>(other)</td>
+<td>—</td>
+<td>hex value</td>
+<td>Raw Ethernet protocol by hex; <code>"0000"</code> = LENGTH (legacy Ethernet II)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mac-and-ip-groups-on-l2">MAC and IP Groups on L2<a class="headerlink" href="#mac-and-ip-groups-on-l2" title="Permanent link">&para;</a></h3>
+<p>Group handling differs from L3:</p>
+<ul>
+<li><strong>MAC groups</strong> (<code>@groupname</code> in <code>src_mac_add</code>/<code>des_mac_add</code>): resolved from the <code>macgroups</code> table and applied using ebtables <code>--among-src</code>/<code>--among-dst</code> (comma-separated MAC list in a single rule).</li>
+<li><strong>IP groups</strong> (<code>@groupname</code> in <code>src_ip_add</code>/<code>des_ip_add</code>): since ebtables has no <code>ipset</code> support, each IP/network entry from the <code>ipgroups</code> table is expanded into a <strong>separate ebtables rule</strong>. Large IP groups generate many rules, which can impact performance.</li>
+</ul>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Set <code>vpn_approval_mode</code> to <code>"api"</code> only once. It persists across reboots.</p>
+<p class="admonition-title">Prefer MAC groups over IP groups on L2</p>
+<p>MAC groups are efficient on L2 because ebtables handles them in a single rule with <code>--among</code>. IP groups are expanded into individual rules, so large groups significantly increase the rule count and evaluation time.</p>
 </div>
 
 
@@ -1915,10 +2228,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "content.code.annotate", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "content.code.annotate", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

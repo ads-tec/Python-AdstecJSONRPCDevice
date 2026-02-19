@@ -1211,6 +1211,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#packet-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet Filter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3g4g-umtslte" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1245,6 +1256,34 @@
     
   
     Status Properties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
   
 
     
@@ -1338,6 +1377,175 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packet Filter
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Packet Filter
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/packet-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/packet-filter/rule-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rule Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/packet-filter/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/packet-filter/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1697,6 +1905,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#packet-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet Filter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3g4g-umtslte" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1974,6 +2193,33 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="packet-filter">Packet Filter<a class="headerlink" href="#packet-filter" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>l3_forward</code></td>
+<td>any</td>
+<td>Trigger: reload Layer 3 (iptables) packet filter rules from database. Any value change triggers the reload; using <code>str(int(time.time()))</code> is a convenient way to ensure a unique value</td>
+</tr>
+<tr>
+<td><code>l2_forward</code></td>
+<td>any</td>
+<td>Trigger: reload Layer 2 (ebtables) packet filter rules from database. Same behavior as <code>l3_forward</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Required after table changes</p>
+<p>Modifying the packet filter tables (<code>services</code>, <code>serv_Protocols</code>, <code>selected_services</code>) does <strong>not</strong> automatically reload the running filter. You must write to <code>l3_forward</code> (for L3 rules) or <code>l2_forward</code> (for L2 rules) to apply changes. See the <a href="../../../guides/packet-filter/#applying-changes">Packet Filter guide</a> for details.</p>
+</div>
 <hr />
 <h2 id="3g4g-umtslte">3G/4G (UMTS/LTE)<a class="headerlink" href="#3g4g-umtslte" title="Permanent link">&para;</a></h2>
 <div class="admonition note">

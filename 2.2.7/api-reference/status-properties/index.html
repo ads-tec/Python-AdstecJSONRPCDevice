@@ -1308,6 +1308,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewall/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1388,6 +1416,175 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packet Filter
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Packet Filter
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/packet-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/packet-filter/rule-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rule Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/packet-filter/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/packet-filter/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1994,9 +2191,9 @@
 </tr>
 <tr>
 <td><code>eventlog</code></td>
-<td>—</td>
+<td><code>lines</code> (int), <code>filter</code> (regex)</td>
 <td>multiline string</td>
-<td>Event log output</td>
+<td>Event log output. <code>lines</code> limits output (<code>0</code> = all); <code>filter</code> is an extended regex (grep -E). Both optional</td>
 </tr>
 <tr>
 <td><code>reboot_timer</code></td>
@@ -2031,6 +2228,18 @@
 </thead>
 <tbody>
 <tr>
+<td><code>interfaces</code></td>
+<td>—</td>
+<td>string</td>
+<td>Space-separated list of Linux interface names currently available on the device based on its configuration. Interfaces appear here even if they are down — e.g. <code>wwan1</code> appears when mobile is configured but not connected, <code>ipsec0</code> appears when IPsec is configured. Example: <code>"br1 ETH2 ETH3 ETH4 ETH5 ETH6 ETH7 lxcbr0 l3tap10 wwan1"</code></td>
+</tr>
+<tr>
+<td><code>symbolic_ifnames_with_umts_with_ipsec</code></td>
+<td>—</td>
+<td>string</td>
+<td>Space-separated list of symbolic interface names (e.g., <code>"wan lan_port1 lan_port2 docker vpn10 umts"</code>). Same interfaces as <code>interfaces</code> but using the symbolic names used internally for <code>{name}_name</code> config variable lookups</td>
+</tr>
+<tr>
 <td><code>if_status</code></td>
 <td>interface name</td>
 <td>string</td>
@@ -2060,19 +2269,15 @@
 <td>number</td>
 <td>Bytes sent via interface</td>
 </tr>
-<tr>
-<td><code>symbolic_ifnames_with_umts_with_ipsec</code></td>
-<td>—</td>
-<td>string</td>
-<td>Space-separated list of symbolic interface names (e.g., <code>"lan wan docker vpn10"</code>)</td>
-</tr>
 </tbody>
 </table>
 <p>Valid interface names for <code>if_status</code>, <code>if_mac</code>, <code>if_ip</code>, <code>if_rxb</code>, <code>if_txb</code>:</p>
 <ul>
-<li>Physical: <code>eth0</code>, <code>eth1</code>, <code>ixp0</code>, <code>ixp1</code></li>
+<li>Physical: <code>eth0</code>, <code>eth1</code>, <code>ETH1</code>–<code>ETH8</code> (IRF3000)</li>
 <li>Bridge: <code>br0</code>, <code>br1</code></li>
-<li>VLAN: <code>ixp0.101</code>, <code>ixp0.102</code>, <code>ixp0.103</code>, <code>ixp0.104</code></li>
+<li>VPN: <code>l3tap0</code>–<code>l3tap10</code>, <code>ipsec0</code></li>
+<li>Mobile: <code>wwan1</code></li>
+<li>Docker: <code>lxcbr0</code></li>
 </ul>
 <hr />
 <h2 id="network-diagnostics">Network Diagnostics<a class="headerlink" href="#network-diagnostics" title="Permanent link">&para;</a></h2>
