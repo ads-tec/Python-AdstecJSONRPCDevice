@@ -53,18 +53,21 @@ ping_result = dev.status("ping4", "127.0.0.1", "3")
 
 | Property | Parameters | Returns | Description |
 |---|---|---|---|
+| `interfaces` | — | string | Space-separated list of Linux interface names currently available on the device based on its configuration. Interfaces appear here even if they are down — e.g. `wwan1` appears when mobile is configured but not connected, `ipsec0` appears when IPsec is configured. Example: `"br1 ETH2 ETH3 ETH4 ETH5 ETH6 ETH7 lxcbr0 l3tap10 wwan1"` |
+| `symbolic_ifnames_with_umts_with_ipsec` | — | string | Space-separated list of symbolic interface names (e.g., `"wan lan_port1 lan_port2 docker vpn10 umts"`). Same interfaces as `interfaces` but using the symbolic names used internally for `{name}_name` config variable lookups |
 | `if_status` | interface name | string | Physical interface status. Returns negotiated speed/duplex or `"no link"` |
 | `if_mac` | interface name | MAC address | Hardware address (e.g., `"00:CC:90:00:71:01"`) |
 | `if_ip` | interface name | IP address | Interface IP address |
 | `if_rxb` | interface name | number | Bytes received via interface |
 | `if_txb` | interface name | number | Bytes sent via interface |
-| `symbolic_ifnames_with_umts_with_ipsec` | — | string | Space-separated list of symbolic interface names (e.g., `"lan wan docker vpn10"`) |
 
 Valid interface names for `if_status`, `if_mac`, `if_ip`, `if_rxb`, `if_txb`:
 
-- Physical: `eth0`, `eth1`, `ixp0`, `ixp1`
+- Physical: `eth0`, `eth1`, `ETH1`–`ETH8` (IRF3000)
 - Bridge: `br0`, `br1`
-- VLAN: `ixp0.101`, `ixp0.102`, `ixp0.103`, `ixp0.104`
+- VPN: `l3tap0`–`l3tap10`, `ipsec0`
+- Mobile: `wwan1`
+- Docker: `lxcbr0`
 
 ---
 

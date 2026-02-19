@@ -16,4 +16,8 @@ if __name__ == "__main__":
     ping = dev.status("ping4", "127.0.0.1", "3")
     print(f"ping: {ping}")
 
+    # event log: last 100 lines, filtered by "audispd" (audit events)
+    audit_log = dev.status("eventlog", "100", "audispd")
+    print(f"\n--- Audit events (last 100 lines) ---\n{audit_log}")
+
     dev.logout()
