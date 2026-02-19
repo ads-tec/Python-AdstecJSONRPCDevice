@@ -78,6 +78,18 @@ Requires VPN connection configured in `"switched"` state.
 
 ---
 
+## Packet Filter
+
+| Variable | Values | Description |
+|---|---|---|
+| `l3_forward` | any | Trigger: reload Layer 3 (iptables) packet filter rules from database. Any value change triggers the reload; using `str(int(time.time()))` is a convenient way to ensure a unique value |
+| `l2_forward` | any | Trigger: reload Layer 2 (ebtables) packet filter rules from database. Same behavior as `l3_forward` |
+
+!!! warning "Required after table changes"
+    Modifying the packet filter tables (`services`, `serv_Protocols`, `selected_services`) does **not** automatically reload the running filter. You must write to `l3_forward` (for L3 rules) or `l2_forward` (for L2 rules) to apply changes. See the [Packet Filter guide](../../guides/packet-filter/index.md#applying-changes) for details.
+
+---
+
 ## 3G/4G (UMTS/LTE)
 
 !!! note

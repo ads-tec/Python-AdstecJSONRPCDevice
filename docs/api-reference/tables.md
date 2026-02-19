@@ -18,6 +18,13 @@ dev.table_insert("users", cfg_session_id, ["newuser", "", "", "1", "", "1970-01-
 dev.sess_commit(cfg_session_id)
 ```
 
+!!! warning "Integer `id` columns require explicit values"
+    Tables with an integer `id` primary key (e.g. `services`, `serv_Protocols`, `selected_services`) do **not** support auto-increment. Passing `""` or `"0"` for the `id` field causes a `"datatype mismatch"` error at commit. Always provide a unique non-zero integer.
+
+    **Custom entries must use IDs starting at `1000` or higher.** IDs below 1000 are reserved for factory defaults. Rules inserted with lower IDs may not appear in the device web UI and can conflict with firmware updates that add new factory defaults.
+
+    Alternatively, use `config.import_config` with `tableinsert` which uses the same dict format as `export_pages` output — but the same `id` rule applies.
+
 ### Update a Row
 
 ```python
@@ -77,41 +84,6 @@ Row format for `table_insert` (all columns required):
     })
     dev.sess_commit(cfg_session_id)
     ```
-
----
-
-### `ipgroups` — Network Groups
-
-Used for grouping IP subnets (e.g., for firewall rules).
-
-| Column | Type | Constraint | Description |
-|---|---|---|---|
-| `name` | string (max 14 chars) | unique with `network` | Name of the network group |
-| `network` | IP/mask | unique with `name` | Subnet (e.g., `"192.168.1.0/24"`) |
-
-```python
-cfg_session_id = dev.sess_start()
-dev.table_insert("ipgroups", cfg_session_id, ["office", "192.168.1.0/24"])
-dev.table_insert("ipgroups", cfg_session_id, ["office", "10.0.0.0/8"])
-dev.sess_commit(cfg_session_id)
-```
-
----
-
-### `macgroups` — Hardware Groups
-
-Used for grouping devices by MAC address.
-
-| Column | Type | Constraint | Description |
-|---|---|---|---|
-| `name` | string (max 14 chars) | unique with `hwaddr` | Name of the hardware group |
-| `hwaddr` | MAC address | unique with `name` | Hardware address (e.g., `"00:10:20:45:67:89"`) |
-
-```python
-cfg_session_id = dev.sess_start()
-dev.table_insert("macgroups", cfg_session_id, ["printers", "00:10:20:45:67:89"])
-dev.sess_commit(cfg_session_id)
-```
 
 ---
 

@@ -42,7 +42,7 @@ ping_result = dev.status("ping4", "127.0.0.1", "3")
 | `meminfo` | process name | string | Memory utilization of a specified process |
 | `simstate` | — | `"no sim"` / `"synced"` / `"not synced"` | Memory card state |
 | `diag_log` | category string | string | Internal diagnostic log for a subsystem (e.g., `dev.status("diag_log", "fw_update")` for firmware update errors). Format may change between versions |
-| `eventlog` | — | multiline string | Event log output |
+| `eventlog` | `lines` (int), `filter` (regex) | multiline string | Event log output. `lines` limits output (`0` = all); `filter` is an extended regex (grep -E). Both optional |
 | `reboot_timer` | — | seconds | Time remaining until scheduled reboot |
 | `customersettings_size` | — | number (kB) | Size of customer settings |
 | `customersettings_timestamp` | — | unix timestamp | Change date of customer settings |

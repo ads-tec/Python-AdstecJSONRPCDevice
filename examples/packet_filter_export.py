@@ -3,17 +3,14 @@
 
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import json
 import jsonrpcdevice
 
 if __name__ == "__main__":
     dev = jsonrpcdevice.AdstecJSONRPCDevice("192.168.0.254", "admin", "admin")
 
-    # simple status
-    imageversion = dev.status("imageversion")
-    print(f"imageversion: {imageversion}")
-
-    # status with parameters
-    ping = dev.status("ping4", "127.0.0.1", "3")
-    print(f"ping: {ping}")
+    # export the entire packet filter configuration (all 3 tables)
+    export = dev.call("config", "export_pages", pages=["FILTERCONF"])
+    print(json.dumps(export, indent=2))
 
     dev.logout()

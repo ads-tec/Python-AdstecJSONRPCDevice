@@ -1,3 +1,8 @@
+# Copyright (c) 2026 ads-tec Industrial IT GmbH, Germany
+# Licensed under the BSD 2-Clause License. See LICENSE file for details.
+
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import jsonrpcdevice
 import time
 

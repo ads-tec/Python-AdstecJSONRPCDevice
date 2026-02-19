@@ -55,6 +55,7 @@ The first element of `result` is the return code (`0` = success). The second ele
 | `statusd` | Big-LinX VPN control |
 | `blxpush` | Big-LinX IIoT dashboard data push |
 | `file` | Base64 file upload/download via JSON-RPC |
+| `datacollection` | Real-time traffic statistics and time-series data |
 | `zxcvbn` | Password strength checking |
 
 ---
@@ -135,7 +136,7 @@ dev.logout()     # session.destroy
 | Method | Parameters | Description |
 |---|---|---|
 | `table_get` | `tablename`, `condition` (dict, max 2 keys) | Read matching rows |
-| `table_set` | `tablename`, `cfg_session_id`, `row` (array) | Insert a new row (all columns required) |
+| `table_set` | `tablename`, `cfg_session_id`, `row` (array) | Insert a new row (all columns required). Integer `id` columns require an explicit value — there is no auto-increment |
 | `table_up` | `tablename`, `cfg_session_id`, `condition` (dict), `values` (dict) | Update matching rows |
 | `table_del` | `tablename`, `cfg_session_id`, `condition` (dict) | Delete matching rows |
 
@@ -270,6 +271,81 @@ dev.call("file", "write", path="/tmp/upcerts", data=data)
 result = dev.call("file", "read", path="/tmp/root/settings.cf2")
 # result["data"] contains Base64-encoded content
 ```
+
+---
+
+## `datacollection` — Traffic Statistics
+
+The `datacollection` object provides real-time time-series data for network interface traffic (bytes, packets) on all devices. On firewalls (IRF), it additionally includes packet filter byte counters.
+
+Data is collected every 10 seconds and stored in a ring buffer with 1-second resolution, retaining approximately the last 10 minutes of data.
+
+### Metric Names
+
+Metric names follow a dot-separated naming convention. Use `get_metrics` to discover all available metrics on a device.
+
+**Network traffic** (all devices):
+
+| Pattern | Example | Description |
+|---|---|---|
+| `{interface}.rx_bytes` | `ETH1.rx_bytes` | Received bytes (delta per interval) |
+| `{interface}.tx_bytes` | `ETH1.tx_bytes` | Transmitted bytes (delta per interval) |
+| `{interface}.rx_packets` | `ETH1.rx_packets` | Received packets (delta per interval) |
+| `{interface}.tx_packets` | `ETH1.tx_packets` | Transmitted packets (delta per interval) |
+
+**Packet filter counters** (firewalls only):
+
+| Pattern | Example | Description |
+|---|---|---|
+| `filter.rule.{chain}.{target}.{index}.bcnt` | `filter.rule.INPUT.DROP.10.bcnt` | Byte count delta for a specific filter rule |
+| `filter.policy.{chain}.{action}.bcnt` | `filter.policy.INPUT.ACCEPT.bcnt` | Byte count delta for a chain's default policy |
+
+All values represent **deltas per collection interval** (typically 10 seconds), not absolute counters.
+
+### Methods
+
+| Method | Parameters | Description |
+|---|---|---|
+| `get_metrics` | — | List all known metric names |
+| `get_values_as_table` | `metrics`, `from`, `to`, `resolution` | Query time-series data grouped by metric |
+
+#### `get_metrics`
+
+List all known metric names on the device.
+
+```python
+result = dev.call("datacollection", "get_metrics")
+metrics = result["result"]
+# ["ETH1.rx_bytes", "ETH1.tx_bytes", "filter.rule.INPUT.DROP.10.bcnt", ...]
+```
+
+#### `get_values_as_table`
+
+Query time-series data grouped by metric with timestamps.
+
+| Parameter | Type | Description |
+|---|---|---|
+| `metrics` | array of string | Metric names to query |
+| `from` | integer | Start time (Unix timestamp) |
+| `to` | integer | End time (Unix timestamp) |
+| `resolution` | integer | Buffer resolution in seconds (use `1`) |
+
+```python
+import time
+
+now = int(time.time())
+raw = dev.call("datacollection", "get_values_as_table",
+    metrics=["ETH1.rx_bytes", "ETH1.tx_bytes"],
+    **{"from": now - 600, "to": now, "resolution": 1})
+data = raw["result"]
+# {"ETH1.rx_bytes": [{"ts": 1771510200, "val": 3323.0}, ...],
+#  "ETH1.tx_bytes": [{"ts": 1771510200, "val": 240.0}, ...]}
+```
+
+Each metric key maps to an array of `{"ts": <unix_timestamp>, "val": <value>}` objects. `val` is `null` when no data was collected for that time slot.
+
+!!! tip "`from` is a Python keyword"
+    Use `**{"from": ...}` syntax since `from` is a reserved word in Python.
 
 ---
 

@@ -56,7 +56,11 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -94,8 +98,14 @@ nav:
           - JSON-RPC Methods: api-reference/firewall/jsonrpc-methods.md
           - Configuration Variables: api-reference/firewall/config-variables.md
           - Status Properties: api-reference/firewall/status-properties.md
+          - Tables: api-reference/firewall/tables.md
       - Guides:
           - GPIO: guides/gpio.md
+          - Packet Filter:
+              - Overview: guides/packet-filter/index.md
+              - Rule Modes: guides/packet-filter/rule-modes.md
+              - Table Reference: guides/packet-filter/tables.md
+              - Examples: guides/packet-filter/examples.md
   - Web Terminals:
       - API Reference:
           - Configuration Variables: api-reference/terminal/config-variables.md
