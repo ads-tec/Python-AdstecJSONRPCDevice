@@ -567,6 +567,28 @@ dev.sess_commit(cfg)
 
 ---
 
+## Logging & Troubleshooting
+
+Enable `log_active="1"` on a rule to log matched packets to syslog. Retrieve them via the [`eventlog`](../../api-reference/status-properties.md#event-log) status property:
+
+```python
+# Get recent packet filter log entries
+pf_log = dev.status("eventlog", "50", "FILTER|IN=.*OUT=")
+for line in pf_log.strip().split("\n"):
+    if line:
+        print(line)
+```
+
+Each logged packet appears as a kernel syslog line with the prefix `{ruleset_name}.{rule_description}` — for example, `HTTPS_Allow.Allow_HTTPS IN=ETH7 OUT=ETH2 ...`. See the [Packet Filter Log Format](../../api-reference/firewall/status-properties.md#packet-filter-log-format) reference for the full field specification.
+
+!!! tip "Move a LOG rule through the ruleset order"
+    Create a dedicated LOG ruleset (e.g., `log_active="1"`, action ACCEPT, matching all traffic) and change its `selected_services.position` to insert it **before** or **after** specific rulesets. This lets you observe which packets reach a given point in the filter chain — if a packet appears in the log at position 2 but not at position 4, it was consumed by a ruleset in between. Move the LOG ruleset up and down to isolate exactly where traffic is being accepted, dropped, or redirected.
+
+!!! tip "Combine with datacollection counters"
+    Use the [packet filter counters](#monitoring-packet-filter-counters) from the `datacollection` API for real-time byte/packet counts without per-packet overhead. Use the event log for detailed per-packet inspection when `log_active` is enabled on a rule.
+
+---
+
 ## Monitoring Packet Filter Counters
 
 The [`datacollection`](../../api-reference/jsonrpc-methods.md#datacollection-traffic-statistics) API provides real-time byte counters for every active packet filter rule. This is essential for verifying that rules are matching traffic as expected — confirming that packets are being accepted, dropped, or rejected by the correct rules.

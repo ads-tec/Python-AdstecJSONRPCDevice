@@ -106,6 +106,58 @@ for line in ntpstat.split("\n"):
 
 ---
 
+## Event Log
+
+The `eventlog` status property returns the device's syslog. It reads from file-based syslog if enabled, from SD card if available, or from the kernel ring buffer as fallback.
+
+### Parameters
+
+| Parameter | Position | Type | Description |
+|---|---|---|---|
+| `lines` | 1st | integer as string | Number of most recent lines to return. `"0"` = all lines |
+| `filter` | 2nd | string | Extended regex pattern (grep -E) to filter log lines. Empty = no filter |
+
+Both parameters are optional. When omitted, the full unfiltered log is returned.
+
+### Basic Usage
+
+```python
+# Get the last 10 log lines
+log = dev.status("eventlog", "10")
+print(log)
+
+# Get all log lines (can be large)
+full_log = dev.status("eventlog")
+```
+
+### Filtering with Regex
+
+The filter parameter uses extended regular expressions (grep -E), supporting `|` for alternation, `()` for grouping, and other ERE syntax:
+
+```python
+# Authentication events
+auth_log = dev.status("eventlog", "20", "login|auth|session")
+
+# Kernel messages
+kern_log = dev.status("eventlog", "50", "kernel:")
+
+# Network-related events
+net_log = dev.status("eventlog", "0", "eth[0-9]|br[0-9]|link")
+```
+
+### Audit Events
+
+The Linux audit subsystem (`audispd`) logs security-relevant events such as login attempts, configuration changes, and process executions. Filter for `audispd` to retrieve these:
+
+```python
+audit_log = dev.status("eventlog", "100", "audispd")
+for line in audit_log.strip().split("\n"):
+    if line:
+        print(line)
+```
+
+---
+
 ## Firewall-Only Properties
 
 OpenVPN, CUT & ALARM, 3G/4G UMTS/LTE, and GNSS/GPS status properties are available on firewall models only. See [Status Properties (Firewalls)](firewall/status-properties.md).

@@ -133,7 +133,7 @@ L3 standalone interfaces can be used in L3 filter rules like any physical port. 
 
 ### Interface Name Aliases
 
-The web UI displays user-friendly aliases (e.g., "LAN", "WAN", "WWAN") instead of the Linux interface names (e.g., `br0`, `br1`, `wwan1`). The packet filter tables and the [event log](../diagnostics.md#packet-filter-log-entries) both use the **alias names** — so `IN=ETH7` in a log line matches the label you see in the web UI.
+The web UI displays user-friendly aliases (e.g., "LAN", "WAN", "WWAN") instead of the Linux interface names (e.g., `br0`, `br1`, `wwan1`). The packet filter tables and the [event log](../../api-reference/firewall/status-properties.md#packet-filter-log-format) both use the **alias names** — so `IN=ETH7` in a log line matches the label you see in the web UI.
 
 On IRF3000 devices, the physical port names (`ETH1`–`ETH8`) are the same in both the UI and Linux, so no translation is needed. For other interfaces, the mapping is stored in `{interface}_name` configuration variables:
 
