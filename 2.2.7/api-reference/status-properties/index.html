@@ -2401,6 +2401,10 @@
 <li>Mobile: <code>wwan1</code></li>
 <li>Docker: <code>lxcbr0</code></li>
 </ul>
+<div class="admonition example">
+<p class="admonition-title">Resolve interface names dynamically</p>
+<p>Each symbolic interface name (e.g. <code>lan</code>, <code>wan</code>) maps to a Linux name via the <code>{name}_ifname</code> config variable. Use <code>config_get(["lan_ifname"])</code> to resolve the name, then query <code>if_ip</code> and <code>if_mac</code>. See <a href="../../guides/networking/#interface-names">Interface Names</a> for the full mapping and <a href="https://github.com/ads-tec/Python-AdstecJSONRPCDevice/blob/main/examples/lan_ip_mac_status.py"><code>examples/lan_ip_mac_status.py</code></a> for a complete example.</p>
+</div>
 <hr />
 <h2 id="network-diagnostics">Network Diagnostics<a class="headerlink" href="#network-diagnostics" title="Permanent link">&para;</a></h2>
 <table>

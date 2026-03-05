@@ -419,6 +419,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#persisting-changes-with-save_now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persisting Changes with save_now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factory-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory Reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1879,6 +1901,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#persisting-changes-with-save_now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persisting Changes with save_now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factory-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory Reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1984,12 +2028,47 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">&quot;ntp_server&quot;</span><span class="p">:</span> <span class="s2">&quot;pool.ntp.org&quot;</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">})</span>
 </code></pre></div>
+<h2 id="persisting-changes-with-save_now">Persisting Changes with <code>save_now</code><a class="headerlink" href="#persisting-changes-with-save_now" title="Permanent link">&para;</a></h2>
+<p>By default (<code>nvram_mode = "commit"</code>), <code>config_set_commit()</code> applies changes <strong>immediately</strong> but does <strong>not</strong> save them to persistent storage (NVRAM). Changes that are only committed will be lost on the next power cycle.</p>
+<p>To save committed changes permanently, set the <code>save_now</code> trigger variable:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;save_now&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">})</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Test before you save</p>
+<p>It is strongly recommended to <strong>verify</strong> that the device is still reachable after applying changes — especially for network settings on remote devices — <strong>before</strong> persisting with <code>save_now</code>. If a misconfiguration makes the device unreachable, an on-site power cycle will restore the previous working configuration.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. Apply new settings (not yet persistent)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;lan_gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.0.1&quot;</span><span class="p">})</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 2. Verify the device is still reachable</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">online</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">check_host</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">if</span> <span class="n">online</span><span class="p">:</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="c1"># 3. Only now persist to NVRAM</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;save_now&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">})</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Settings saved permanently&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device unreachable — power cycle to restore previous config&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="factory-reset">Factory Reset<a class="headerlink" href="#factory-reset" title="Permanent link">&para;</a></h2>
+<p>Setting <code>fw_restore_now</code> deletes all device settings (factory defaults) and immediately reboots the device. The JSON-RPC call will most likely return with an error because the TCP connection closes during the reboot.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;fw_restore_now&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">})</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">pass</span>  <span class="c1"># Expected — device reboots and closes the connection</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Wait for the device to come back with factory defaults</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">wait_for_host_is_online</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This is irreversible. All configuration is lost and the device returns to factory defaults, including the default IP address and credentials.</p>
+</div>
 <h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">dev</span> <span class="o">=</span> <span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">AdstecJSONRPCDevice</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;wrong_password&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">dev</span><span class="o">.</span><span class="n">get_sid</span><span class="p">()</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Login failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">dev</span> <span class="o">=</span> <span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">AdstecJSONRPCDevice</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;wrong_password&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">dev</span><span class="o">.</span><span class="n">get_sid</span><span class="p">()</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Login failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
