@@ -798,6 +798,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reboot &amp; Watchdog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#factory-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory Reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2273,6 +2290,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reboot &amp; Watchdog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#factory-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory Reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2941,10 +2975,24 @@
 <tr>
 <td><code>fw_restore_now</code></td>
 <td>any</td>
-<td>Trigger: factory reset — deletes all settings and reboots the device. See <a href="../../getting-started/#factory-reset">Factory Reset</a></td>
+<td>Trigger: factory reset — deletes all settings and reboots the device</td>
 </tr>
 </tbody>
 </table>
+<h4 id="factory-reset">Factory Reset<a class="headerlink" href="#factory-reset" title="Permanent link">&para;</a></h4>
+<p>Setting <code>fw_restore_now</code> deletes all device settings (factory defaults) and immediately reboots the device. The JSON-RPC call will most likely return with an error because the TCP connection closes during the reboot.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">dev</span><span class="o">.</span><span class="n">config_set_commit</span><span class="p">({</span><span class="s2">&quot;fw_restore_now&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">})</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">pass</span>  <span class="c1"># Expected — device reboots and closes the connection</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Wait for the device to come back with factory defaults</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">jsonrpcdevice</span><span class="o">.</span><span class="n">wait_for_host_is_online</span><span class="p">(</span><span class="s2">&quot;192.168.0.254&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This is irreversible. All configuration is lost and the device returns to factory defaults, including the default IP address and credentials.</p>
+</div>
 <h3 id="settings-backup-restore">Settings Backup &amp; Restore<a class="headerlink" href="#settings-backup-restore" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
