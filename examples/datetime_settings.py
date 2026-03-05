@@ -44,4 +44,8 @@ if __name__ == "__main__":
                                "hour": "00",
                                "minute": "00",
                                "second": "00"})
+    # Persist settings to NVRAM so they survive a power cycle
+    dev.config_set_commit({"save_now": "1"})
+    print("Settings saved permanently")
+
     dev.logout()

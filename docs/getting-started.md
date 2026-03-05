@@ -80,6 +80,50 @@ dev.config_set_commit({
 })
 ```
 
+## Persisting Changes with `save_now`
+
+By default (`nvram_mode = "commit"`), `config_set_commit()` applies changes **immediately** but does **not** save them to persistent storage (NVRAM). Changes that are only committed will be lost on the next power cycle.
+
+To save committed changes permanently, set the `save_now` trigger variable:
+
+```python
+dev.config_set_commit({"save_now": "1"})
+```
+
+!!! warning "Test before you save"
+    It is strongly recommended to **verify** that the device is still reachable after applying changes — especially for network settings on remote devices — **before** persisting with `save_now`. If a misconfiguration makes the device unreachable, an on-site power cycle will restore the previous working configuration.
+
+```python
+# 1. Apply new settings (not yet persistent)
+dev.config_set_commit({"lan_gateway": "10.0.0.1"})
+
+# 2. Verify the device is still reachable
+online, _ = jsonrpcdevice.check_host("192.168.0.254", timeout=5)
+if online:
+    # 3. Only now persist to NVRAM
+    dev.config_set_commit({"save_now": "1"})
+    print("Settings saved permanently")
+else:
+    print("Device unreachable — power cycle to restore previous config")
+```
+
+## Factory Reset
+
+Setting `fw_restore_now` deletes all device settings (factory defaults) and immediately reboots the device. The JSON-RPC call will most likely return with an error because the TCP connection closes during the reboot.
+
+```python
+try:
+    dev.config_set_commit({"fw_restore_now": "1"})
+except Exception:
+    pass  # Expected — device reboots and closes the connection
+
+# Wait for the device to come back with factory defaults
+jsonrpcdevice.wait_for_host_is_online("192.168.0.254", timeout=300, interval=5)
+```
+
+!!! danger
+    This is irreversible. All configuration is lost and the device returns to factory defaults, including the default IP address and credentials.
+
 ## Error Handling
 
 ```python

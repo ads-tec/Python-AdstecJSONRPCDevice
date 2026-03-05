@@ -34,6 +34,14 @@ if __name__ == "__main__":
               })
     print("Web panel settings applied")
 
+    # Verify the device is still reachable before persisting
+    online, _ = jsonrpcdevice.check_host(host_new, timeout=5)
+    if online:
+        dev.config_set_commit({"save_now": "1"})
+        print("Settings saved permanently")
+    else:
+        print("Device unreachable — power cycle to restore previous config")
+
     # to show config on web panel again. set the url to localhost
     # dev.config_set_commit({"browser_url": "http://localhost",
     #                       "browser_activate_url_now": "1",})

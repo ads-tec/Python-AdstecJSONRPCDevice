@@ -69,6 +69,9 @@ Valid interface names for `if_status`, `if_mac`, `if_ip`, `if_rxb`, `if_txb`:
 - Mobile: `wwan1`
 - Docker: `lxcbr0`
 
+!!! example "Resolve interface names dynamically"
+    Each symbolic interface name (e.g. `lan`, `wan`) maps to a Linux name via the `{name}_ifname` config variable. Use `config_get(["lan_ifname"])` to resolve the name, then query `if_ip` and `if_mac`. See [Interface Names](../guides/networking.md#interface-names) for the full mapping and [`examples/lan_ip_mac_status.py`](https://github.com/ads-tec/Python-AdstecJSONRPCDevice/blob/main/examples/lan_ip_mac_status.py) for a complete example.
+
 ---
 
 ## Network Diagnostics

@@ -217,12 +217,13 @@ Web Panel configuration variables are available on web terminals only. See [Conf
 | `reboot_now` | any | Trigger: system reboot (immediately, or after `reboot_wait` minutes) |
 | `reboot_wait` | minutes | Wait time before reboot. Set to `"0"` to cancel a running timer |
 | `firmware_switch_now` | any | Trigger: activate switchover to alternative firmware on next reboot |
+| `fw_restore_now` | any | Trigger: factory reset — deletes all settings and reboots the device. See [Factory Reset](../getting-started.md#factory-reset) |
 
 ### Settings Backup & Restore
 
 | Variable | Values | Description |
 |---|---|---|
-| `save_now` | any | Trigger: save running config to NVRAM |
+| `save_now` | any | Trigger: save running config to NVRAM permanently. See [Persisting Changes](../getting-started.md#persisting-changes-with-save_now) |
 | `save_settings_now` | any | Trigger: prepare settings.cf2 for download |
 | `restore_settings_now` | any | Trigger: parse an uploaded .cf2 settings file |
 | `restore_settings_sha256` | SHA256 hex string | SHA256 checksum of the uploaded .cf2 file |

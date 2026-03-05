@@ -43,6 +43,12 @@ extra_css:
 
 plugins:
   - search
+  - with-pdf:
+      cover_title: "ads-tec Industrial IT JSON-RPC API"
+      cover_subtitle: "IRF 2.2.7 / AWT 14.2.7"
+      cover_logo: docs/assets/logo.png
+      output_path: manual.pdf
+      enabled_if_env: ENABLE_PDF_EXPORT
   - mkdocstrings:
       handlers:
         python:
