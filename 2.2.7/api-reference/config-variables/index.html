@@ -745,6 +745,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#syslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Syslog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#web-server" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1233,6 +1244,34 @@
     
   
     Settings Backup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/syslog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Syslog
   
 
     
@@ -2237,6 +2276,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#syslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Syslog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#web-server" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2843,6 +2893,50 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="syslog">Syslog<a class="headerlink" href="#syslog" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>syslog_service</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable remote syslog forwarding</td>
+</tr>
+<tr>
+<td><code>syslog_server</code></td>
+<td>hostname or IP</td>
+<td>Remote syslog server address</td>
+</tr>
+<tr>
+<td><code>syslog_service_tcp</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Use TCP instead of UDP (default: UDP)</td>
+</tr>
+<tr>
+<td><code>syslog_remote_event</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Forward event log messages to remote server</td>
+</tr>
+<tr>
+<td><code>syslog_remote_audit</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Forward audit log messages to remote server</td>
+</tr>
+<tr>
+<td><code>syslog_local_audit</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Show audit log entries in local event log</td>
+</tr>
+</tbody>
+</table>
+<p>See the <a href="../../guides/syslog/">Remote Syslog guide</a> for usage examples.</p>
 <hr />
 <h2 id="web-server">Web Server<a class="headerlink" href="#web-server" title="Permanent link">&para;</a></h2>
 <table>
