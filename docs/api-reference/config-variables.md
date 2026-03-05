@@ -217,7 +217,24 @@ Web Panel configuration variables are available on web terminals only. See [Conf
 | `reboot_now` | any | Trigger: system reboot (immediately, or after `reboot_wait` minutes) |
 | `reboot_wait` | minutes | Wait time before reboot. Set to `"0"` to cancel a running timer |
 | `firmware_switch_now` | any | Trigger: activate switchover to alternative firmware on next reboot |
-| `fw_restore_now` | any | Trigger: factory reset — deletes all settings and reboots the device. See [Factory Reset](../getting-started.md#factory-reset) |
+| `fw_restore_now` | any | Trigger: factory reset — deletes all settings and reboots the device |
+
+#### Factory Reset
+
+Setting `fw_restore_now` deletes all device settings (factory defaults) and immediately reboots the device. The JSON-RPC call will most likely return with an error because the TCP connection closes during the reboot.
+
+```python
+try:
+    dev.config_set_commit({"fw_restore_now": "1"})
+except Exception:
+    pass  # Expected — device reboots and closes the connection
+
+# Wait for the device to come back with factory defaults
+jsonrpcdevice.wait_for_host_is_online("192.168.0.254", timeout=300, interval=5)
+```
+
+!!! danger
+    This is irreversible. All configuration is lost and the device returns to factory defaults, including the default IP address and credentials.
 
 ### Settings Backup & Restore
 
