@@ -98,6 +98,7 @@ nav:
           - Certificates: guides/certificates.md
           - VPN Approval: guides/vpn-approval.md
           - Settings Backup: guides/settings-backup.md
+          - Remote Syslog: guides/syslog.md
           - Remote Capture: guides/remote-capture.md
   - Firewalls (IRF1000 / IRF2000 / IRF3000):
       - API Reference:

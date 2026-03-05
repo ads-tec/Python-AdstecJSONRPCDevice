@@ -178,6 +178,21 @@ Web Panel configuration variables are available on web terminals only. See [Conf
 
 ---
 
+## Syslog
+
+| Variable | Values | Description |
+|---|---|---|
+| `syslog_service` | `"enabled"` / `"disabled"` | Enable remote syslog forwarding |
+| `syslog_server` | hostname or IP | Remote syslog server address |
+| `syslog_service_tcp` | `"enabled"` / `"disabled"` | Use TCP instead of UDP (default: UDP) |
+| `syslog_remote_event` | `"enabled"` / `"disabled"` | Forward event log messages to remote server |
+| `syslog_remote_audit` | `"enabled"` / `"disabled"` | Forward audit log messages to remote server |
+| `syslog_local_audit` | `"enabled"` / `"disabled"` | Show audit log entries in local event log |
+
+See the [Remote Syslog guide](../guides/syslog.md) for usage examples.
+
+---
+
 ## Web Server
 
 | Variable | Values | Description |
