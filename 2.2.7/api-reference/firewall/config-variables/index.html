@@ -1250,6 +1250,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#11-nat-network-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1:1 NAT (Network Mapping)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1:1 NAT (Network Mapping)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-11-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic 1:1 NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-sided-network-mapping-extended-11-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Double Sided Network Mapping (Extended 1:1 NAT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3g4g-umtslte" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1444,6 +1483,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../guides/one-to-one-nat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1:1 NAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1455,10 +1522,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
             
   
   
@@ -1476,8 +1543,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1972,6 +2039,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#11-nat-network-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1:1 NAT (Network Mapping)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1:1 NAT (Network Mapping)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-11-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic 1:1 NAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-sided-network-mapping-extended-11-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Double Sided Network Mapping (Extended 1:1 NAT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3g4g-umtslte" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2276,6 +2382,60 @@
 <p class="admonition-title">Required after table changes</p>
 <p>Modifying the packet filter tables (<code>services</code>, <code>serv_Protocols</code>, <code>selected_services</code>) does <strong>not</strong> automatically reload the running filter. You must write to <code>l3_forward</code> (for L3 rules) or <code>l2_forward</code> (for L2 rules) to apply changes. See the <a href="../../../guides/packet-filter/#applying-changes">Packet Filter guide</a> for details.</p>
 </div>
+<hr />
+<h2 id="11-nat-network-mapping">1:1 NAT (Network Mapping)<a class="headerlink" href="#11-nat-network-mapping" title="Permanent link">&para;</a></h2>
+<p>1:1 NAT translates entire subnets by replacing the network prefix while preserving the host portion. This is used to resolve IP address conflicts when two networks share the same address range.</p>
+<p>Variables use the interface prefix pattern: <code>(wan|lan|lan_port[1-7])_</code>.</p>
+<h3 id="basic-11-nat">Basic 1:1 NAT<a class="headerlink" href="#basic-11-nat" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-7])_netmap_status</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable 1:1 NAT on this interface</td>
+</tr>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-7])_netmap_subnet</code></td>
+<td>IP/CIDR</td>
+<td>Private (real) subnet behind this interface (e.g., <code>"192.168.0.0/24"</code>). Only used when interface protocol is <code>static</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>public</strong> (virtual) subnet is derived from the interface's <code>_ipaddr</code> and <code>_netmask</code> — these must be set to the virtual address range before enabling 1:1 NAT.</p>
+<h3 id="double-sided-network-mapping-extended-11-nat">Double Sided Network Mapping (Extended 1:1 NAT)<a class="headerlink" href="#double-sided-network-mapping-extended-11-nat" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-7])_netmap_ext_status</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Enable double sided network mapping on this interface</td>
+</tr>
+<tr>
+<td><code>(wan\|lan\|lan_port[1-7])_netmap_ext_subnet</code></td>
+<td>IP/CIDR</td>
+<td>Outgoing network mapping subnet — the virtual address range under which the <strong>opposite</strong> side's devices appear to this interface's network (e.g., <code>"172.17.1.0/24"</code>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">DHCP interfaces</p>
+<p>On interfaces using <code>dhcp</code> or <code>dhcpovpn</code> protocol, the private subnet is derived automatically from the DHCP lease. The <code>_netmap_subnet</code> variable is only used for <code>static</code> interfaces.</p>
+</div>
+<p>See the <a href="../../../guides/one-to-one-nat/">1:1 NAT guide</a> for a complete walkthrough with examples.</p>
 <hr />
 <h2 id="3g4g-umtslte">3G/4G (UMTS/LTE)<a class="headerlink" href="#3g4g-umtslte" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
