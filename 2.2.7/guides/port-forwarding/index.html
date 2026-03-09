@@ -2336,7 +2336,7 @@
 <h3 id="port-ranges">Port Ranges<a class="headerlink" href="#port-ranges" title="Permanent link">&para;</a></h3>
 <p>Both <code>fwlocalport</code> and <code>fwtargetport</code> support ranges using a hyphen (e.g., <code>"8080-8090"</code>). When using port ranges, the number of ports must match between local and target.</p>
 <h3 id="protocol-wildcard">Protocol Wildcard<a class="headerlink" href="#protocol-wildcard" title="Permanent link">&para;</a></h3>
-<p>Setting <code>fwproto</code> to <code>"*"</code> forwards all protocols (TCP and UDP) to the target IP. When using the wildcard protocol, port numbers are ignored — all traffic matching the interface and destination IP is forwarded.</p>
+<p>Setting <code>fwproto</code> to <code>"*"</code> forwards both protocols (TCP and UDP) to the target IP. When using the wildcard protocol, port numbers are ignored — all traffic matching the interface and destination IP is forwarded.</p>
 <h2 id="rule-order-first-match-wins">Rule Order — First Match Wins<a class="headerlink" href="#rule-order-first-match-wins" title="Permanent link">&para;</a></h2>
 <p>Forwarding rules are translated to iptables DNAT rules in the PREROUTING chain. Rules are appended in table row order, and <strong>the first matching rule wins</strong> — once a packet matches a DNAT rule, no further forwarding rules are evaluated for that packet.</p>
 <p>This means rule order matters. You can use it to cherry-pick specific ports to dedicated hosts, then place a wildcard (<code>*</code>) rule at the end to catch all remaining traffic and forward it to a default host.</p>
@@ -2346,21 +2346,21 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Rule 1: RDP to Windows host</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">wan_ifname</span><span class="p">,</span> <span class="s2">&quot;TCP&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;3389&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">wan_ifname</span><span class="p">,</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;3389&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="s2">&quot;192.168.10.200&quot;</span><span class="p">,</span> <span class="s2">&quot;3389&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;RDP&quot;</span><span class="p">,</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">])</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Rule 2: HTTPS to web server</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">wan_ifname</span><span class="p">,</span> <span class="s2">&quot;TCP&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">wan_ifname</span><span class="p">,</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="s2">&quot;192.168.10.100&quot;</span><span class="p">,</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;HTTPS&quot;</span><span class="p">,</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">])</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1"># Rule 3: SSH to management host</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">wan_ifname</span><span class="p">,</span> <span class="s2">&quot;TCP&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;22&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">wan_ifname</span><span class="p">,</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;22&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="s2">&quot;192.168.10.50&quot;</span><span class="p">,</span> <span class="s2">&quot;22&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;SSH&quot;</span><span class="p">,</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">])</span>
@@ -2422,7 +2422,7 @@
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">sess_start</span><span class="p">()</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">wan_ifname</span><span class="p">,</span>       <span class="c1"># fwifname: WAN interface</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="s2">&quot;TCP&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwlocalip (any router IP on this interface)</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="s2">&quot;3389&quot;</span><span class="p">,</span>           <span class="c1"># fwlocalport</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="s2">&quot;192.168.10.200&quot;</span><span class="p">,</span> <span class="c1"># fwtargetip</span>
@@ -2431,7 +2431,7 @@
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwsrcnet (no restriction)</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="s2">&quot;RDP access&quot;</span><span class="p">,</span>     <span class="c1"># fwcomment</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>        <span class="c1"># fwenabled</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwposition</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="s2">&quot;1&quot;</span><span class="p">,</span>              <span class="c1"># fwposition</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>       <span class="c1"># fwrsnat</span>
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">])</span>
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="n">dev</span><span class="o">.</span><span class="n">sess_commit</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
@@ -2443,7 +2443,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">sess_start</span><span class="p">()</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">wan_ifname</span><span class="p">,</span>       <span class="c1"># fwifname</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">&quot;TCP&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwlocalip</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s2">&quot;443&quot;</span><span class="p">,</span>            <span class="c1"># fwlocalport</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s2">&quot;192.168.10.100&quot;</span><span class="p">,</span> <span class="c1"># fwtargetip</span>
@@ -2452,7 +2452,7 @@
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s2">&quot;10.0.0.0/24&quot;</span><span class="p">,</span>    <span class="c1"># fwsrcnet (restrict to this network)</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="s2">&quot;PLC HTTPS&quot;</span><span class="p">,</span>      <span class="c1"># fwcomment</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>        <span class="c1"># fwenabled</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwposition</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="s2">&quot;1&quot;</span><span class="p">,</span>              <span class="c1"># fwposition</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>       <span class="c1"># fwrsnat</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">])</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">dev</span><span class="o">.</span><span class="n">sess_commit</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
@@ -2462,7 +2462,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">sess_start</span><span class="p">()</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">wan_ifname</span><span class="p">,</span>       <span class="c1"># fwifname</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s2">&quot;TCP&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwlocalip</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="s2">&quot;50022&quot;</span><span class="p">,</span>          <span class="c1"># fwlocalport (external port)</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="s2">&quot;192.168.10.50&quot;</span><span class="p">,</span>  <span class="c1"># fwtargetip</span>
@@ -2471,7 +2471,7 @@
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwsrcnet</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="s2">&quot;SSH remapped&quot;</span><span class="p">,</span>   <span class="c1"># fwcomment</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>        <span class="c1"># fwenabled</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwposition</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="s2">&quot;1&quot;</span><span class="p">,</span>              <span class="c1"># fwposition</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>       <span class="c1"># fwrsnat</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">])</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">dev</span><span class="o">.</span><span class="n">sess_commit</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
@@ -2505,7 +2505,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">sess_start</span><span class="p">()</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">wan_ifname</span><span class="p">,</span>       <span class="c1"># fwifname</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="s2">&quot;TCP&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwlocalip</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="s2">&quot;8080&quot;</span><span class="p">,</span>           <span class="c1"># fwlocalport</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="s2">&quot;10.0.3.1&quot;</span><span class="p">,</span>       <span class="c1"># fwtargetip (Docker bridge)</span>
@@ -2514,7 +2514,7 @@
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwsrcnet</span>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="s2">&quot;Docker web&quot;</span><span class="p">,</span>     <span class="c1"># fwcomment</span>
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>        <span class="c1"># fwenabled</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwposition</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="s2">&quot;1&quot;</span><span class="p">,</span>              <span class="c1"># fwposition</span>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>       <span class="c1"># fwrsnat</span>
 <a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="p">])</span>
 <a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="n">dev</span><span class="o">.</span><span class="n">sess_commit</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
@@ -2529,7 +2529,7 @@
 <ul>
 <li>Only forward the ports that are actually needed</li>
 <li>Use <code>fwsrcnet</code> to restrict access to known IP ranges</li>
-<li>Select the specific protocol (<code>TCP</code> or <code>UDP</code>) instead of <code>"*"</code> where possible</li>
+<li>Select the specific protocol (<code>"tcp"</code> or <code>"udp"</code>) instead of <code>"*"</code> where possible</li>
 <li>Set <code>fwenabled</code> to <code>"disabled"</code> for rules that are no longer needed instead of leaving them active</li>
 <li>Port forwarding does not encrypt traffic — use VPN tunnels for sensitive services</li>
 </ul>
