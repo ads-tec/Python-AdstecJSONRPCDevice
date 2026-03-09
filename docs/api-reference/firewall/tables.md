@@ -139,3 +139,50 @@ Activates a packet filter ruleset with optional time-based scheduling. 7 columns
 | 6 | `position` | integer | Ruleset evaluation order; lowest first |
 
 See the [Packet Filter guide](../../guides/packet-filter/index.md) for scheduling details and [examples](../../guides/packet-filter/examples.md).
+
+---
+
+## `forwarding` — Port Forwarding Rules
+
+Defines DNAT (port forwarding) rules that redirect incoming connections from an external interface to internal hosts. Each row is one forwarding rule. 12 columns.
+
+Changes to this table take effect immediately on commit — no trigger variable is needed (unlike the packet filter tables which require writing to `l3_forward`).
+
+| Index | Column | Type | Description |
+|---|---|---|---|
+| 0 | `fwifname` | string (max 32) | Public interface — Linux interface name (e.g., `"br1"`, `"wwan1"`, `"ppp0"`). Use `{port}_ifname` config variables to resolve |
+| 1 | `fwproto` | `"TCP"` / `"UDP"` / `"*"` | Transport protocol; `"*"` = both (ports ignored with wildcard) |
+| 2 | `fwlocalip` | IP address or `""` | Optional: restrict to a specific local IP on the public interface. Empty = any IP on that interface |
+| 3 | `fwlocalport` | port or range | External port (e.g., `"3389"`, `"8080-8090"`) |
+| 4 | `fwtargetip` | IP address | Internal host IP to forward to |
+| 5 | `fwtargetport` | port or range | Port on the internal host (may differ from `fwlocalport` for PAT) |
+| 6 | `fwsnat` | `"enabled"` / `"disabled"` | Source NAT — mask sender behind router's LAN IP. Required when target has no return route |
+| 7 | `fwsrcnet` | CIDR or `""` | Optional: restrict to source network (e.g., `"10.0.0.0/24"`). Empty = any source |
+| 8 | `fwcomment` | string (max 255) | Free-text description of the rule |
+| 9 | `fwenabled` | `"enabled"` / `"disabled"` | Rule active/inactive |
+| 10 | `fwposition` | string (max 6) | Rule position (ordering); can be left empty |
+| 11 | `fwrsnat` | `"enabled"` / `"disabled"` | Reverse SNAT — only applies when `fwproto` is `"*"` |
+
+```python
+# Forward TCP port 3389 from WAN to internal host
+wan_ifname = dev.config_get(["wan_ifname"])["result"][0]["wan_ifname"]
+
+cfg = dev.sess_start()
+dev.table_insert("forwarding", cfg, [
+    wan_ifname,       # fwifname
+    "TCP",            # fwproto
+    "",               # fwlocalip
+    "3389",           # fwlocalport
+    "192.168.10.200", # fwtargetip
+    "3389",           # fwtargetport
+    "disabled",       # fwsnat
+    "",               # fwsrcnet
+    "RDP access",     # fwcomment
+    "enabled",        # fwenabled
+    "",               # fwposition
+    "disabled",       # fwrsnat
+])
+dev.sess_commit(cfg)
+```
+
+See the [Port Forwarding guide](../../guides/port-forwarding.md) for SNAT usage, Docker scenarios, and more examples.

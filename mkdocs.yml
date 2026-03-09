@@ -108,6 +108,7 @@ nav:
           - Tables: api-reference/firewall/tables.md
       - Guides:
           - GPIO: guides/gpio.md
+          - Port Forwarding: guides/port-forwarding.md
           - Packet Filter:
               - Overview: guides/packet-filter/index.md
               - Rule Modes: guides/packet-filter/rule-modes.md
