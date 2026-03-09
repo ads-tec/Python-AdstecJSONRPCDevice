@@ -90,6 +90,35 @@ Requires VPN connection configured in `"switched"` state.
 
 ---
 
+## 1:1 NAT (Network Mapping)
+
+1:1 NAT translates entire subnets by replacing the network prefix while preserving the host portion. This is used to resolve IP address conflicts when two networks share the same address range.
+
+Variables use the interface prefix pattern: `(wan|lan|lan_port[1-7])_`.
+
+### Basic 1:1 NAT
+
+| Variable | Values | Description |
+|---|---|---|
+| `(wan\|lan\|lan_port[1-7])_netmap_status` | `"enabled"` / `"disabled"` | Enable 1:1 NAT on this interface |
+| `(wan\|lan\|lan_port[1-7])_netmap_subnet` | IP/CIDR | Private (real) subnet behind this interface (e.g., `"192.168.0.0/24"`). Only used when interface protocol is `static` |
+
+The **public** (virtual) subnet is derived from the interface's `_ipaddr` and `_netmask` — these must be set to the virtual address range before enabling 1:1 NAT.
+
+### Double Sided Network Mapping (Extended 1:1 NAT)
+
+| Variable | Values | Description |
+|---|---|---|
+| `(wan\|lan\|lan_port[1-7])_netmap_ext_status` | `"enabled"` / `"disabled"` | Enable double sided network mapping on this interface |
+| `(wan\|lan\|lan_port[1-7])_netmap_ext_subnet` | IP/CIDR | Outgoing network mapping subnet — the virtual address range under which the **opposite** side's devices appear to this interface's network (e.g., `"172.17.1.0/24"`) |
+
+!!! info "DHCP interfaces"
+    On interfaces using `dhcp` or `dhcpovpn` protocol, the private subnet is derived automatically from the DHCP lease. The `_netmap_subnet` variable is only used for `static` interfaces.
+
+See the [1:1 NAT guide](../../guides/one-to-one-nat.md) for a complete walkthrough with examples.
+
+---
+
 ## 3G/4G (UMTS/LTE)
 
 !!! note
