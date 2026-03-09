@@ -1266,6 +1266,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#forwarding-port-forwarding-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        forwarding — Port Forwarding Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1366,6 +1377,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../guides/port-forwarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1377,10 +1416,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
             
   
   
@@ -1398,8 +1437,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1848,6 +1887,17 @@
     <span class="md-ellipsis">
       
         selected_services — Active Packet Filter Rulesets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding-port-forwarding-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        forwarding — Port Forwarding Rules
       
     </span>
   </a>
@@ -2331,6 +2381,115 @@
 </tbody>
 </table>
 <p>See the <a href="../../../guides/packet-filter/">Packet Filter guide</a> for scheduling details and <a href="../../../guides/packet-filter/examples/">examples</a>.</p>
+<hr />
+<h2 id="forwarding-port-forwarding-rules"><code>forwarding</code> — Port Forwarding Rules<a class="headerlink" href="#forwarding-port-forwarding-rules" title="Permanent link">&para;</a></h2>
+<p>Defines DNAT (port forwarding) rules that redirect incoming connections from an external interface to internal hosts. Each row is one forwarding rule. 12 columns.</p>
+<p>Changes to this table take effect immediately on commit — no trigger variable is needed (unlike the packet filter tables which require writing to <code>l3_forward</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>fwifname</code></td>
+<td>string (max 32)</td>
+<td>Public interface — Linux interface name (e.g., <code>"br1"</code>, <code>"wwan1"</code>, <code>"ppp0"</code>). Use <code>{port}_ifname</code> config variables to resolve</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>fwproto</code></td>
+<td><code>"TCP"</code> / <code>"UDP"</code> / <code>"*"</code></td>
+<td>Transport protocol; <code>"*"</code> = both (ports ignored with wildcard)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>fwlocalip</code></td>
+<td>IP address or <code>""</code></td>
+<td>Optional: restrict to a specific local IP on the public interface. Empty = any IP on that interface</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>fwlocalport</code></td>
+<td>port or range</td>
+<td>External port (e.g., <code>"3389"</code>, <code>"8080-8090"</code>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>fwtargetip</code></td>
+<td>IP address</td>
+<td>Internal host IP to forward to</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>fwtargetport</code></td>
+<td>port or range</td>
+<td>Port on the internal host (may differ from <code>fwlocalport</code> for PAT)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>fwsnat</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Source NAT — mask sender behind router's LAN IP. Required when target has no return route</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>fwsrcnet</code></td>
+<td>CIDR or <code>""</code></td>
+<td>Optional: restrict to source network (e.g., <code>"10.0.0.0/24"</code>). Empty = any source</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>fwcomment</code></td>
+<td>string (max 255)</td>
+<td>Free-text description of the rule</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>fwenabled</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Rule active/inactive</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>fwposition</code></td>
+<td>string (max 6)</td>
+<td>Rule position (ordering); can be left empty</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>fwrsnat</code></td>
+<td><code>"enabled"</code> / <code>"disabled"</code></td>
+<td>Reverse SNAT — only applies when <code>fwproto</code> is <code>"*"</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Forward TCP port 3389 from WAN to internal host</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">wan_ifname</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">config_get</span><span class="p">([</span><span class="s2">&quot;wan_ifname&quot;</span><span class="p">])[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;wan_ifname&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">sess_start</span><span class="p">()</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">dev</span><span class="o">.</span><span class="n">table_insert</span><span class="p">(</span><span class="s2">&quot;forwarding&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">wan_ifname</span><span class="p">,</span>       <span class="c1"># fwifname</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="s2">&quot;TCP&quot;</span><span class="p">,</span>            <span class="c1"># fwproto</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwlocalip</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s2">&quot;3389&quot;</span><span class="p">,</span>           <span class="c1"># fwlocalport</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s2">&quot;192.168.10.200&quot;</span><span class="p">,</span> <span class="c1"># fwtargetip</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="s2">&quot;3389&quot;</span><span class="p">,</span>           <span class="c1"># fwtargetport</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>       <span class="c1"># fwsnat</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwsrcnet</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="s2">&quot;RDP access&quot;</span><span class="p">,</span>     <span class="c1"># fwcomment</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>        <span class="c1"># fwenabled</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="s2">&quot;&quot;</span><span class="p">,</span>               <span class="c1"># fwposition</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>       <span class="c1"># fwrsnat</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="p">])</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">dev</span><span class="o">.</span><span class="n">sess_commit</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</code></pre></div>
+<p>See the <a href="../../../guides/port-forwarding/">Port Forwarding guide</a> for SNAT usage, Docker scenarios, and more examples.</p>
 
 
 
