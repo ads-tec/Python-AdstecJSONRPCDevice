@@ -35,7 +35,7 @@ Both `fwlocalport` and `fwtargetport` support ranges using a hyphen (e.g., `"808
 
 ### Protocol Wildcard
 
-Setting `fwproto` to `"*"` forwards all protocols (TCP and UDP) to the target IP. When using the wildcard protocol, port numbers are ignored — all traffic matching the interface and destination IP is forwarded.
+Setting `fwproto` to `"*"` forwards both protocols (TCP and UDP) to the target IP. When using the wildcard protocol, port numbers are ignored — all traffic matching the interface and destination IP is forwarded.
 
 ## Rule Order — First Match Wins
 
@@ -52,21 +52,21 @@ cfg = dev.sess_start()
 
 # Rule 1: RDP to Windows host
 dev.table_insert("forwarding", cfg, [
-    wan_ifname, "TCP", "", "3389",
+    wan_ifname, "tcp", "", "3389",
     "192.168.10.200", "3389",
     "disabled", "", "RDP", "enabled", "1", "disabled",
 ])
 
 # Rule 2: HTTPS to web server
 dev.table_insert("forwarding", cfg, [
-    wan_ifname, "TCP", "", "443",
+    wan_ifname, "tcp", "", "443",
     "192.168.10.100", "443",
     "disabled", "", "HTTPS", "enabled", "2", "disabled",
 ])
 
 # Rule 3: SSH to management host
 dev.table_insert("forwarding", cfg, [
-    wan_ifname, "TCP", "", "22",
+    wan_ifname, "tcp", "", "22",
     "192.168.10.50", "22",
     "disabled", "", "SSH", "enabled", "3", "disabled",
 ])
@@ -113,7 +113,7 @@ wan_ifname = dev.config_get(["wan_ifname"])["result"][0]["wan_ifname"]
 cfg = dev.sess_start()
 dev.table_insert("forwarding", cfg, [
     wan_ifname,       # fwifname: WAN interface
-    "TCP",            # fwproto
+    "tcp",            # fwproto
     "",               # fwlocalip (any router IP on this interface)
     "3389",           # fwlocalport
     "192.168.10.200", # fwtargetip
@@ -122,7 +122,7 @@ dev.table_insert("forwarding", cfg, [
     "",               # fwsrcnet (no restriction)
     "RDP access",     # fwcomment
     "enabled",        # fwenabled
-    "",               # fwposition
+    "1",              # fwposition
     "disabled",       # fwrsnat
 ])
 dev.sess_commit(cfg)
@@ -138,7 +138,7 @@ Forward TCP port 443 from the WAN interface to a PLC at 192.168.10.100, restrict
 cfg = dev.sess_start()
 dev.table_insert("forwarding", cfg, [
     wan_ifname,       # fwifname
-    "TCP",            # fwproto
+    "tcp",            # fwproto
     "",               # fwlocalip
     "443",            # fwlocalport
     "192.168.10.100", # fwtargetip
@@ -147,7 +147,7 @@ dev.table_insert("forwarding", cfg, [
     "10.0.0.0/24",    # fwsrcnet (restrict to this network)
     "PLC HTTPS",      # fwcomment
     "enabled",        # fwenabled
-    "",               # fwposition
+    "1",              # fwposition
     "disabled",       # fwrsnat
 ])
 dev.sess_commit(cfg)
@@ -161,7 +161,7 @@ Redirect external port 50022 to internal SSH port 22 — useful for avoiding sta
 cfg = dev.sess_start()
 dev.table_insert("forwarding", cfg, [
     wan_ifname,       # fwifname
-    "TCP",            # fwproto
+    "tcp",            # fwproto
     "",               # fwlocalip
     "50022",          # fwlocalport (external port)
     "192.168.10.50",  # fwtargetip
@@ -170,7 +170,7 @@ dev.table_insert("forwarding", cfg, [
     "",               # fwsrcnet
     "SSH remapped",   # fwcomment
     "enabled",        # fwenabled
-    "",               # fwposition
+    "1",              # fwposition
     "disabled",       # fwrsnat
 ])
 dev.sess_commit(cfg)
@@ -222,7 +222,7 @@ If a container binds to the Docker interface only (`-p 10.0.3.1:8080:80`), or us
 cfg = dev.sess_start()
 dev.table_insert("forwarding", cfg, [
     wan_ifname,       # fwifname
-    "TCP",            # fwproto
+    "tcp",            # fwproto
     "",               # fwlocalip
     "8080",           # fwlocalport
     "10.0.3.1",       # fwtargetip (Docker bridge)
@@ -231,7 +231,7 @@ dev.table_insert("forwarding", cfg, [
     "",               # fwsrcnet
     "Docker web",     # fwcomment
     "enabled",        # fwenabled
-    "",               # fwposition
+    "1",              # fwposition
     "disabled",       # fwrsnat
 ])
 dev.sess_commit(cfg)
@@ -248,6 +248,6 @@ Port forwarding rules operate at the NAT level (PREROUTING chain) and take effec
 
 - Only forward the ports that are actually needed
 - Use `fwsrcnet` to restrict access to known IP ranges
-- Select the specific protocol (`TCP` or `UDP`) instead of `"*"` where possible
+- Select the specific protocol (`"tcp"` or `"udp"`) instead of `"*"` where possible
 - Set `fwenabled` to `"disabled"` for rules that are no longer needed instead of leaving them active
 - Port forwarding does not encrypt traffic — use VPN tunnels for sensitive services

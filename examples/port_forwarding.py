@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # Rule 1: Forward RDP (TCP 3389) to internal host
     dev.table_insert("forwarding", cfg, [
         wan_ifname,       # fwifname: public interface (Linux name)
-        "TCP",            # fwproto: TCP, UDP, or * (both)
+        "tcp",            # fwproto: tcp, udp, or * (both)
         "",               # fwlocalip: empty = any IP on this interface
         "3389",           # fwlocalport: external port
         "192.168.10.200", # fwtargetip: internal host
@@ -28,14 +28,14 @@ if __name__ == "__main__":
         "",               # fwsrcnet: no source restriction
         "RDP access",     # fwcomment
         "enabled",        # fwenabled
-        "",               # fwposition
+        "1",              # fwposition
         "disabled",       # fwrsnat
     ])
 
     # Rule 2: Forward HTTPS to PLC with SNAT (PLC has no default gateway)
     dev.table_insert("forwarding", cfg, [
         wan_ifname,       # fwifname
-        "TCP",            # fwproto
+        "tcp",            # fwproto
         "",               # fwlocalip
         "443",            # fwlocalport
         "192.168.10.100", # fwtargetip
@@ -44,14 +44,14 @@ if __name__ == "__main__":
         "10.0.0.0/24",    # fwsrcnet: only allow this network
         "PLC HTTPS",      # fwcomment
         "enabled",        # fwenabled
-        "",               # fwposition
+        "2",              # fwposition
         "disabled",       # fwrsnat
     ])
 
     # Rule 3: Port remapping — external 50022 to internal SSH 22
     dev.table_insert("forwarding", cfg, [
         wan_ifname,       # fwifname
-        "TCP",            # fwproto
+        "tcp",            # fwproto
         "",               # fwlocalip
         "50022",          # fwlocalport (external)
         "192.168.10.50",  # fwtargetip
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         "",               # fwsrcnet
         "SSH remapped",   # fwcomment
         "enabled",        # fwenabled
-        "",               # fwposition
+        "3",              # fwposition
         "disabled",       # fwrsnat
     ])
 

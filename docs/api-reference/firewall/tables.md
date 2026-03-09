@@ -151,7 +151,7 @@ Changes to this table take effect immediately on commit — no trigger variable 
 | Index | Column | Type | Description |
 |---|---|---|---|
 | 0 | `fwifname` | string (max 32) | Public interface — Linux interface name (e.g., `"br1"`, `"wwan1"`, `"ppp0"`). Use `{port}_ifname` config variables to resolve |
-| 1 | `fwproto` | `"TCP"` / `"UDP"` / `"*"` | Transport protocol; `"*"` = both (ports ignored with wildcard) |
+| 1 | `fwproto` | `"tcp"` / `"udp"` / `"*"` | Transport protocol; `"*"` = both (ports ignored with wildcard) |
 | 2 | `fwlocalip` | IP address or `""` | Optional: restrict to a specific local IP on the public interface. Empty = any IP on that interface |
 | 3 | `fwlocalport` | port or range | External port (e.g., `"3389"`, `"8080-8090"`) |
 | 4 | `fwtargetip` | IP address | Internal host IP to forward to |
@@ -160,7 +160,7 @@ Changes to this table take effect immediately on commit — no trigger variable 
 | 7 | `fwsrcnet` | CIDR or `""` | Optional: restrict to source network (e.g., `"10.0.0.0/24"`). Empty = any source |
 | 8 | `fwcomment` | string (max 255) | Free-text description of the rule |
 | 9 | `fwenabled` | `"enabled"` / `"disabled"` | Rule active/inactive |
-| 10 | `fwposition` | string (max 6) | Rule position (ordering); can be left empty |
+| 10 | `fwposition` | string (max 6) | Rule position (ordering); must be an explicit number (e.g. `"1"`) |
 | 11 | `fwrsnat` | `"enabled"` / `"disabled"` | Reverse SNAT — only applies when `fwproto` is `"*"` |
 
 ```python
@@ -170,7 +170,7 @@ wan_ifname = dev.config_get(["wan_ifname"])["result"][0]["wan_ifname"]
 cfg = dev.sess_start()
 dev.table_insert("forwarding", cfg, [
     wan_ifname,       # fwifname
-    "TCP",            # fwproto
+    "tcp",            # fwproto
     "",               # fwlocalip
     "3389",           # fwlocalport
     "192.168.10.200", # fwtargetip
@@ -179,7 +179,7 @@ dev.table_insert("forwarding", cfg, [
     "",               # fwsrcnet
     "RDP access",     # fwcomment
     "enabled",        # fwenabled
-    "",               # fwposition
+    "1",              # fwposition
     "disabled",       # fwrsnat
 ])
 dev.sess_commit(cfg)
