@@ -15,7 +15,7 @@ Two NAT mechanisms are involved:
 
 ## The `forwarding` Table
 
-Port forwarding rules are stored in the [`forwarding`](../api-reference/firewall/tables.md#forwarding-port-forwarding-rules) table. Each row defines one forwarding rule. Changes take effect immediately on commit — no trigger variable is needed.
+Port forwarding rules are stored in the `forwarding` table (see e.g. [IRF3821 Configuration Database](../api-reference/configdb/IRF3821.md#packet-filter-nat)). Each row defines one forwarding rule. Changes take effect immediately on commit — no trigger variable is needed.
 
 ### Interface Names
 

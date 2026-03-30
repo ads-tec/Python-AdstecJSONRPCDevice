@@ -6,8 +6,8 @@ JSON-RPC 2.0 API for **ads-tec Industrial IT** devices over HTTPS. This document
 
 | Device Family | Models | Firmware Version |
 |---|---|---|
-| **Firewalls** | IRF1000, IRF2000, IRF3000 | IRF 2.2.7 |
-| **Web Terminals** | All ads-tec Web terminals | AWT 14.2.7 |
+| **Firewalls** | IRF1000, IRF2000, IRF3000 | IRF 2.2.8 |
+| **Web Terminals** | All ads-tec Web terminals | AWT 14.2.8 |
 
 ## API Capabilities
 

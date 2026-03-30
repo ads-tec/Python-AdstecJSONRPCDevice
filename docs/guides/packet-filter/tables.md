@@ -1,6 +1,6 @@
 # Table Reference
 
-See also the [Firewall Tables API Reference](../../api-reference/firewall/tables.md) for the table schemas alongside [`ipgroups`](../../api-reference/firewall/tables.md#ipgroups-network-groups) and [`macgroups`](../../api-reference/firewall/tables.md#macgroups-hardware-groups). For table operations (`table_get`, `table_insert`, `table_up`, `table_del`), see [Tables](../../api-reference/tables.md#table-operations).
+For complete column definitions and validation rules, see the [Configuration Database](../../api-reference/configdb/index.md) reference. For table operations (`table_get`, `table_insert`, `table_up`, `table_del`), see [Tables](../../api-reference/tables.md#table-operations).
 
 ## `services`
 

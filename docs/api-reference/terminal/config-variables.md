@@ -1,22 +1,13 @@
 # Configuration Variables (Web Terminals)
 
 !!! info "Web terminals only"
-    The configuration variables on this page apply to **ads-tec Web terminals** only. For variables available on all devices, see [Configuration Variables](../config-variables.md).
+    The configuration variables on this page apply to **ads-tec Web Terminals** only. For the API usage patterns (reading/writing variables), see [Configuration Variables](../config-variables.md).
 
----
+## Variable Reference
 
-## Web Panel
+For the complete list of all web terminal configuration variables with defaults, allowed values, and validation rules, see the [AWT1000 Configuration Database](../configdb/AWT1000.md).
 
-| Variable | Values | Description |
-|---|---|---|
-| `browser_url` | URL string | URL displayed on the web terminal |
-| `browser_activate_url_now` | `"1"` | Trigger immediate navigation to `browser_url` |
-| `browser_switch_gesture` | `"enabled"` / `"disabled"` | Allow gesture to switch between browser and config UI |
-| `browser_context_menu` | `"enabled"` / `"disabled"` | Enable browser right-click context menu |
-| `browser_persistent_cache` | `"enabled"` / `"disabled"` | Persist browser cache across reboots |
-| `browser_keyboard` | `"enabled"` / `"disabled"` | Show on-screen keyboard |
-| `browser_keyboard_scale` | string | Keyboard scale factor (e.g., `"1.0"`) |
-| `keyboard_layout` | string | Keyboard layout (e.g., `"en"`, `"de"`) |
-| `display_orientation` | `"0"` / `"90"` / `"180"` / `"270"` | Display rotation in degrees |
-| `display_brightness` | `"0"` - `"100"` | Display brightness percentage |
-| `terminal_gui_locale` | string | GUI language (e.g., `"en"`, `"de"`) |
+Key web-terminal-specific sections:
+
+- **Web terminal** — Browser URL, display orientation, keyboard settings
+- **VNC server** — VNC remote access configuration

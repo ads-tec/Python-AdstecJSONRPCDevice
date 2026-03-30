@@ -57,7 +57,7 @@ Two read-only lookup tables provide reference data:
 - **`protocols`** — Maps protocol names (`TCP`, `UDP`, `ICMP`) to numeric values for iptables
 - **`actions`** — Maps action IDs to names (`ACCEPT`, `DROP`, etc.)
 
-Address groups from the [`ipgroups` and `macgroups`](../../api-reference/firewall/tables.md#ipgroups-network-groups) tables can be referenced in rules using the `@groupname` syntax.
+Address groups from the `ipgroups` and `macgroups` tables (see e.g. [IRF3821 Configuration Database](../../api-reference/configdb/IRF3821.md#packet-filter-nat)) can be referenced in rules using the `@groupname` syntax.
 
 ## Scope and Interfaces
 

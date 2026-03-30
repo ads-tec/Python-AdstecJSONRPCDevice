@@ -274,9 +274,9 @@ result = dev.call("file", "read", path="/tmp/root/settings.cf2")
 
 ---
 
-## `datacollection` — Traffic Statistics
+## `datacollection` — Traffic & System Statistics
 
-The `datacollection` object provides real-time time-series data for network interface traffic (bytes, packets) on all devices. On firewalls (IRF), it additionally includes packet filter byte counters.
+The `datacollection` object provides real-time time-series data for network interface traffic (bytes, packets) and system resource usage (CPU, memory, load, uptime) on all devices. On firewalls (IRF), it additionally includes packet filter byte counters.
 
 Data is collected every 10 seconds and stored in a ring buffer with 1-second resolution, retaining approximately the last 10 minutes of data.
 
@@ -293,6 +293,20 @@ Metric names follow a dot-separated naming convention. Use `get_metrics` to disc
 | `{interface}.rx_packets` | `ETH1.rx_packets` | Received packets (delta per interval) |
 | `{interface}.tx_packets` | `ETH1.tx_packets` | Transmitted packets (delta per interval) |
 
+**System resources** (all devices, since firmware 2.2.8):
+
+| Pattern | Example | Description |
+|---|---|---|
+| `system.cpu` | `system.cpu` | Aggregate CPU usage across all cores (percent) |
+| `system.cpu.{N}` | `system.cpu.0` | Per-core CPU usage (percent), numbered from 0 |
+| `system.memory.used` | `system.memory.used` | Used memory (bytes) |
+| `system.memory.free` | `system.memory.free` | Free memory (bytes) |
+| `system.memory.total` | `system.memory.total` | Total memory (bytes) |
+| `system.load.1` | `system.load.1` | 1-minute load average |
+| `system.load.5` | `system.load.5` | 5-minute load average |
+| `system.load.15` | `system.load.15` | 15-minute load average |
+| `system.uptime` | `system.uptime` | System uptime (seconds) |
+
 **Packet filter counters** (firewalls only):
 
 | Pattern | Example | Description |
@@ -300,7 +314,7 @@ Metric names follow a dot-separated naming convention. Use `get_metrics` to disc
 | `filter.rule.{chain}.{target}.{index}.bcnt` | `filter.rule.INPUT.DROP.10.bcnt` | Byte count delta for a specific filter rule |
 | `filter.policy.{chain}.{action}.bcnt` | `filter.policy.INPUT.ACCEPT.bcnt` | Byte count delta for a chain's default policy |
 
-All values represent **deltas per collection interval** (typically 10 seconds), not absolute counters.
+Network traffic and packet filter values represent **deltas per collection interval** (typically 10 seconds), not absolute counters. System resource metrics are **point-in-time gauge values** (the instantaneous reading at each collection interval).
 
 ### Methods
 
@@ -316,7 +330,9 @@ List all known metric names on the device.
 ```python
 result = dev.call("datacollection", "get_metrics")
 metrics = result["result"]
-# ["ETH1.rx_bytes", "ETH1.tx_bytes", "filter.rule.INPUT.DROP.10.bcnt", ...]
+# ["ETH1.rx_bytes", "ETH1.tx_bytes", "system.cpu", "system.cpu.0",
+#  "system.memory.used", "system.load.1", "system.uptime",
+#  "filter.rule.INPUT.DROP.10.bcnt", ...]
 ```
 
 #### `get_values_as_table`

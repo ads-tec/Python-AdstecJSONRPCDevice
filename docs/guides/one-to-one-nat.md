@@ -39,7 +39,7 @@ The host portion (`.100`) is always preserved — only the network prefix change
 
 Where `{iface}` is `wan`, `lan`, `lan_port1`–`lan_port7`, etc.
 
-See the [Configuration Variables (Firewalls)](../api-reference/firewall/config-variables.md#11-nat-network-mapping) reference for the full list.
+See the [Configuration Database](../api-reference/configdb/index.md) reference (section "Packet Filter & NAT > 1:1 NAT") for the full list.
 
 ## Example: Multiple Machines with Identical Networks
 
@@ -84,7 +84,7 @@ if opmode != "iprouter5port":
 ```
 
 !!! warning
-    Changing `opmode` has side effects on filter rules and static routes. See [Operation Mode](../api-reference/config-variables.md#operation-mode).
+    Changing `opmode` has side effects on filter rules and static routes.
 
 ### Step 1: Configure Interface IPs
 

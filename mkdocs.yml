@@ -45,13 +45,15 @@ plugins:
   - search
   - with-pdf:
       cover_title: "ads-tec Industrial IT JSON-RPC API"
-      cover_subtitle: "IRF 2.2.7 / AWT 14.2.7"
+      cover_subtitle: "IRF 2.2.8 / AWT 14.2.8"
       cover_logo: docs/assets/logo.png
       output_path: manual.pdf
       enabled_if_env: ENABLE_PDF_EXPORT
   - mkdocstrings:
       handlers:
         python:
+          paths:
+            - .
           options:
             show_source: false
             show_root_heading: true
@@ -74,6 +76,9 @@ markdown_extensions:
       alternate_style: true
   - tables
   - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
 
@@ -88,6 +93,7 @@ nav:
           - Status Properties: api-reference/status-properties.md
           - Tables: api-reference/tables.md
           - JSON Schemas: api-reference/schemas.md
+      - Configuration Database: api-reference/configdb/index.md
       - Guides:
           - Status & Diagnostics: guides/diagnostics.md
           - Firmware Update: guides/firmware-update.md
@@ -98,6 +104,7 @@ nav:
           - Certificates: guides/certificates.md
           - VPN Approval: guides/vpn-approval.md
           - Settings Backup: guides/settings-backup.md
+          - System Monitoring: guides/system-monitoring.md
           - Remote Syslog: guides/syslog.md
           - Remote Capture: guides/remote-capture.md
   - Firewalls (IRF1000 / IRF2000 / IRF3000):
@@ -106,6 +113,13 @@ nav:
           - Configuration Variables: api-reference/firewall/config-variables.md
           - Status Properties: api-reference/firewall/status-properties.md
           - Tables: api-reference/firewall/tables.md
+          - Configuration Database:
+              - IRF1401: api-reference/configdb/IRF1401.md
+              - IRF1421: api-reference/configdb/IRF1421.md
+              - IRF3401: api-reference/configdb/IRF3401.md
+              - IRF3421: api-reference/configdb/IRF3421.md
+              - IRF3801: api-reference/configdb/IRF3801.md
+              - IRF3821: api-reference/configdb/IRF3821.md
       - Guides:
           - GPIO: guides/gpio.md
           - Port Forwarding: guides/port-forwarding.md
@@ -118,5 +132,8 @@ nav:
   - Web Terminals:
       - API Reference:
           - Configuration Variables: api-reference/terminal/config-variables.md
+          - Configuration Database: api-reference/configdb/AWT1000.md
       - Guides:
           - Web Panel: guides/web-panel.md
+  - "\u2197 Operating Manuals": /Firewall-Betriebshandbuch/
+  - "\u2197 Application Notes": /Application-Notes/

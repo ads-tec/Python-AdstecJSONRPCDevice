@@ -1,6 +1,6 @@
 # Examples
 
-All examples use [table operations](../../api-reference/tables.md#table-operations) on the packet filter tables ([`services`](../../api-reference/firewall/tables.md#services-packet-filter-rulesets), [`serv_Protocols`](../../api-reference/firewall/tables.md#serv_protocols-packet-filter-rules), [`selected_services`](../../api-reference/firewall/tables.md#selected_services-active-packet-filter-rulesets)). See the [Table Reference](tables.md) for full column schemas.
+All examples use [table operations](../../api-reference/tables.md#table-operations) on the packet filter tables (`services`, `serv_Protocols`, `selected_services`). See the [Table Reference](tables.md) for full column schemas.
 
 ## Exporting the Entire Packet Filter
 
@@ -504,7 +504,7 @@ dev.config_set_commit({"l3_forward": str(int(time.time()))})
 
 ## Using IP Groups
 
-Reference entries from the [`ipgroups`](../../api-reference/firewall/tables.md#ipgroups-network-groups) table using the `@groupname` syntax in address fields:
+Reference entries from the `ipgroups` table using the `@groupname` syntax in address fields:
 
 ```python
 # First, create the IP group

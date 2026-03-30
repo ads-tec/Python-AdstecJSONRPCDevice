@@ -54,52 +54,18 @@ dev.sess_commit(cfg_session_id)
 
 ---
 
-## Known Tables
+## Table Reference
 
-### `users` — User Accounts
+For a complete list of all tables with column definitions, validation rules, and factory defaults, see the per-product Configuration Database reference:
 
-Row format for `table_insert` (all columns required):
+| Product | Reference |
+|---|---|
+| AWT1000 (Web Terminal) | [AWT1000 Configuration Database](configdb/AWT1000.md) |
+| IRF1401 | [IRF1401 Configuration Database](configdb/IRF1401.md) |
+| IRF1421 | [IRF1421 Configuration Database](configdb/IRF1421.md) |
+| IRF3401 | [IRF3401 Configuration Database](configdb/IRF3401.md) |
+| IRF3421 | [IRF3421 Configuration Database](configdb/IRF3421.md) |
+| IRF3801 | [IRF3801 Configuration Database](configdb/IRF3801.md) |
+| IRF3821 | [IRF3821 Configuration Database](configdb/IRF3821.md) |
 
-| Index | Field | Example | Description |
-|---|---|---|---|
-| 0 | username | `"testuser"` | Login username |
-| 1 | (reserved) | `""` | |
-| 2 | (reserved) | `""` | |
-| 3 | enabled | `"1"` | `"1"` = enabled, `"0"` = disabled |
-| 4 | (reserved) | `""` | |
-| 5 | created | `"1970-01-01"` | Account creation date |
-| 6 | expires | `"1970-01-01"` | Account expiration date |
-
-!!! note "Setting the password"
-    After inserting a user row, set the password in the **same** configuration session:
-
-    ```python
-    cfg_session_id = dev.sess_start()
-    dev.table_insert("users", cfg_session_id,
-        ["testuser", "", "", "1", "", "1970-01-01", "1970-01-01"])
-    dev.config_set(cfg_session_id, {
-        "webpwd_user": "testuser",
-        "webpwd_user_new": "SecurePassword123!",
-        "webpwd_user_checked": "SecurePassword123!"
-    })
-    dev.sess_commit(cfg_session_id)
-    ```
-
----
-
-### `permissions` — User Rights
-
-Controls per-user read/write access to configuration variables and tables.
-
-| Column | Type | Constraint | Description |
-|---|---|---|---|
-| `username` | string (max 14 chars) | unique with `configid` | Username |
-| `configid` | `"0"` / `"1"-"9999"` / table name | unique with `username` | `0` = default permissions; `1-9999` = config variable ID; table name (e.g., `"macgroups"`) = table access |
-| `permission` | `"r"` / `"w"` | | `r` = read; `w` = read + write |
-
-```python
-cfg_session_id = dev.sess_start()
-# Give user "operator" write access to config variable #42
-dev.table_insert("permissions", cfg_session_id, ["operator", "42", "w"])
-dev.sess_commit(cfg_session_id)
-```
+See also the [Configuration Database Overview](configdb/index.md) for a comparison across products.

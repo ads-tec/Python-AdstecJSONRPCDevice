@@ -1,6 +1,6 @@
 # Rule Modes
 
-The columns referenced below (`state_type_id`, `revert`, `states`, `statevalue`) are part of the [`serv_Protocols`](../../api-reference/firewall/tables.md#serv_protocols-packet-filter-rules) table. See the [Table Reference](tables.md#serv_protocols) for full column schemas.
+The columns referenced below (`state_type_id`, `revert`, `states`, `statevalue`) are part of the `serv_Protocols` table. See the [Table Reference](tables.md#serv_protocols) for full column schemas.
 
 ## L3 Rule Modes: Easy, Stateful, and Stateless
 
