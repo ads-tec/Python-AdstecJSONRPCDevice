@@ -1,9 +1,14 @@
 [
   {
-    "version": "2.2.7",
-    "title": "IRF 2.2.7 / AWT 14.2.7",
+    "version": "2.2.8",
+    "title": "2.2.8",
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "2.2.7",
+    "title": "IRF 2.2.7 / AWT 14.2.7",
+    "aliases": []
   }
 ]
